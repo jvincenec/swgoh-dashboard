@@ -1,535 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SWGOH Dashboard — carovnicek</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
-
-  :root {
-    --bg: #0a0c10;
-    --bg2: #11151c;
-    --border: #1e2a3a;
-    --accent: #4fc3f7;
-    --good: #10b981;
-    --warn: #f59e0b;
-    --bad: #ef4444;
-    --text: #c8d6e5;
-    --text-dim: #5a7a99;
-    --text-bright: #e8f4ff;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 24px 16px 60px; }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-  }
-
-  header h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-bright);
-  }
-
-  header .meta { font-size: 12px; color: var(--text-dim); }
-
-  .refresh-note {
-    font-size: 11px;
-    color: var(--text-dim);
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 12px;
-    margin-bottom: 24px;
-  }
-  .refresh-note code {
-    background: #000;
-    padding: 1px 5px;
-    border-radius: 4px;
-    color: var(--accent);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
-
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px;
-  }
-
-  .card h2 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .stat-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .stat-row:last-child { border-bottom: none; }
-  .stat-row .val { color: var(--text-bright); font-weight: 600; }
-
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th {
-    text-align: left;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 6px 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
-  tr:last-child td { border-bottom: none; }
-  .relic { color: #a78bfa; font-weight: 600; }
-
-  .rec-list { list-style: none; }
-  .rec-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .rec-list li:last-child { border-bottom: none; }
-  .rec-tag {
-    display: inline-block;
-    font-size: 10px;
-    padding: 1px 7px;
-    border-radius: 20px;
-    margin-right: 8px;
-    font-weight: 600;
-  }
-  .tag-meta { background: rgba(16,185,129,0.15); color: var(--good); }
-  .tag-relic { background: rgba(167,139,250,0.15); color: #a78bfa; }
-  .tag-general { background: rgba(79,195,247,0.12); color: var(--accent); }
-
-  .empty {
-    color: var(--text-dim);
-    font-size: 12px;
-    font-style: italic;
-    padding: 8px 0;
-  }
-
-  .currency-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-  }
-  .currency-item {
-    background: #0d1117;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 10px;
-  }
-  .currency-item .label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
-  .currency-item .amount { font-size: 15px; font-weight: 700; color: var(--text-bright); }
-</style>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Community</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1, h2 { font-size: 20px; }
+    h2 { font-size: 15px; color: #58a6ff; margin-top: 32px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    th, td { border: 1px solid #30363d; padding: 6px 10px; text-align: left; font-size: 13px; }
+    th { background: #161b22; cursor: pointer; user-select: none; }
+    th.sorted-asc::after { content: " ▲"; }
+    th.sorted-desc::after { content: " ▼"; }
+    tr:nth-child(even) { background: #11161c; }
+    tr.totals { font-weight: bold; background: #1c2530; }
+    a.guild-link { color: #c9d1d9; text-decoration: none; }
+    a.guild-link:hover { color: #58a6ff; }
+    .empty { color: #6e7681; font-style: italic; }
+    .chart-card { background: #ffffff; border-radius: 6px; padding: 12px; margin: 8px 0 20px 0; overflow-x: auto; }
+  </style>
 </head>
 <body>
-<nav style="padding:10px 16px; font-size:13px;"><a href="/" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Dashboard</a><a href="/community" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Community</a><a href="/players" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Players</a><a href="/characters" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Characters</a><a href="/squads" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Squads</a><a href="/squad-templates" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Squad Templates</a><a href="/farming" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Farming</a><a href="/mods" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Mods</a><a href="/history" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">History</a><a href="/transfers" style="color:#4fc3f7; text-decoration:none;">Transfers</a></nav>
-<div class="wrap">
-
-  <header>
-    <div>
-      <h1>carovnicek</h1>
-      <div class="meta">Level 85 · Squad Arena rank ? · Fleet Arena rank ?</div>
-    </div>
-    <div class="meta">Unknown</div>
-  </header>
-
-  <div class="refresh-note">
-    Data is only as fresh as your last <code>python fetch.py</code> run. Re-run it, then reload this page, to pull current numbers from Comlink.
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h2>Top Characters (by relic / gear)</h2>
-      
-      <table>
-        <tr><th onclick="sortTable(this)">Unit</th><th onclick="sortTable(this)">Lvl</th><th onclick="sortTable(this)">★</th><th onclick="sortTable(this)">Gear</th><th onclick="sortTable(this)">Relic</th></tr>
-        
-        <tr>
-          <td>GENERALKENOBI</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">8</td>
-        </tr>
-        
-        <tr>
-          <td>GRANDMASTERLUKE</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">8</td>
-        </tr>
-        
-        <tr>
-          <td>REYJEDITRAINING</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>ANAKINKNIGHT</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>COMMANDERLUKESKYWALKER</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>HANSOLO</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>R2D2_LEGENDARY</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>BIGGSDARKLIGHTER</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>JEDIKNIGHTLUKE</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>BOSSK</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>VADER</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>CHEWBACCALEGENDARY</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">7</td>
-        </tr>
-        
-        <tr>
-          <td>C3POCHEWBACCA</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">6</td>
-        </tr>
-        
-        <tr>
-          <td>ADMIRALACKBAR</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">6</td>
-        </tr>
-        
-        <tr>
-          <td>JEDIKNIGHTREVAN</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">6</td>
-        </tr>
-        
-        <tr>
-          <td>PRINCESSKNEESAA</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">6</td>
-        </tr>
-        
-        <tr>
-          <td>JOLEEBINDO</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">6</td>
-        </tr>
-        
-        <tr>
-          <td>HERMITYODA</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">5</td>
-        </tr>
-        
-        <tr>
-          <td>B1BATTLEDROIDV2</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">5</td>
-        </tr>
-        
-        <tr>
-          <td>DROIDEKA</td>
-          <td>85</td>
-          <td>7</td>
-          <td>13</td>
-          <td class="relic">5</td>
-        </tr>
-        
-      </table>
-      
-    </div>
-
-    <div class="card">
-      <h2>Guild Members (0)</h2>
-      
-      <div class="empty">No guild data yet — run fetch.py first.</div>
-      
-    </div>
-
-  </div>
-
-  <div class="card" style="margin-bottom:16px;">
-    <h2>Currency Snapshot (manually entered — see currencies.json)</h2>
-    <div class="currency-grid">
-      
-        
-      
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">crystals</div>
-          <div class="amount">25,500</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">cantina battle tokens</div>
-          <div class="amount">7,460</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">squad arena tokens</div>
-          <div class="amount">111,700</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">fleet arena tokens</div>
-          <div class="amount">66,900</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">guild event currency 1</div>
-          <div class="amount">57,300</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">guild event currency 2</div>
-          <div class="amount">60,500</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">grand arena currency</div>
-          <div class="amount">13,600</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">era shipment currency</div>
-          <div class="amount">1,285</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">episode shipment currency</div>
-          <div class="amount">11,000</div>
-        </div>
-        
-      
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">datacron materials handshake</div>
-          <div class="amount">134,900</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">datacron materials hex</div>
-          <div class="amount">23,300</div>
-        </div>
-        
-      
-        
-        <div class="currency-item">
-          <div class="label">guild activity currency</div>
-          <div class="amount">37,900</div>
-        </div>
-        
-      
-    </div>
-  </div>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/gl-readiness">GL Readiness</a><a href="/leaderboards">Leaderboards</a><a href="/alliance/gac">GAC Standings</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Community</h1>
+  <p style="font-size:12px;margin:4px 0 12px">
+    <a href="/alliance/mods" style="color:#58a6ff;">📊 Alliance Mod Report</a>
+  </p>
+  <a href="/export/community.csv" style="color:#3fb950;">Export CSV</a>
 
   
-  <div class="card" style="margin-bottom:16px;">
-    <h2>Guild Analysis</h2>
-    <div class="empty">
-      No guild analysis yet. Run <code style="color:var(--accent);">python analysis/guild_analyzer.py "Guild Name"</code>
-      for your own guild or a TW opponent, then reload this page.
-    </div>
-  </div>
+  <table id="communityTable">
+    <tr>
+      <th onclick="sortTable(this)">Guild</th>
+      <th onclick="sortTable(this)">Members</th>
+      <th onclick="sortTable(this)">Total GP</th>
+      <th onclick="sortTable(this)">Last TB Stars</th>
+      <th onclick="sortTable(this)">Recent TWs</th>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/oddworld-abe-exodus">Oddworld Abe Exodus</a></td>
+      <td>50</td>
+      <td>724,516,662</td>
+      <td>
+        
+          45
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/thick-as-thieves">Thick as Thieves</a></td>
+      <td>50</td>
+      <td>558,033,652</td>
+      <td>
+        
+          32
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/banes-disciples">Banes disciples</a></td>
+      <td>47</td>
+      <td>455,386,100</td>
+      <td>
+        
+          27
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/enders">Ender&#39;s</a></td>
+      <td>50</td>
+      <td>364,266,572</td>
+      <td>
+        
+          20
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/return-of-the-oddballs">Return of the Oddballs</a></td>
+      <td>17</td>
+      <td>151,140,433</td>
+      <td>
+        
+          18
+        
+      </td>
+      <td>
+        —
+      </td>
+    </tr>
+    
+    <tr class="totals">
+      <td>5 guilds</td>
+      <td>214</td>
+      <td>2,253,343,419</td>
+      <td></td><td></td>
+    </tr>
+  </table>
+
+  <h2>Community Total GP Over Time</h2>
+  <div class="chart-card"><div id="community-gp-chart"></div></div>
+  <h2>Community Total Members Over Time</h2>
+  <div class="chart-card"><div id="community-player-chart"></div></div>
+  <h2>Guild GP Over Time</h2>
+  <div class="chart-card"><div id="guild-gp-chart"></div></div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="/static/graph.js"></script>
+  <script>
+    var c1 = new Chart("/data/community-gp-stats.json", null, "total");
+    c1.id = "community-gp-chart"; c1.height = 350; c1.width = 900; c1.tightScale = true;
+    c1.display();
+    var c2 = new Chart("/data/community-player-stats.json", null, "total");
+    c2.id = "community-player-chart"; c2.height = 300; c2.width = 900; c2.tightScale = true;
+    c2.display();
+    var c3 = new Chart("/data/guilds-gp-stats.json", null, "total");
+    c3.id = "guild-gp-chart"; c3.height = 350; c3.width = 900; c3.tightScale = true;
+    c3.display();
+
+    function sortTable(th) {
+      const table = th.closest("table");
+      const colIndex = th.cellIndex;
+      const rows = Array.from(table.querySelectorAll("tr")).slice(1, -1);
+      const asc = !th.classList.contains("sorted-asc");
+      rows.sort((a, b) => {
+        const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+        const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+        const aNum = parseFloat(aText), bNum = parseFloat(bText);
+        if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
+        return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+      const tbody = table;
+      const footer = table.querySelector("tr.totals");
+      rows.forEach(r => tbody.insertBefore(r, footer));
+      table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+      th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+    }
+  </script>
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div class="card">
-    <h2>Recommendations</h2>
-    <ul class="rec-list">
-      
-      <li><span class="rec-tag tag-meta">Meta</span>Tarkin appears in a current top-usage GAC squad (Tarkin / Dark Side Clones). You already own him — this is your closest piece to the current meta.</li>
-      
-      
-      <li><span class="rec-tag tag-relic">Relic</span>GRANDMASTERLUKE is at Relic 8 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>VADER is at Relic 7 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>GENERALKENOBI is at Relic 8 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>GENERALSKYWALKER is at Relic 5 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>JEDIKNIGHTLUKE is at Relic 7 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>R2D2_LEGENDARY is at Relic 7 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>CHEWBACCALEGENDARY is at Relic 7 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      <li><span class="rec-tag tag-relic">Relic</span>HANSOLO is at Relic 7 — Push higher with Lightspeed Tokens / relic mats — this is a core squad piece.</li>
-      
-      
-      <li><span class="rec-tag tag-general">General</span>Check Shipments tabs for time-limited currency before it expires.</li>
-      
-      <li><span class="rec-tag tag-general">General</span>Spend Fleet Arena Tokens on Zeta/Omega ability materials if any priority character is missing key abilities.</li>
-      
-      <li><span class="rec-tag tag-general">General</span>Run Conquest every cycle — it&#39;s the best non-meta-dependent source of Datacron materials and Razor Crest shards.</li>
-      
-      <li><span class="rec-tag tag-general">General</span>Re-check https://swgoh.gg/gac/squads/ periodically — the meta list in this script is a manual snapshot, not live.</li>
-      
-    </ul>
-  </div>
-
-</div>
-<style>
-  th { cursor: pointer; user-select: none; }
-  th.sorted-asc::after { content: " \25B2"; }
-  th.sorted-desc::after { content: " \25BC"; }
-</style>
-<script>
-  function sortTable(th) {
-    const table = th.closest("table");
-    const colIndex = th.cellIndex;
-    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
-    const asc = !th.classList.contains("sorted-asc");
-    rows.sort((a, b) => {
-      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
-      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
-      const aNum = parseFloat(aText), bNum = parseFloat(bText);
-      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
-      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
-    });
-    rows.forEach(r => table.appendChild(r));
-    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
-    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
-  }
-</script>
 </body>
 </html>
