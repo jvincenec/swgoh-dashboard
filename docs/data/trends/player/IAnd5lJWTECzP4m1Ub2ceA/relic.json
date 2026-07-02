@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "IAnd5lJWTECzP4m1Ub2ceA",
+      "name": "Dexter Jesso",
+      "values": {
+        "total": [
+          1843,
+          1843,
+          1843
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

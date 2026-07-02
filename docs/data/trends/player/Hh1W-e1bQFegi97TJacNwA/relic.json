@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Hh1W-e1bQFegi97TJacNwA",
+      "name": "Thisistheway",
+      "values": {
+        "total": [
+          2173,
+          2173,
+          2173
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

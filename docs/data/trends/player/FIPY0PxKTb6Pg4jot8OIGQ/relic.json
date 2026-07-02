@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "FIPY0PxKTb6Pg4jot8OIGQ",
+      "name": "DoubleSlash",
+      "values": {
+        "total": [
+          1672,
+          1673,
+          1673
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

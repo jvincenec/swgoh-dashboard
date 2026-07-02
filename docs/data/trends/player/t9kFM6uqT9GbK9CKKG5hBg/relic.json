@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "t9kFM6uqT9GbK9CKKG5hBg",
+      "name": "Kozel",
+      "values": {
+        "total": [
+          1282,
+          1282,
+          1282
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

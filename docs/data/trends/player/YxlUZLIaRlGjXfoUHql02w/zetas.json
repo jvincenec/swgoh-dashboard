@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "YxlUZLIaRlGjXfoUHql02w",
+      "name": "Marl Jewel",
+      "values": {
+        "total": [
+          0,
+          151,
+          151
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

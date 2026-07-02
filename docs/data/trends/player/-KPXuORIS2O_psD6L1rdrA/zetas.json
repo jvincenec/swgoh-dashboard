@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "-KPXuORIS2O_psD6L1rdrA",
+      "name": "Sirael Kira",
+      "values": {
+        "total": [
+          0,
+          455,
+          455
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

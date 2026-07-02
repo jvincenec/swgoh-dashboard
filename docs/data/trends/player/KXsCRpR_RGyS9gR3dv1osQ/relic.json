@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "KXsCRpR_RGyS9gR3dv1osQ",
+      "name": "Kaeden07",
+      "values": {
+        "total": [
+          12,
+          12,
+          12
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "IDCjEw6FSQCaEqsNiwaGhw",
+      "name": "MiniZeroKiryu",
+      "values": {
+        "total": [
+          1562,
+          1562,
+          1562
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

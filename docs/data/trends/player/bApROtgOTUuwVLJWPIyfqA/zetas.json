@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "bApROtgOTUuwVLJWPIyfqA",
+      "name": "DarthCaedus",
+      "values": {
+        "total": [
+          0,
+          293,
+          293
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

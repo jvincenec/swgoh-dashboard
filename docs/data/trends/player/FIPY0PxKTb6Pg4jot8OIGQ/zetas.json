@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "FIPY0PxKTb6Pg4jot8OIGQ",
+      "name": "DoubleSlash",
+      "values": {
+        "total": [
+          0,
+          467,
+          467
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "d1vpUmZIRIyimiqATs57rg",
+      "name": "Chrome Cowboy",
+      "values": {
+        "total": [
+          0,
+          447,
+          447
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

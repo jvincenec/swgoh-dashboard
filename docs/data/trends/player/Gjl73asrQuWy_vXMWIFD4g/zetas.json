@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Gjl73asrQuWy_vXMWIFD4g",
+      "name": "Haledamaged",
+      "values": {
+        "total": [
+          0,
+          340,
+          340
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

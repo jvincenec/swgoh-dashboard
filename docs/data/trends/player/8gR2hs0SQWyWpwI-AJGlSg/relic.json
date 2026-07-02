@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "8gR2hs0SQWyWpwI-AJGlSg",
+      "name": "Default name",
+      "values": {
+        "total": [
+          2106,
+          2106,
+          2106
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

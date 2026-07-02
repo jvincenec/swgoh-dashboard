@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "bOnpViTFRRCf1wwgXmdn0g",
+      "name": "Hex",
+      "values": {
+        "total": [
+          1742,
+          1742,
+          1742
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

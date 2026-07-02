@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "YetWmilHQ822pUsaiwFaAw",
+      "name": "ToasteDDTrooper",
+      "values": {
+        "total": [
+          1157,
+          1158,
+          1158
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

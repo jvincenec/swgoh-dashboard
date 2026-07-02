@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "grUBOp_3TeuC3fcb2UypCw",
+      "name": "Crando",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "y": "GP"
+}

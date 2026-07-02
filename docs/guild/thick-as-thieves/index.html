@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Thick as Thieves</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1, h2 { font-size: 20px; }
+    h2 { font-size: 15px; color: #58a6ff; margin-top: 28px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .empty { color: #6e7681; font-style: italic; }
+    .note { color: #6e7681; font-size: 12px; margin-top: 6px; }
+    .stat { display: inline-block; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 10px 18px; margin: 4px; }
+    .stat-label { font-size: 11px; color: #6e7681; text-transform: uppercase; }
+    .stat-value { font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Thick as Thieves</h1>
+
+  <div style="margin: 12px 0;">
+    <div class="stat"><div class="stat-label">Members</div><div class="stat-value">50</div></div>
+    <div class="stat"><div class="stat-label">Total GP</div><div class="stat-value">558,033,652</div></div>
+    
+    <div class="stat"><div class="stat-label">Last TB Stars</div><div class="stat-value">32</div></div>
+    
+  </div>
+
+  
+  <p style="margin:8px 0;display:flex;gap:16px;flex-wrap:wrap;font-size:13px">
+    <a href="/guild/thick-as-thieves/mods" style="color:#58a6ff">📊 Mod Report</a>
+    <a href="/guild/thick-as-thieves/mods-characters" style="color:#58a6ff">📊 Mods by Char</a>
+    <a href="/guild/thick-as-thieves/important-toons" style="color:#58a6ff">⭐ Important Toons</a>
+    <a href="/guild/thick-as-thieves/rare-units" style="color:#58a6ff">🔍 Rare Units</a>
+    <a href="/guild/thick-as-thieves/squads-all" style="color:#58a6ff">⚔️ All Squads</a>
+  </p>
+  <h2>Members</h2>
+  <table>
+    <tr><th>Player</th><th>GP</th><th>Chars GP</th><th>Ships GP</th><th>Level</th><th>Raid Tickets (this week)</th><th>Lifetime Tickets</th></tr>
+    
+    <tr>
+      <td><a href="/player/CwjcImJnQH2BRYK_PML_aA" style="color:#58a6ff; text-decoration:none;">Anariodin</a></td>
+      <td>14,215,309</td>
+      <td>9,230,282</td>
+      <td>4,985,027</td>
+      <td>85</td>
+      <td>600</td>
+      <td>222,860</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/JhnPcQ00SZu_fQKajwz6rQ" style="color:#58a6ff; text-decoration:none;">Ninja</a></td>
+      <td>13,879,194</td>
+      <td>8,947,990</td>
+      <td>4,931,204</td>
+      <td>85</td>
+      <td>600</td>
+      <td>85,800</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/IAnd5lJWTECzP4m1Ub2ceA" style="color:#58a6ff; text-decoration:none;">Dexter Jesso</a></td>
+      <td>13,867,659</td>
+      <td>9,092,404</td>
+      <td>4,775,255</td>
+      <td>85</td>
+      <td>0</td>
+      <td>594,780</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/U04re-XPREyVTHa279YUMQ" style="color:#58a6ff; text-decoration:none;">Alatac</a></td>
+      <td>13,796,341</td>
+      <td>8,908,186</td>
+      <td>4,888,155</td>
+      <td>85</td>
+      <td>600</td>
+      <td>124,624</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/kYEKVy3fTK6aiiR2KtF6-Q" style="color:#58a6ff; text-decoration:none;">Zaj1027</a></td>
+      <td>13,430,121</td>
+      <td>8,789,867</td>
+      <td>4,640,254</td>
+      <td>85</td>
+      <td>600</td>
+      <td>665,524</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/RqfsE3lSQ56QnQHTiz2Rdw" style="color:#58a6ff; text-decoration:none;">IG88</a></td>
+      <td>13,216,057</td>
+      <td>8,637,426</td>
+      <td>4,578,631</td>
+      <td>85</td>
+      <td>600</td>
+      <td>607,854</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/w-JtoM7nRTSDtr_HV4HmMQ" style="color:#58a6ff; text-decoration:none;">Doo Doo</a></td>
+      <td>13,164,698</td>
+      <td>8,492,547</td>
+      <td>4,672,151</td>
+      <td>85</td>
+      <td>600</td>
+      <td>368,968</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/wdNMzw6ZSKerBrzcd9egzA" style="color:#58a6ff; text-decoration:none;">Janer Zanames</a></td>
+      <td>12,970,594</td>
+      <td>8,154,224</td>
+      <td>4,816,370</td>
+      <td>85</td>
+      <td>600</td>
+      <td>462,336</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/ojTnyM7WTzeRAUplrVBSjg" style="color:#58a6ff; text-decoration:none;">Obi matter</a></td>
+      <td>12,823,542</td>
+      <td>8,150,017</td>
+      <td>4,673,525</td>
+      <td>85</td>
+      <td>600</td>
+      <td>148,418</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/sqy5aY3eSjyJJ2Z2uxrIiQ" style="color:#58a6ff; text-decoration:none;">Younga1010</a></td>
+      <td>12,093,255</td>
+      <td>7,637,534</td>
+      <td>4,455,721</td>
+      <td>85</td>
+      <td>600</td>
+      <td>18,600</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/tZOLSddLT_maCmevwY_vew" style="color:#58a6ff; text-decoration:none;">PastorJoe</a></td>
+      <td>11,997,954</td>
+      <td>7,525,481</td>
+      <td>4,472,473</td>
+      <td>85</td>
+      <td>600</td>
+      <td>315,944</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/IsajrcniTGen81t-XBsvZQ" style="color:#58a6ff; text-decoration:none;">Pulp Picker</a></td>
+      <td>11,993,740</td>
+      <td>7,883,291</td>
+      <td>4,110,449</td>
+      <td>85</td>
+      <td>600</td>
+      <td>492,634</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/-0MzWGbBSeqB4nOkyLNNQQ" style="color:#58a6ff; text-decoration:none;">Stephen Mejia</a></td>
+      <td>11,916,260</td>
+      <td>7,165,582</td>
+      <td>4,750,678</td>
+      <td>85</td>
+      <td>600</td>
+      <td>585,266</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/P5Z4rxHdT821Lu8RQUZSwA" style="color:#58a6ff; text-decoration:none;">Zolpiden</a></td>
+      <td>11,822,326</td>
+      <td>7,851,512</td>
+      <td>3,970,814</td>
+      <td>85</td>
+      <td>600</td>
+      <td>145,132</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/gUSukKiZQFC97nXdQ3Au1Q" style="color:#58a6ff; text-decoration:none;">Bennysan</a></td>
+      <td>11,757,216</td>
+      <td>7,346,468</td>
+      <td>4,410,748</td>
+      <td>85</td>
+      <td>600</td>
+      <td>351,836</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/mjVjEufBR92LNR-l6MTQtg" style="color:#58a6ff; text-decoration:none;">Silver Wolf160903</a></td>
+      <td>11,570,112</td>
+      <td>7,272,661</td>
+      <td>4,297,451</td>
+      <td>85</td>
+      <td>600</td>
+      <td>86,106</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/aN_zIM5cSbuHMQg_ULVV2g" style="color:#58a6ff; text-decoration:none;">R6D9</a></td>
+      <td>11,569,604</td>
+      <td>7,321,945</td>
+      <td>4,247,659</td>
+      <td>85</td>
+      <td>600</td>
+      <td>552,760</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/EbG-yQuJQ_-gTlTgoadbYQ" style="color:#58a6ff; text-decoration:none;">Statue023</a></td>
+      <td>11,530,477</td>
+      <td>7,297,868</td>
+      <td>4,232,609</td>
+      <td>85</td>
+      <td>600</td>
+      <td>160,328</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/H6HZfx1nRU-lcuHkYw_CuQ" style="color:#58a6ff; text-decoration:none;">Blackbomber883</a></td>
+      <td>11,522,752</td>
+      <td>7,107,258</td>
+      <td>4,415,494</td>
+      <td>85</td>
+      <td>600</td>
+      <td>166,960</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/EPyQAo2eTwKJ7RB5MGwN-w" style="color:#58a6ff; text-decoration:none;">Adventura</a></td>
+      <td>11,506,564</td>
+      <td>7,315,136</td>
+      <td>4,191,428</td>
+      <td>85</td>
+      <td>0</td>
+      <td>578,490</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/_hPzflCURUuJqzDJGLqN2A" style="color:#58a6ff; text-decoration:none;">raichan</a></td>
+      <td>11,477,795</td>
+      <td>7,035,951</td>
+      <td>4,441,844</td>
+      <td>85</td>
+      <td>600</td>
+      <td>322,526</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/YetWmilHQ822pUsaiwFaAw" style="color:#58a6ff; text-decoration:none;">ToasteDDTrooper</a></td>
+      <td>11,339,191</td>
+      <td>6,806,951</td>
+      <td>4,532,240</td>
+      <td>85</td>
+      <td>600</td>
+      <td>578,762</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/GCIkJ40oRIucdS5JyikOXw" style="color:#58a6ff; text-decoration:none;">Orzo Kast</a></td>
+      <td>11,288,021</td>
+      <td>6,823,743</td>
+      <td>4,464,278</td>
+      <td>85</td>
+      <td>600</td>
+      <td>347,080</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/DEHJLjNzQiWgn1PXmENO_g" style="color:#58a6ff; text-decoration:none;">Ja&#39;rul Soloon</a></td>
+      <td>11,281,335</td>
+      <td>7,026,983</td>
+      <td>4,254,352</td>
+      <td>85</td>
+      <td>600</td>
+      <td>246,964</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/eZ-FSaC8Q6C4M-maugLaWA" style="color:#58a6ff; text-decoration:none;">Brocapone7</a></td>
+      <td>11,251,459</td>
+      <td>7,246,541</td>
+      <td>4,004,918</td>
+      <td>85</td>
+      <td>600</td>
+      <td>228,646</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/-0QBFPKnQCWmcCXkQnHCGg" style="color:#58a6ff; text-decoration:none;">Nefarious</a></td>
+      <td>11,192,330</td>
+      <td>6,938,659</td>
+      <td>4,253,671</td>
+      <td>85</td>
+      <td>600</td>
+      <td>398,216</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/8X5YQZuBSs-pO92L2Hkdew" style="color:#58a6ff; text-decoration:none;">Loreck Avery</a></td>
+      <td>10,987,195</td>
+      <td>6,393,500</td>
+      <td>4,593,695</td>
+      <td>85</td>
+      <td>600</td>
+      <td>363,452</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/uEZ4iz3zRHiJLzDFHJ4cVA" style="color:#58a6ff; text-decoration:none;">Narmak</a></td>
+      <td>10,968,099</td>
+      <td>7,023,687</td>
+      <td>3,944,412</td>
+      <td>85</td>
+      <td>524</td>
+      <td>157,480</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/F7z_qMilRrOA4x8AoawqKw" style="color:#58a6ff; text-decoration:none;">Wen Qualto</a></td>
+      <td>10,908,742</td>
+      <td>6,953,970</td>
+      <td>3,954,772</td>
+      <td>85</td>
+      <td>600</td>
+      <td>186,428</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/PiC3QsiMR1KU1ktgy3IDLA" style="color:#58a6ff; text-decoration:none;">Ren Gundo</a></td>
+      <td>10,906,209</td>
+      <td>7,112,614</td>
+      <td>3,793,595</td>
+      <td>85</td>
+      <td>600</td>
+      <td>368,072</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/UdoHdz4rSfGJn2HV7zDf1g" style="color:#58a6ff; text-decoration:none;">Reddogg</a></td>
+      <td>10,896,062</td>
+      <td>7,004,678</td>
+      <td>3,891,384</td>
+      <td>85</td>
+      <td>600</td>
+      <td>185,760</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/mCpbp0CzTqWXzPwkFfuljQ" style="color:#58a6ff; text-decoration:none;">Kilum All</a></td>
+      <td>10,891,181</td>
+      <td>6,846,000</td>
+      <td>4,045,181</td>
+      <td>85</td>
+      <td>600</td>
+      <td>13,624</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/uqc_er_tRm6W4WWLC80BgA" style="color:#58a6ff; text-decoration:none;">Avissar</a></td>
+      <td>10,766,181</td>
+      <td>6,749,245</td>
+      <td>4,016,936</td>
+      <td>85</td>
+      <td>600</td>
+      <td>1,610</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/LI-ug7mJRHilXHP53PRQvQ" style="color:#58a6ff; text-decoration:none;">Spikum Saberus</a></td>
+      <td>10,746,459</td>
+      <td>6,723,037</td>
+      <td>4,023,422</td>
+      <td>85</td>
+      <td>600</td>
+      <td>13,134</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/4KTSMpZvQjGl0hNtsZ-EKQ" style="color:#58a6ff; text-decoration:none;">Doogie</a></td>
+      <td>10,729,025</td>
+      <td>6,557,119</td>
+      <td>4,171,906</td>
+      <td>85</td>
+      <td>404</td>
+      <td>103,064</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/7Mm98T4HQ2irR7z2YcpxaQ" style="color:#58a6ff; text-decoration:none;">Zev</a></td>
+      <td>10,609,842</td>
+      <td>6,850,421</td>
+      <td>3,759,421</td>
+      <td>85</td>
+      <td>600</td>
+      <td>355,432</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/jdBzxjAaQzKxzn5m_IyYOA" style="color:#58a6ff; text-decoration:none;">chef</a></td>
+      <td>10,573,409</td>
+      <td>6,577,089</td>
+      <td>3,996,320</td>
+      <td>85</td>
+      <td>600</td>
+      <td>362,250</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/I37pPJ2MQkmm4hvmiJbCug" style="color:#58a6ff; text-decoration:none;">Black saber</a></td>
+      <td>10,536,061</td>
+      <td>6,717,299</td>
+      <td>3,818,762</td>
+      <td>85</td>
+      <td>600</td>
+      <td>574,784</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/Pq56iNuoQL2nc_PGQmFoJg" style="color:#58a6ff; text-decoration:none;">Heavy</a></td>
+      <td>10,527,647</td>
+      <td>6,618,297</td>
+      <td>3,909,350</td>
+      <td>85</td>
+      <td>600</td>
+      <td>43,024</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/pE8ujfEKQkigxJU-v-NxsQ" style="color:#58a6ff; text-decoration:none;">Crix Dellian</a></td>
+      <td>10,419,614</td>
+      <td>6,086,330</td>
+      <td>4,333,284</td>
+      <td>85</td>
+      <td>600</td>
+      <td>369,028</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/0DTHMRpyQ5WMXXyx6wU0VA" style="color:#58a6ff; text-decoration:none;">Niko</a></td>
+      <td>10,029,417</td>
+      <td>7,030,978</td>
+      <td>2,998,439</td>
+      <td>85</td>
+      <td>506</td>
+      <td>18,342</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/tRDSpx-sSTW5wqwY6Ksb9g" style="color:#58a6ff; text-decoration:none;">Shazta</a></td>
+      <td>9,981,853</td>
+      <td>5,946,962</td>
+      <td>4,034,891</td>
+      <td>85</td>
+      <td>564</td>
+      <td>575,698</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/4JdUau5NRG-8dL9wKhInNg" style="color:#58a6ff; text-decoration:none;">Rhody</a></td>
+      <td>9,938,721</td>
+      <td>5,996,304</td>
+      <td>3,942,417</td>
+      <td>85</td>
+      <td>0</td>
+      <td>14,400</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/mX2aSpxPQcCerI2nIFMhhg" style="color:#58a6ff; text-decoration:none;">SaberBlaster</a></td>
+      <td>9,724,147</td>
+      <td>6,028,476</td>
+      <td>3,695,671</td>
+      <td>85</td>
+      <td>600</td>
+      <td>12,950</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/1fDujSKTRIagnD0A0mEDpw" style="color:#58a6ff; text-decoration:none;">APEANUTXD</a></td>
+      <td>9,478,055</td>
+      <td>6,002,704</td>
+      <td>3,475,351</td>
+      <td>85</td>
+      <td>600</td>
+      <td>437,540</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/OrOY68aVTmWnFBt2ncNKWw" style="color:#58a6ff; text-decoration:none;">MINI CptPorgkins</a></td>
+      <td>9,409,229</td>
+      <td>5,972,979</td>
+      <td>3,436,250</td>
+      <td>85</td>
+      <td>554</td>
+      <td>329,914</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/D3_dvcH2SuSdjXAm0c7nnA" style="color:#58a6ff; text-decoration:none;">Iconnu</a></td>
+      <td>8,928,503</td>
+      <td>5,644,444</td>
+      <td>3,284,059</td>
+      <td>85</td>
+      <td>600</td>
+      <td>121,726</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/hq-nT5uzSCu6g0EzvwfkVA" style="color:#58a6ff; text-decoration:none;">Pookie Da Terrror</a></td>
+      <td>8,541,314</td>
+      <td>5,378,031</td>
+      <td>3,163,283</td>
+      <td>85</td>
+      <td>322</td>
+      <td>565,406</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/HfIRoFEzSFGQOLuANlKRFw" style="color:#58a6ff; text-decoration:none;">Vilkolakis</a></td>
+      <td>7,171,178</td>
+      <td>4,663,127</td>
+      <td>2,508,051</td>
+      <td>85</td>
+      <td>600</td>
+      <td>351,542</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/player/uutCtpWMSlGFZkKjh1DemA" style="color:#58a6ff; text-decoration:none;">Nefarious II</a></td>
+      <td>5,891,603</td>
+      <td>3,600,965</td>
+      <td>2,290,638</td>
+      <td>85</td>
+      <td>600</td>
+      <td>53,088</td>
+    </tr>
+    
+  </table>
+
+  <h2>Recent Territory Wars</h2>
+  
+  <p class="note">Field names shown as-is from Comlink — exact TW score field names are not officially documented. This shows all available fields per TW entry.</p>
+  <table>
+    <tr><th>TW Entry</th><th>Raw Data</th></tr>
+    
+    <tr>
+      <td>TW 1</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1780509603", "opponentGuildProfile": {"bannerColorId": "green_blue", "bannerLogoId": "guild_icon_mandalorian", "guildGalacticPower": "506700393", "id": "s_6ugHFbRBKaqt_TXzatjw", "logoBackground": "", "name": "Mandalores Academy"}, "opponentScore": "24766", "power": 490074123, "score": "15768", "startTime": "1780423200", "territoryWarId": "tw01B"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 2</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1782061201", "opponentGuildProfile": {"bannerColorId": "bright_blue_dark_blue", "bannerLogoId": "guild_icon_empire", "guildGalacticPower": "621383022", "id": "mMuVpsk3TD2Ct0OVvS6clQ", "logoBackground": "", "name": "Mexicanos unidos 2"}, "opponentScore": "18364", "power": 511210763, "score": "20649", "startTime": "1781974800", "territoryWarId": "tw01C"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 3</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1782928802", "opponentGuildProfile": {"bannerColorId": "red_white", "bannerLogoId": "guild_icon_jedi", "guildGalacticPower": "637742137", "id": "CIiEo4xvSUyxxJeAMUr4Jg", "logoBackground": "", "name": "HamburgAlliance"}, "opponentScore": "22640", "power": 497504923, "score": "20831", "startTime": "1782842400", "territoryWarId": "tw01D"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 4</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1778432419", "opponentGuildProfile": {"bannerColorId": "gold_purple", "bannerLogoId": "guild_icon_hero", "guildGalacticPower": "592027103", "id": "yqBGQbDhToSzrmUEByEHeg", "logoBackground": "", "name": "SaS League of Warriors"}, "opponentScore": "21600", "power": 476293276, "score": "11077", "startTime": "1778346000", "territoryWarId": "tw01C"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 5</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1779300001", "opponentGuildProfile": {"bannerColorId": "gold_purple", "bannerLogoId": "guild_icon_mandalorian", "guildGalacticPower": "494170087", "id": "zCGQCgqARL6i9YHSXeQJug", "logoBackground": "", "name": "??????"}, "opponentScore": "19120", "power": 453686688, "score": "14027", "startTime": "1779213600", "territoryWarId": "tw01B"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 6</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1779642002", "opponentGuildProfile": {"bannerColorId": "green_blue", "bannerLogoId": "guild_icon_triangle", "guildGalacticPower": "544810004", "id": "1y0ySvhgQuSV2U2bGmlxMA", "logoBackground": "", "name": "Rebels Rogues and SWGOH Bros"}, "opponentScore": "10636", "power": 493524858, "score": "22267", "startTime": "1779555600", "territoryWarId": "tw01A"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 7</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1780851606", "opponentGuildProfile": {"bannerColorId": "cyan_purple", "bannerLogoId": "guild_icon_empire", "guildGalacticPower": "547318290", "id": "NzjDFToSTi-r0Z2Sf37XpQ", "logoBackground": "", "name": "The Ginwalkers"}, "opponentScore": "14888", "power": 475775448, "score": "16436", "startTime": "1780765200", "territoryWarId": "tw01A"}</td>
+    </tr>
+    
+    <tr>
+      <td>TW 8</td>
+      <td style="font-family: monospace; font-size: 11px;">{"endTimeSeconds": "1781719234", "opponentGuildProfile": {"bannerColorId": "gold_purple", "bannerLogoId": "guild_icon_triangle", "guildGalacticPower": "568884198", "id": "qc3VbDbsSb2lIUTJLgtxAw", "logoBackground": "", "name": "Romanian Squad"}, "opponentScore": "14442", "power": 498629643, "score": "17422", "startTime": "1781632800", "territoryWarId": "tw01D"}</td>
+    </tr>
+    
+  </table>
+  
+
+  <h2>Recent Territory Battles</h2>
+  
+  <table>
+    <tr><th>Definition</th><th>Stars</th><th>End Time</th></tr>
+    
+    <tr>
+      <td>t05D</td>
+      <td>32</td>
+      <td>1782666022000</td>
+    </tr>
+    
+  </table>
+  
+</body>
+</html>

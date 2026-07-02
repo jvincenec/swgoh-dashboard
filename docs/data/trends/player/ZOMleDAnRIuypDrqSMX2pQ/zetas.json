@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "ZOMleDAnRIuypDrqSMX2pQ",
+      "name": "MastrYoda",
+      "values": {
+        "total": [
+          0,
+          157,
+          157
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

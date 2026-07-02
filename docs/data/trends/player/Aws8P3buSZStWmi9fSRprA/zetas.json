@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Aws8P3buSZStWmi9fSRprA",
+      "name": "Doof",
+      "values": {
+        "total": [
+          0,
+          204,
+          204
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

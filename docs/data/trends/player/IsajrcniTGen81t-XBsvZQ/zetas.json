@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "IsajrcniTGen81t-XBsvZQ",
+      "name": "Pulp Picker",
+      "values": {
+        "total": [
+          0,
+          408,
+          408
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

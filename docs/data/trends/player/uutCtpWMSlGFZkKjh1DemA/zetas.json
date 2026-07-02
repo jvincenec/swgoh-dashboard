@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "uutCtpWMSlGFZkKjh1DemA",
+      "name": "Nefarious II",
+      "values": {
+        "total": [
+          0,
+          180,
+          180
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

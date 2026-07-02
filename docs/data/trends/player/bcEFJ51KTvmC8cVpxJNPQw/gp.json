@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "bcEFJ51KTvmC8cVpxJNPQw",
+      "name": "Felsn Nox",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "y": "GP"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "IIYdgGpuR6OzVExTCpqQYA",
+      "name": "veylon2",
+      "values": {
+        "total": [
+          577,
+          577,
+          577
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

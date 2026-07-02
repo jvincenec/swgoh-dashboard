@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "gUSukKiZQFC97nXdQ3Au1Q",
+      "name": "Bennysan",
+      "values": {
+        "total": [
+          1372,
+          1372,
+          1372
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

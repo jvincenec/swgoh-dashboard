@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "4KTSMpZvQjGl0hNtsZ-EKQ",
+      "name": "Doogie",
+      "values": {
+        "total": [
+          987,
+          987,
+          987
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

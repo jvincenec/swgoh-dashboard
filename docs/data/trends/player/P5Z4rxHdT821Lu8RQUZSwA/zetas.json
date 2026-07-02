@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "P5Z4rxHdT821Lu8RQUZSwA",
+      "name": "Zolpiden",
+      "values": {
+        "total": [
+          0,
+          416,
+          416
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

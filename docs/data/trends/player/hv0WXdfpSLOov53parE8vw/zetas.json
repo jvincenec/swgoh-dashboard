@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "hv0WXdfpSLOov53parE8vw",
+      "name": "FleaGbsn",
+      "values": {
+        "total": [
+          0,
+          190,
+          190
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

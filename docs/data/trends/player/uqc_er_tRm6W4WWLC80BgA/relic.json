@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "uqc_er_tRm6W4WWLC80BgA",
+      "name": "Avissar",
+      "values": {
+        "total": [
+          1355,
+          1355,
+          1355
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

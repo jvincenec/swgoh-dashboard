@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "I37pPJ2MQkmm4hvmiJbCug",
+      "name": "Black saber",
+      "values": {
+        "total": [
+          0,
+          365,
+          365
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

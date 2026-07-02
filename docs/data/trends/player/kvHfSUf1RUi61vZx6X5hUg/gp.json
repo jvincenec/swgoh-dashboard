@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "kvHfSUf1RUi61vZx6X5hUg",
+      "name": "Jedirage",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "y": "GP"
+}

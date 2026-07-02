@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "TIuvk4k-QkGGoPmkegQHYg",
+      "name": "NikGor",
+      "values": {
+        "total": [
+          2096,
+          2096,
+          2096
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

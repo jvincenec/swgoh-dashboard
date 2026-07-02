@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "8X5YQZuBSs-pO92L2Hkdew",
+      "name": "Loreck Avery",
+      "values": {
+        "total": [
+          1024,
+          1024,
+          1024
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

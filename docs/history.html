@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — History</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 16px; margin-top: 32px; color: #58a6ff; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    th, td { border: 1px solid #30363d; padding: 6px 10px; text-align: left; font-size: 13px; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .added { color: #3fb950; }
+    .left { color: #f85149; }
+    .pos { color: #3fb950; }
+    .neg { color: #f85149; }
+    .empty { color: #6e7681; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Guild History</h1>
+  
+
+  <h2>Whole Community — Total GP &amp; Members Over Time</h2>
+  
+  <canvas id="communityChart" height="80"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script>
+    const communityData = [{"guild_count": 5, "timestamp": "2026-06-30T13:27:26+00:00", "total_gp": 2238183862, "total_members": 213}, {"guild_count": 5, "timestamp": "2026-06-30T20:56:25+00:00", "total_gp": 2251339043, "total_members": 213}, {"guild_count": 5, "timestamp": "2026-07-01T20:05:42+00:00", "total_gp": 2251339043, "total_members": 213}, {"guild_count": 5, "timestamp": "2026-07-01T20:33:20+00:00", "total_gp": 2253343419, "total_members": 214}, {"guild_count": 5, "timestamp": "2026-07-01T20:45:01+00:00", "total_gp": 2253343419, "total_members": 214}];
+    new Chart(document.getElementById("communityChart"), {
+      type: "line",
+      data: {
+        datasets: [
+          {
+            label: "Total GP",
+            data: communityData.map(c => ({ x: c.timestamp, y: c.total_gp })),
+            borderColor: "#58a6ff", backgroundColor: "transparent", yAxisID: "y", tension: 0.2,
+          },
+          {
+            label: "Total Members",
+            data: communityData.map(c => ({ x: c.timestamp, y: c.total_members })),
+            borderColor: "#3fb950", backgroundColor: "transparent", yAxisID: "y1", tension: 0.2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: "index", intersect: false },
+        scales: {
+          x: { type: "time", time: { unit: "day" }, ticks: { color: "#8b949e" }, grid: { color: "#21262d" } },
+          y: { type: "linear", position: "left", ticks: { color: "#58a6ff" }, grid: { color: "#21262d" } },
+          y1: { type: "linear", position: "right", ticks: { color: "#3fb950" }, grid: { drawOnChartArea: false } },
+        },
+        plugins: { legend: { labels: { color: "#c9d1d9" } } },
+      },
+    });
+  </script>
+  
+
+  <h2>Guild GP Over Time</h2>
+  
+  
+  <canvas id="gpChart" height="80"></canvas>
+  <h2>Guild Member Count Over Time</h2>
+  <canvas id="memberChart" height="80"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script>
+    const chartData = [{"guild_id": "R97aQ9FiRvejErBrwW82HQ", "guild_name": "Banes disciples", "rows": [{"added": [], "gp_change": 0, "guild_gp": 455386100, "guild_name": "Banes disciples", "left": [], "member_count": 47, "timestamp": "2026-07-01T20:45:01+00:00"}, {"added": [], "gp_change": 663874, "guild_gp": 455386100, "guild_name": "Banes disciples", "left": [], "member_count": 47, "timestamp": "2026-07-01T20:33:20+00:00"}, {"added": [], "gp_change": 0, "guild_gp": 454722226, "guild_name": "Banes disciples", "left": [], "member_count": 47, "timestamp": "2026-07-01T20:05:42+00:00"}, {"added": [], "gp_change": 169066, "guild_gp": 454722226, "guild_name": "Banes disciples", "left": [], "member_count": 47, "timestamp": "2026-06-30T20:56:25+00:00"}, {"added": [], "gp_change": null, "guild_gp": 454553160, "guild_name": "Banes disciples", "left": [], "member_count": 47, "timestamp": "2026-06-30T13:27:26+00:00"}]}, {"guild_id": "MhiIQJEqThCKKv2M1P3M_w", "guild_name": "Ender\u0027s", "rows": [{"added": [], "gp_change": 0, "guild_gp": 364266572, "guild_name": "Ender\u0027s", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:45:01+00:00"}, {"added": [], "gp_change": 582281, "guild_gp": 364266572, "guild_name": "Ender\u0027s", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:33:20+00:00"}, {"added": [], "gp_change": 0, "guild_gp": 363684291, "guild_name": "Ender\u0027s", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:05:42+00:00"}, {"added": [], "gp_change": 313545, "guild_gp": 363684291, "guild_name": "Ender\u0027s", "left": [], "member_count": 50, "timestamp": "2026-06-30T20:56:25+00:00"}, {"added": [], "gp_change": null, "guild_gp": 363370746, "guild_name": "Ender\u0027s", "left": [], "member_count": 50, "timestamp": "2026-06-30T13:27:26+00:00"}]}, {"guild_id": "dUOhVxkMTh6EBP0OVmxWpA", "guild_name": "Oddworld Abe Exodus", "rows": [{"added": [], "gp_change": 0, "guild_gp": 724516662, "guild_name": "Oddworld Abe Exodus", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:45:01+00:00"}, {"added": [], "gp_change": 458201, "guild_gp": 724516662, "guild_name": "Oddworld Abe Exodus", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:33:20+00:00"}, {"added": [], "gp_change": 0, "guild_gp": 724058461, "guild_name": "Oddworld Abe Exodus", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:05:42+00:00"}, {"added": [], "gp_change": 126939, "guild_gp": 724058461, "guild_name": "Oddworld Abe Exodus", "left": [], "member_count": 50, "timestamp": "2026-06-30T20:56:25+00:00"}, {"added": [], "gp_change": null, "guild_gp": 723931522, "guild_name": "Oddworld Abe Exodus", "left": [], "member_count": 50, "timestamp": "2026-06-30T13:27:26+00:00"}]}, {"guild_id": "lHWoh-HiSbWmV5bYKtZAvg", "guild_name": "Return of the Oddballs", "rows": [{"added": [], "gp_change": 0, "guild_gp": 151140433, "guild_name": "Return of the Oddballs", "left": [], "member_count": 17, "timestamp": "2026-07-01T20:45:01+00:00"}, {"added": ["Danner"], "gp_change": 45555, "guild_gp": 151140433, "guild_name": "Return of the Oddballs", "left": [], "member_count": 17, "timestamp": "2026-07-01T20:33:20+00:00"}, {"added": [], "gp_change": 0, "guild_gp": 151094878, "guild_name": "Return of the Oddballs", "left": [], "member_count": 16, "timestamp": "2026-07-01T20:05:42+00:00"}, {"added": [], "gp_change": 12347084, "guild_gp": 151094878, "guild_name": "Return of the Oddballs", "left": [], "member_count": 16, "timestamp": "2026-06-30T20:56:25+00:00"}, {"added": [], "gp_change": null, "guild_gp": 138747794, "guild_name": "Return of the Oddballs", "left": [], "member_count": 16, "timestamp": "2026-06-30T13:27:26+00:00"}]}, {"guild_id": "MJbzxyoLSdeIQ3K04qWq1Q", "guild_name": "Thick as Thieves", "rows": [{"added": [], "gp_change": 0, "guild_gp": 558033652, "guild_name": "Thick as Thieves", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:45:01+00:00"}, {"added": [], "gp_change": 254465, "guild_gp": 558033652, "guild_name": "Thick as Thieves", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:33:20+00:00"}, {"added": [], "gp_change": 0, "guild_gp": 557779187, "guild_name": "Thick as Thieves", "left": [], "member_count": 50, "timestamp": "2026-07-01T20:05:42+00:00"}, {"added": [], "gp_change": 198547, "guild_gp": 557779187, "guild_name": "Thick as Thieves", "left": [], "member_count": 50, "timestamp": "2026-06-30T20:56:25+00:00"}, {"added": [], "gp_change": null, "guild_gp": 557580640, "guild_name": "Thick as Thieves", "left": [], "member_count": 50, "timestamp": "2026-06-30T13:27:26+00:00"}]}];
+    const colors = ["#58a6ff", "#3fb950", "#f85149", "#d29922", "#bc8cff", "#39c5cf"];
+    const gpDatasets = chartData.map((g, i) => ({
+      label: g.guild_name,
+      data: g.rows.slice().reverse().map(r => ({ x: r.timestamp, y: r.guild_gp })),
+      borderColor: colors[i % colors.length],
+      backgroundColor: "transparent",
+      tension: 0.2,
+    }));
+    new Chart(document.getElementById("gpChart"), {
+      type: "line",
+      data: { datasets: gpDatasets },
+      options: {
+        responsive: true,
+        scales: {
+          x: { type: "time", time: { unit: "day" }, ticks: { color: "#8b949e" }, grid: { color: "#21262d" } },
+          y: { ticks: { color: "#8b949e" }, grid: { color: "#21262d" } },
+        },
+        plugins: { legend: { labels: { color: "#c9d1d9" } } },
+      },
+    });
+
+    const memberDatasets = chartData.map((g, i) => ({
+      label: g.guild_name,
+      data: g.rows.slice().reverse().map(r => ({ x: r.timestamp, y: r.member_count })),
+      borderColor: colors[i % colors.length],
+      backgroundColor: "transparent",
+      tension: 0.2,
+    }));
+    new Chart(document.getElementById("memberChart"), {
+      type: "line",
+      data: { datasets: memberDatasets },
+      options: {
+        responsive: true,
+        scales: {
+          x: { type: "time", time: { unit: "day" }, ticks: { color: "#8b949e" }, grid: { color: "#21262d" } },
+          y: { ticks: { color: "#8b949e" }, grid: { color: "#21262d" } },
+        },
+        plugins: { legend: { labels: { color: "#c9d1d9" } } },
+      },
+    });
+  </script>
+  
+    
+    <h2>Banes disciples</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Date</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th><th onclick="sortTable(this)">GP Δ</th><th onclick="sortTable(this)">Added</th><th onclick="sortTable(this)">Left</th>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:45</td>
+        <td>47</td>
+        <td>455,386,100</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:33</td>
+        <td>47</td>
+        <td>455,386,100</td>
+        <td class="pos">
+          +663,874
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:05</td>
+        <td>47</td>
+        <td>454,722,226</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 20:56</td>
+        <td>47</td>
+        <td>454,722,226</td>
+        <td class="pos">
+          +169,066
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 13:27</td>
+        <td>47</td>
+        <td>454,553,160</td>
+        <td class="">
+          
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+    </table>
+    
+    <h2>Ender&#39;s</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Date</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th><th onclick="sortTable(this)">GP Δ</th><th onclick="sortTable(this)">Added</th><th onclick="sortTable(this)">Left</th>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:45</td>
+        <td>50</td>
+        <td>364,266,572</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:33</td>
+        <td>50</td>
+        <td>364,266,572</td>
+        <td class="pos">
+          +582,281
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:05</td>
+        <td>50</td>
+        <td>363,684,291</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 20:56</td>
+        <td>50</td>
+        <td>363,684,291</td>
+        <td class="pos">
+          +313,545
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 13:27</td>
+        <td>50</td>
+        <td>363,370,746</td>
+        <td class="">
+          
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+    </table>
+    
+    <h2>Oddworld Abe Exodus</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Date</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th><th onclick="sortTable(this)">GP Δ</th><th onclick="sortTable(this)">Added</th><th onclick="sortTable(this)">Left</th>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:45</td>
+        <td>50</td>
+        <td>724,516,662</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:33</td>
+        <td>50</td>
+        <td>724,516,662</td>
+        <td class="pos">
+          +458,201
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:05</td>
+        <td>50</td>
+        <td>724,058,461</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 20:56</td>
+        <td>50</td>
+        <td>724,058,461</td>
+        <td class="pos">
+          +126,939
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 13:27</td>
+        <td>50</td>
+        <td>723,931,522</td>
+        <td class="">
+          
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+    </table>
+    
+    <h2>Return of the Oddballs</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Date</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th><th onclick="sortTable(this)">GP Δ</th><th onclick="sortTable(this)">Added</th><th onclick="sortTable(this)">Left</th>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:45</td>
+        <td>17</td>
+        <td>151,140,433</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:33</td>
+        <td>17</td>
+        <td>151,140,433</td>
+        <td class="pos">
+          +45,555
+        </td>
+        <td class="added">Danner</td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:05</td>
+        <td>16</td>
+        <td>151,094,878</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 20:56</td>
+        <td>16</td>
+        <td>151,094,878</td>
+        <td class="pos">
+          +12,347,084
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 13:27</td>
+        <td>16</td>
+        <td>138,747,794</td>
+        <td class="">
+          
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+    </table>
+    
+    <h2>Thick as Thieves</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Date</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th><th onclick="sortTable(this)">GP Δ</th><th onclick="sortTable(this)">Added</th><th onclick="sortTable(this)">Left</th>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:45</td>
+        <td>50</td>
+        <td>558,033,652</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:33</td>
+        <td>50</td>
+        <td>558,033,652</td>
+        <td class="pos">
+          +254,465
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-07-01 20:05</td>
+        <td>50</td>
+        <td>557,779,187</td>
+        <td class="">
+          +0
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 20:56</td>
+        <td>50</td>
+        <td>557,779,187</td>
+        <td class="pos">
+          +198,547
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+      <tr>
+        <td>2026-06-30 13:27</td>
+        <td>50</td>
+        <td>557,580,640</td>
+        <td class="">
+          
+        </td>
+        <td class="added"></td>
+        <td class="left"></td>
+      </tr>
+      
+    </table>
+    
+  
+<style>
+  th { cursor: pointer; user-select: none; }
+  th.sorted-asc::after { content: " B2"; }
+  th.sorted-desc::after { content: " BC"; }
+</style>
+<script>
+  function sortTable(th) {
+    const table = th.closest("table");
+    const colIndex = th.cellIndex;
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
+    const asc = !th.classList.contains("sorted-asc");
+    rows.sort((a, b) => {
+      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const aNum = parseFloat(aText), bNum = parseFloat(bText);
+      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+  }
+</script>
+</body>
+</html>

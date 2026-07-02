@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "DEHJLjNzQiWgn1PXmENO_g",
+      "name": "Ja'rul Soloon",
+      "values": {
+        "total": [
+          1181,
+          1183,
+          1183
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

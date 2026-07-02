@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "I2M8qV1tQgOzUrZv2F_unw",
+      "name": "Lukas",
+      "values": {
+        "total": [
+          0,
+          135,
+          135
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

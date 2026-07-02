@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "alliance",
+      "name": "Omicrons",
+      "values": {
+        "total": [
+          0,
+          24617,
+          24622
+        ]
+      }
+    }
+  ],
+  "y": "Total Omicrons"
+}

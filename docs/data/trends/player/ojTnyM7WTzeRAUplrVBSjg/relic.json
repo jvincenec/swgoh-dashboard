@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "ojTnyM7WTzeRAUplrVBSjg",
+      "name": "Obi matter",
+      "values": {
+        "total": [
+          1531,
+          1532,
+          1532
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "tTAswb8lSgeGx6BiXStC3w",
+      "name": "Sub Nomine",
+      "values": {
+        "total": [
+          440,
+          440,
+          440
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

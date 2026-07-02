@@ -1,0 +1,2695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaeden07 — SWGOH Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+    h1{font-size:20px;margin-bottom:4px}
+    h2{font-size:14px;color:#58a6ff;margin:24px 0 6px}
+    nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+    .tabs{display:flex;gap:4px;margin:16px 0 0}
+    .tab-btn{padding:6px 14px;background:#161b22;border:1px solid #30363d;border-radius:6px 6px 0 0;cursor:pointer;color:#c9d1d9;font-size:13px}
+    .tab-btn.active{background:#1c2530;border-bottom-color:#1c2530;color:#58a6ff}
+    .tab-panel{display:none;padding:16px;background:#161b22;border:1px solid #30363d;border-radius:0 6px 6px 6px}
+    .tab-panel.active{display:block}
+    /* Stats cards */
+    .cards{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+    .card{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:10px 16px;min-width:110px}
+    .card-label{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px}
+    .card-value{font-size:20px;font-weight:bold;color:#c9d1d9;margin-top:2px}
+    .card-value.hi{color:#3fb950}
+    /* Tables */
+    table{border-collapse:collapse;width:100%;font-size:12px}
+    th,td{border:1px solid #21262d;padding:4px 8px;text-align:left;white-space:nowrap}
+    th{background:#161b22;color:#58a6ff;cursor:pointer;user-select:none}
+    tr:nth-child(even){background:#0d1117}
+    tr:nth-child(odd){background:#11161c}
+    tr:hover{background:#1c2530}
+    .dataTables_wrapper{font-size:12px;color:#c9d1d9}
+    .dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+    .dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+    .paginate_button{color:#58a6ff !important}
+    /* Omicron mode badges */
+    .badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:bold;margin:1px}
+    .badge-GAC{background:#1a3a5c;color:#58a6ff}
+    .badge-TW{background:#3a1a1a;color:#f85149}
+    .badge-TB{background:#1a3a1a;color:#3fb950}
+    .badge-Raid{background:#3a2a1a;color:#e3b341}
+    .badge-CQ{background:#2a1a3a;color:#bc8cff}
+    .badge-other{background:#21262d;color:#8b949e}
+    /* Mod slots */
+    .mod-chip{display:inline-block;background:#161b22;border:1px solid #30363d;border-radius:4px;padding:2px 5px;font-size:10px;margin:1px}
+    .mod-chip .spd{color:#3fb950;font-weight:bold}
+    .chart-card{background:#fff;border-radius:6px;padding:12px;margin:8px 0;overflow-x:auto;display:inline-block}
+    .empty{color:#6e7681;font-style:italic}
+    a.pl{color:#58a6ff;text-decoration:none}
+  </style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+
+<h1>
+  Kaeden07
+  <span style="color:#6e7681;font-size:14px;">(KXsCRpR_RGyS9gR3dv1osQ)</span>
+  
+  <span style="font-size:11px;color:#6e7681;margin-left:8px;">
+    Last active: <span id="last-act" data-ts="1782955553000">1782955553000</span>
+  </span>
+</h1>
+
+
+<div class="cards">
+  <div class="card"><div class="card-label">Total GP</div><div class="card-value">1.5m</div></div>
+  <div class="card"><div class="card-label">Chars GP</div><div class="card-value">1.0m</div></div>
+  <div class="card"><div class="card-label">Ships GP</div><div class="card-value">0.5m</div></div>
+  <div class="card"><div class="card-label">7★</div><div class="card-value">28</div></div>
+  <div class="card"><div class="card-label">R5+</div><div class="card-value hi">0</div></div>
+  <div class="card"><div class="card-label">G13+</div><div class="card-value">26</div></div>
+  <div class="card"><div class="card-label">Relic Total</div><div class="card-value">15</div></div>
+  <div class="card"><div class="card-label">Zetas</div><div class="card-value hi">34</div></div>
+  
+  <div class="card"><div class="card-label">Mod Score</div><div class="card-value">0.51</div></div>
+  <div class="card"><div class="card-label">Gear Score</div><div class="card-value">2.98</div></div>
+  <div class="card" title="Balance: 13"><div class="card-label">Balance</div><div class="card-value" style="font-size:14px">Youngling</div></div>
+  
+  <div class="card"><div class="card-label">Fleet Arena</div><div class="card-value">#1981</div></div>
+  
+  <div class="card"><div class="card-label">Level</div><div class="card-value">85</div></div>
+</div>
+
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('roster')">Roster (105)</button>
+  <button class="tab-btn" onclick="showTab('zetas')">Zetas (27)</button>
+  <button class="tab-btn" onclick="showTab('omicrons')">Omicrons</button>
+  <button class="tab-btn" onclick="showTab('mods')">Mods</button>
+  <button class="tab-btn" onclick="showTab('squads')">Squads (0/1 close)</button>
+  <button class="tab-btn" onclick="showTab('gac')">GAC History</button>
+  <button class="tab-btn" onclick="showTab('datacrons')">Datacrons</button>
+  <button class="tab-btn" onclick="showTab('contributions')">Contributions</button>
+  <button class="tab-btn" onclick="showTab('progression')">Progression</button>
+</div>
+
+<!-- ROSTER TAB -->
+<div id="tab-roster" class="tab-panel active">
+  
+  <table id="tbl-roster" class="display" style="width:100%">
+    <thead><tr>
+      <th>Character</th><th>Relic</th><th>Gear</th><th>★</th>
+      <th>Lvl</th><th>Spd≥15</th><th>Zetas</th><th>Omicrons</th>
+    </tr></thead>
+    <tbody>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BOSSK-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BOSSK">BOSSK</a>
+      </td>
+      <td data-order="2">R2</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon VADER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/VADER">VADER</a>
+      </td>
+      <td data-order="2">R2</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="2">
+        <span style="color:#3fb950">2</span>
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BOBAFETT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BOBAFETT">BOBAFETT</a>
+      </td>
+      <td data-order="2">R2</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon EMPERORPALPATINE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/EMPERORPALPATINE">EMPERORPALPATINE</a>
+      </td>
+      <td data-order="2">R2</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/SEVENTHSISTER">SEVENTHSISTER</a>
+      </td>
+      <td data-order="2">R2</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="3">
+        <span style="color:#3fb950">3</span>
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DARKTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DARKTROOPER">DARKTROOPER</a>
+      </td>
+      <td data-order="1">R1</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/FIFTHBROTHER">FIFTHBROTHER</a>
+      </td>
+      <td data-order="1">R1</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ADMIRALPIETT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ADMIRALPIETT">ADMIRALPIETT</a>
+      </td>
+      <td data-order="1">R1</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/MARAJADE">MARAJADE</a>
+      </td>
+      <td data-order="1">R1</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon THEMANDALORIAN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/THEMANDALORIAN">THEMANDALORIAN</a>
+      </td>
+      <td data-order="1">R1</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/EIGHTHBROTHER">EIGHTHBROTHER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon AHSOKATANO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/AHSOKATANO">AHSOKATANO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SABINEWRENS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SABINEWRENS3">SABINEWRENS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon HERASYNDULLAS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/HERASYNDULLAS3">HERASYNDULLAS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon LUKESKYWALKER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/LUKESKYWALKER">LUKESKYWALKER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CHOPPERS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CHOPPERS3">CHOPPERS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MACEWINDU-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MACEWINDU">MACEWINDU</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="3">
+        3
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon IG88-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/IG88">IG88</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CARADUNE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CARADUNE">CARADUNE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/CAPTAINREX">CAPTAINREX</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon PRINCESSLEIA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/PRINCESSLEIA">PRINCESSLEIA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon EZRABRIDGERS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/EZRABRIDGERS3">EZRABRIDGERS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/CAPTAINDROGAN">CAPTAINDROGAN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon OLDBENKENOBI-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/OLDBENKENOBI">OLDBENKENOBI</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SHAAKTI-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SHAAKTI">SHAAKTI</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="2">
+        2
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon IG11-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/IG11">IG11</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="13">G13</td>
+      <td data-order="7">7★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SITHTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SITHTROOPER">SITHTROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="12">G12</td>
+      <td data-order="3">3★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BASTILASHAN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BASTILASHAN">BASTILASHAN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="12">G12</td>
+      <td data-order="5">5★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BASTILASHANDARK-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BASTILASHANDARK">BASTILASHANDARK</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="12">G12</td>
+      <td data-order="3">3★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DARTHNIHILUS-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DARTHNIHILUS">DARTHNIHILUS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="12">G12</td>
+      <td data-order="5">5★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon STORMTROOPERHAN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/STORMTROOPERHAN">STORMTROOPERHAN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="9">G9</td>
+      <td data-order="6">6★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon FIRSTORDEREXECUTIONER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/FIRSTORDEREXECUTIONER">FIRSTORDEREXECUTIONER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="9">G9</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ANAKINKNIGHT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ANAKINKNIGHT">ANAKINKNIGHT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="9">G9</td>
+      <td data-order="5">5★</td>
+      <td data-order="85">85</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/CARSONTEVA">CARSONTEVA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="9">G9</td>
+      <td data-order="3">3★</td>
+      <td data-order="67">67</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GREEFKARGA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GREEFKARGA">GREEFKARGA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ZEBS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ZEBS3">ZEBS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CT210408-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CT210408">CT210408</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MOTHERTALZIN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MOTHERTALZIN">MOTHERTALZIN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BIGGSDARKLIGHTER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BIGGSDARKLIGHTER">BIGGSDARKLIGHTER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CC2224-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CC2224">CC2224</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon K2SO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/K2SO">K2SO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CT7567-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CT7567">CT7567</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MOFFGIDEONS1-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MOFFGIDEONS1">MOFFGIDEONS1</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon KYLOREN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/KYLOREN">KYLOREN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DENGAR-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DENGAR">DENGAR</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon QUIGONJINN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/QUIGONJINN">QUIGONJINN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ROYALGUARD-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ROYALGUARD">ROYALGUARD</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon HOTHREBELSOLDIER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/HOTHREBELSOLDIER">HOTHREBELSOLDIER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ASAJVENTRESS-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ASAJVENTRESS">ASAJVENTRESS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon POE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/POE">POE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CHIRRUTIMWE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CHIRRUTIMWE">CHIRRUTIMWE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon TALIA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/TALIA">TALIA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon KANANJARRUSS3-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/KANANJARRUSS3">KANANJARRUSS3</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GRANDADMIRALTHRAWN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GRANDADMIRALTHRAWN">GRANDADMIRALTHRAWN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="7">7★</td>
+      <td data-order="70">70</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CT5555-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CT5555">CT5555</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon COUNTDOOKU-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/COUNTDOOKU">COUNTDOOKU</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ADMINISTRATORLANDO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ADMINISTRATORLANDO">ADMINISTRATORLANDO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MAUL-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MAUL">MAUL</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon NIGHTSISTERSPIRIT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/NIGHTSISTERSPIRIT">NIGHTSISTERSPIRIT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CLONESERGEANTPHASEI-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CLONESERGEANTPHASEI">CLONESERGEANTPHASEI</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon ADMIRALACKBAR-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/ADMIRALACKBAR">ADMIRALACKBAR</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon FIRSTORDERTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/FIRSTORDERTROOPER">FIRSTORDERTROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GREEDO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GREEDO">GREEDO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon STORMTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/STORMTROOPER">STORMTROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon HOTHREBELSCOUT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/HOTHREBELSCOUT">HOTHREBELSCOUT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon WEDGEANTILLES-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/WEDGEANTILLES">WEDGEANTILLES</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon VEERS-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/VEERS">VEERS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DEATHTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DEATHTROOPER">DEATHTROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon JYNERSO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/JYNERSO">JYNERSO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon REY-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/REY">REY</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DAKA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DAKA">DAKA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GRANDMOFFTARKIN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GRANDMOFFTARKIN">GRANDMOFFTARKIN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SNOWTROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SNOWTROOPER">SNOWTROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SHORETROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SHORETROOPER">SHORETROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon RESISTANCETROOPER-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/RESISTANCETROOPER">RESISTANCETROOPER</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon FINN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/FINN">FINN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon PHASMA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/PHASMA">PHASMA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="82">82</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="1">
+        1
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CASSIANANDOR-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CASSIANANDOR">CASSIANANDOR</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BAZEMALBUS-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BAZEMALBUS">BAZEMALBUS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon FIRSTORDEROFFICERMALE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/FIRSTORDEROFFICERMALE">FIRSTORDEROFFICERMALE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon DARTHSIDIOUS-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/DARTHSIDIOUS">DARTHSIDIOUS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon KYLORENUNMASKED-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/KYLORENUNMASKED">KYLORENUNMASKED</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon RESISTANCEPILOT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/RESISTANCEPILOT">RESISTANCEPILOT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SMUGGLERHAN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SMUGGLERHAN">SMUGGLERHAN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CADBANE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CADBANE">CADBANE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon TIEFIGHTERPILOT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/TIEFIGHTERPILOT">TIEFIGHTERPILOT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon SMUGGLERCHEWBACCA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/SMUGGLERCHEWBACCA">SMUGGLERCHEWBACCA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="8">G8</td>
+      <td data-order="5">5★</td>
+      <td data-order="80">80</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon R2D2_LEGENDARY-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/R2D2_LEGENDARY">R2D2_LEGENDARY</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="7">G7</td>
+      <td data-order="7">7★</td>
+      <td data-order="75">75</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/R5D4">R5D4</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="5">G5</td>
+      <td data-order="3">3★</td>
+      <td data-order="23">23</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/RANGERZEB">RANGERZEB</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="5">G5</td>
+      <td data-order="3">3★</td>
+      <td data-order="25">25</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/BISHOP">BISHOP</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="4">G4</td>
+      <td data-order="3">3★</td>
+      <td data-order="17">17</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon HK47-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/HK47">HK47</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="4">G4</td>
+      <td data-order="4">4★</td>
+      <td data-order="60">60</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MAGNAGUARD-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MAGNAGUARD">MAGNAGUARD</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="2">G2</td>
+      <td data-order="3">3★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/APPO">APPO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="2">G2</td>
+      <td data-order="3">3★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BARRISSOFFEE-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BARRISSOFFEE">BARRISSOFFEE</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="2">2★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BB8-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BB8">BB8</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="5">5★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon EWOKSCOUT-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/EWOKSCOUT">EWOKSCOUT</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="1">1★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon IG86SENTINELDROID-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/IG86SENTINELDROID">IG86SENTINELDROID</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="1">1★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon JEDIKNIGHTCONSULAR-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/JEDIKNIGHTCONSULAR">JEDIKNIGHTCONSULAR</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="2">2★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        
+        <a class="pl" href="/c/GOPHERANTS">GOPHERANTS</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="3">3★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GAMORREANGUARD-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GAMORREANGUARD">GAMORREANGUARD</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="3">3★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon MISSIONVAO-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/MISSIONVAO">MISSIONVAO</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="2">2★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon CLONEWARSCHEWBACCA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/CLONEWARSCHEWBACCA">CLONEWARSCHEWBACCA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="3">3★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon GRANDMASTERYODA-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/GRANDMASTERYODA">GRANDMASTERYODA</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="5">5★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span class="toons-icon BISTAN-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>
+        <a class="pl" href="/c/BISTAN">BISTAN</a>
+      </td>
+      <td data-order="0">—</td>
+      <td data-order="1">G1</td>
+      <td data-order="2">2★</td>
+      <td data-order="1">1</td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+      <td data-order="0">
+        —
+      </td>
+    </tr>
+    
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- ZETAS TAB -->
+<div id="tab-zetas" class="tab-panel">
+  
+  <p style="font-size:11px;color:#6e7681">27 zeta ability upgrades applied.</p>
+  <table style="max-width:600px">
+    <tr><th>Character</th><th>Ability</th></tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/FIFTHBROTHER">FIFTHBROTHER</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/EIGHTHBROTHER">EIGHTHBROTHER</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/AHSOKATANO">AHSOKATANO</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/SABINEWRENS3">SABINEWRENS3</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/HERASYNDULLAS3">HERASYNDULLAS3</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/BOSSK">BOSSK</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/BOSSK">BOSSK</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/LUKESKYWALKER">LUKESKYWALKER</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/VADER">VADER</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/BOBAFETT">BOBAFETT</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/MACEWINDU">MACEWINDU</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/MACEWINDU">MACEWINDU</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/IG88">IG88</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/EMPERORPALPATINE">EMPERORPALPATINE</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/EMPERORPALPATINE">EMPERORPALPATINE</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/CARADUNE">CARADUNE</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/CAPTAINREX">CAPTAINREX</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/EZRABRIDGERS3">EZRABRIDGERS3</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/CAPTAINDROGAN">CAPTAINDROGAN</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/SEVENTHSISTER">SEVENTHSISTER</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/OLDBENKENOBI">OLDBENKENOBI</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/OLDBENKENOBI">OLDBENKENOBI</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/THEMANDALORIAN">THEMANDALORIAN</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/THEMANDALORIAN">THEMANDALORIAN</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/SHAAKTI">SHAAKTI</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/SHAAKTI">SHAAKTI</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/IG11">IG11</a></td>
+      <td>DEFENSE_UP_NAME_KEY</td>
+    </tr>
+    
+  </table>
+  
+</div>
+
+<!-- OMICRONS TAB -->
+<div id="tab-omicrons" class="tab-panel">
+  
+  <p class="empty">No omicron data yet — re-run fetch_player_rosters.py after running analysis\build_zeta_map.py.</p>
+  
+</div>
+
+<!-- MODS TAB -->
+<div id="tab-mods" class="tab-panel">
+  
+  <table id="tbl-mods" class="display" style="width:100%">
+    <thead><tr>
+      <th>Character</th><th>Relic</th><th>Spd≥15</th>
+      <th>Mod 1</th><th>Mod 2</th><th>Mod 3</th><th>Mod 4</th><th>Mod 5</th><th>Mod 6</th>
+    </tr></thead>
+    <tbody>
+    
+    <tr>
+      <td><a class="pl" href="/c/VADER">VADER</a></td>
+      <td data-order="2">R2</td>
+      <td data-order="2">
+        <span style="color:#3fb950">2</span>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Arrow/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Potency/Diamond/5★
+          
+          <span class="spd"> +40000spd</span>
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Triangle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Circle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Plu/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Unk/5★
+          
+          <span class="spd"> +50000spd</span>
+          
+        </div>
+      </td>
+      
+      
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/BOBAFETT">BOBAFETT</a></td>
+      <td data-order="2">R2</td>
+      <td data-order="0">
+        0
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Arrow/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Diamond/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Triangle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Circle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Plu/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Unk/5★
+          
+        </div>
+      </td>
+      
+      
+    </tr>
+    
+    <tr>
+      <td><a class="pl" href="/c/SEVENTHSISTER">SEVENTHSISTER</a></td>
+      <td data-order="2">R2</td>
+      <td data-order="3">
+        <span style="color:#3fb950">3</span>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Arrow/5★
+          
+          <span class="spd"> +40000spd</span>
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Defense/Diamond/5★
+          
+          <span class="spd"> +50000spd</span>
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Triangle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Health/Circle/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Speed/Plu/5★
+          
+        </div>
+      </td>
+      
+      <td>
+        <div class="mod-chip">
+          Tenacity/Unk/5★
+          
+          <span class="spd"> +90000spd</span>
+          
+        </div>
+      </td>
+      
+      
+    </tr>
+    
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- SQUADS TAB -->
+<div id="tab-squads" class="tab-panel">
+  
+  
+  <h2>Close (missing 1 unit or slightly under relic)</h2>
+  <table>
+    <tr><th>Squad</th><th>Missing / Gap</th></tr>
+    
+    <tr>
+      <td>Darth Vader Empire core</td>
+      <td></td>
+    </tr>
+    
+  </table>
+  
+  
+</div>
+
+<!-- GAC TAB -->
+<div id="tab-gac" class="tab-panel">
+  
+  <table>
+    <tr><th>Season</th><th>League</th><th>Division</th><th>W</th><th>L</th><th>Points</th><th>Rank</th></tr>
+    
+    <tr>
+      <td>4zone_5v5_ga2_c3s1_80a</td><td>CARBONITE</td><td>5</td>
+      <td>0</td><td>0</td>
+      <td>0</td>
+      <td>—</td>
+    </tr>
+    
+  </table>
+  
+</div>
+
+<!-- CONTRIBUTIONS TAB -->
+<div id="tab-contributions" class="tab-panel">
+  
+  <table style="max-width:500px">
+    <tr><th>Type</th><th>Current</th><th>Lifetime</th></tr>
+    
+    <tr>
+      <td>Gear Donations</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Raid Tickets</td>
+      <td>242</td>
+      <td>1,176</td>
+    </tr>
+    
+    <tr>
+      <td>Guild Tokens</td>
+      <td>0</td>
+      <td>1,048</td>
+    </tr>
+    
+  </table>
+  
+  
+</div>
+
+<!-- DATACRONS TAB -->
+<div id="tab-datacrons" class="tab-panel">
+  
+  <p class="empty">No datacron data — re-run fetch_player_rosters.py.</p>
+  
+</div>
+
+<!-- PROGRESSION TAB -->
+<div id="tab-progression" class="tab-panel">
+  
+  <h2>GP Over Time</h2>
+  <div class="chart-card">
+    <div id="player-gp-chart"></div>
+  </div>
+  <h2>Snapshot History</h2>
+  <table style="max-width:500px">
+    <tr><th>Date</th><th>Guild</th><th>GP</th></tr>
+    
+    <tr>
+      <td>2026-07-01</td>
+      <td>Banes disciples</td>
+      <td>1,451,447</td>
+    </tr>
+    
+    <tr>
+      <td>2026-07-01</td>
+      <td>Banes disciples</td>
+      <td>1,451,447</td>
+    </tr>
+    
+    <tr>
+      <td>2026-07-01</td>
+      <td>Banes disciples</td>
+      <td>1,405,265</td>
+    </tr>
+    
+    <tr>
+      <td>2026-06-30</td>
+      <td>Banes disciples</td>
+      <td>1,405,265</td>
+    </tr>
+    
+    <tr>
+      <td>2026-06-30</td>
+      <td>Banes disciples</td>
+      <td>1,405,265</td>
+    </tr>
+    
+  </table>
+  
+</div>
+
+<link rel="stylesheet" href="/static/toons.css">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/static/graph.js"></script>
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+$(document).ready(function() {
+  $('#tbl-roster').DataTable({ paging: false, info: false, fixedHeader: true });
+  $('#tbl-mods').DataTable({ paging: false, info: false, fixedHeader: true, scrollX: true });
+});
+// GP progression chart
+
+</script>
+<script>
+(function(){
+  var el = document.getElementById("last-act");
+  if (!el) return;
+  var ts = parseInt(el.getAttribute("data-ts"), 10);
+  if (!ts) return;
+  // Comlink timestamps are in milliseconds if > 1e12, else seconds
+  var ms = ts > 1e12 ? ts : ts * 1000;
+  var d = new Date(ms);
+  var now = Date.now();
+  var diff = Math.floor((now - ms) / 86400000);
+  var fmt = diff === 0 ? "Today" : diff === 1 ? "Yesterday" : diff + " days ago";
+  el.textContent = fmt + " (" + d.toLocaleDateString() + ")";
+})();
+</script>
+</body>
+</html>

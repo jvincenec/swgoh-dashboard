@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "7touggyDTWCn51bnAnvS4g",
+      "name": "Mauls bottom half",
+      "values": {
+        "total": [
+          0,
+          261,
+          261
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

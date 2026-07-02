@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "UdoHdz4rSfGJn2HV7zDf1g",
+      "name": "Reddogg",
+      "values": {
+        "total": [
+          947,
+          947,
+          947
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

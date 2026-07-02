@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "AAKDQgxiSXyLTcVdpt08og",
+      "name": "KRrS Wan",
+      "values": {
+        "total": [
+          1514,
+          1514,
+          1514
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "wJ8nCcKVSPO1IgjXot6ZWw",
+      "name": "Dar Atlas",
+      "values": {
+        "total": [
+          0,
+          158,
+          158
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

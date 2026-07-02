@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "IjNxhfM2QyWsCeAoGulLIw",
+      "name": "FatCat23",
+      "values": {
+        "total": [
+          473,
+          473,
+          473
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

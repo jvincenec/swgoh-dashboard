@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "EbG-yQuJQ_-gTlTgoadbYQ",
+      "name": "Statue023",
+      "values": {
+        "total": [
+          1189,
+          1189,
+          1189
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

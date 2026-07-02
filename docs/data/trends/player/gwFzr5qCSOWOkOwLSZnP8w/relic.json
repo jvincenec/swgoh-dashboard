@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "gwFzr5qCSOWOkOwLSZnP8w",
+      "name": "Skywalking",
+      "values": {
+        "total": [
+          1610,
+          1610,
+          1610
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

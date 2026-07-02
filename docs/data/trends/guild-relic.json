@@ -1,0 +1,65 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Banes disciples",
+      "name": "Banes disciples",
+      "values": {
+        "total": [
+          49535,
+          49623,
+          49623
+        ]
+      }
+    },
+    {
+      "id": "Ender's",
+      "name": "Ender's",
+      "values": {
+        "total": [
+          31734,
+          31773,
+          31778
+        ]
+      }
+    },
+    {
+      "id": "Oddworld Abe Exodus",
+      "name": "Oddworld Abe Exodus",
+      "values": {
+        "total": [
+          100490,
+          100533,
+          100537
+        ]
+      }
+    },
+    {
+      "id": "Return of the Oddballs",
+      "name": "Return of the Oddballs",
+      "values": {
+        "total": [
+          14625,
+          17168,
+          17168
+        ]
+      }
+    },
+    {
+      "id": "Thick as Thieves",
+      "name": "Thick as Thieves",
+      "values": {
+        "total": [
+          58532,
+          58565,
+          58566
+        ]
+      }
+    }
+  ],
+  "y": "Total Relic Levels"
+}

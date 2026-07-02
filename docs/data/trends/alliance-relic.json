@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "alliance",
+      "name": "Alliance",
+      "values": {
+        "total": [
+          254916,
+          257662,
+          257672
+        ]
+      }
+    }
+  ],
+  "y": "Total Relic Levels"
+}

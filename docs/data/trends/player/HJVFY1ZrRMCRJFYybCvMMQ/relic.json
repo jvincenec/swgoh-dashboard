@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "HJVFY1ZrRMCRJFYybCvMMQ",
+      "name": "Haryk Lasaar",
+      "values": {
+        "total": [
+          586,
+          586,
+          586
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

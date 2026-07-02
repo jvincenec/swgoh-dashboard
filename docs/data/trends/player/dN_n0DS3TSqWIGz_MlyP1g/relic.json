@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "dN_n0DS3TSqWIGz_MlyP1g",
+      "name": "Neroon",
+      "values": {
+        "total": [
+          1977,
+          1977,
+          1977
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "nBwHVU9uTfCGAGfD3NwNHg",
+      "name": "Kristen Jaxy",
+      "values": {
+        "total": [
+          1040,
+          1040,
+          1040
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "ZOMleDAnRIuypDrqSMX2pQ",
+      "name": "MastrYoda",
+      "values": {
+        "total": [
+          324,
+          324,
+          324
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

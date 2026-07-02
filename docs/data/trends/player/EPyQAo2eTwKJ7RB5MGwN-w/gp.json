@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "EPyQAo2eTwKJ7RB5MGwN-w",
+      "name": "Adventura",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "y": "GP"
+}

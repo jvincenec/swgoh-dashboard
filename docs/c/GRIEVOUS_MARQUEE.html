@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — GRIEVOUS_MARQUEE</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .empty { color: #6e7681; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>GRIEVOUS_MARQUEE</h1>
+  
+    <p class="empty">No owners found.</p>
+  
+<style>
+  th { cursor: pointer; user-select: none; }
+  th.sorted-asc::after { content: " B2"; }
+  th.sorted-desc::after { content: " BC"; }
+</style>
+<script>
+  function sortTable(th) {
+    const table = th.closest("table");
+    const colIndex = th.cellIndex;
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
+    const asc = !th.classList.contains("sorted-asc");
+    rows.sort((a, b) => {
+      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const aNum = parseFloat(aText), bNum = parseFloat(bText);
+      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+  }
+</script>
+</body>
+</html>

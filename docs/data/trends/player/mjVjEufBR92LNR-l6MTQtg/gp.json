@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "mjVjEufBR92LNR-l6MTQtg",
+      "name": "Silver Wolf160903",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "y": "GP"
+}

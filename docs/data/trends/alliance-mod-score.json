@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "alliance",
+      "name": "Avg Mod Score",
+      "values": {
+        "total": [
+          0.0,
+          13.7,
+          13.7
+        ]
+      }
+    }
+  ],
+  "y": "Avg Mod Score"
+}

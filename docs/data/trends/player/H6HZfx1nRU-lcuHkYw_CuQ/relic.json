@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "H6HZfx1nRU-lcuHkYw_CuQ",
+      "name": "Blackbomber883",
+      "values": {
+        "total": [
+          1296,
+          1301,
+          1301
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

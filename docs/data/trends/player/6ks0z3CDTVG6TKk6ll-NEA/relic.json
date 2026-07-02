@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "6ks0z3CDTVG6TKk6ll-NEA",
+      "name": "RichterARat",
+      "values": {
+        "total": [
+          1298,
+          1298,
+          1298
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "tRDSpx-sSTW5wqwY6Ksb9g",
+      "name": "Shazta",
+      "values": {
+        "total": [
+          0,
+          345,
+          345
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

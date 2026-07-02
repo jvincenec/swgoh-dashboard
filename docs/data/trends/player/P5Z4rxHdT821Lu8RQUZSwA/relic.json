@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "P5Z4rxHdT821Lu8RQUZSwA",
+      "name": "Zolpiden",
+      "values": {
+        "total": [
+          1582,
+          1582,
+          1582
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,4690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Farming</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    input#search { background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 6px 10px; width: 320px; margin: 12px 0; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; }
+    th { background: #161b22; position: sticky; top: 0; }
+    tr:nth-child(even) { background: #11161c; }
+    .note { color: #6e7681; font-size: 12px; margin-top: 8px; }
+    .empty { color: #6e7681; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Farming Requirements (514)</h1>
+  <a href="/export/farming.csv" style="color:#3fb950;">Export CSV</a>
+  <p class="note">Shard/currency cost to UNLOCK each character (from Comlink's real creation-recipe data). This is the requirement, not your progress — Comlink cannot see shard inventory for units you don't yet own, so there's no "X/330 owned" tracker here, only the target number. Names shown as raw localization keys (no translation table wired up yet) — readable names are a follow-up.</p>
+  
+  <input id="search" type="text" placeholder="Filter by base ID or name key..." onkeyup="filterTable()">
+  <table id="farmTable">
+    <tr><th onclick="sortTable(this)">Base ID</th><th onclick="sortTable(this)">Name Key</th><th onclick="sortTable(this)">Type</th><th onclick="sortTable(this)">Alignment</th><th onclick="sortTable(this)">Shards Needed</th><th onclick="sortTable(this)">Currency</th></tr>
+    
+    <tr>
+      <td>4LOM</td>
+      <td>UNIT_4LOM_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>50RT</td>
+      <td>UNIT_50RT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AAYLASECURA</td>
+      <td>UNIT_AAYLASECURA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMINISTRATORLANDO</td>
+      <td>UNIT_ADMINISTRATORLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMINISTRATORLANDO_GL_EVENT</td>
+      <td>UNIT_ADMINISTRATORLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMINISTRATORLANDO_JKL_EVENT</td>
+      <td>UNIT_ADMINISTRATORLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMINISTRATORLANDO_SPEEDERBIKERAID</td>
+      <td>UNIT_ADMINISTRATORLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMIRALACKBAR</td>
+      <td>UNIT_ADMIRALACKBAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMIRALACKBAR_SPEEDERBIKERAID</td>
+      <td>UNIT_ADMIRALACKBAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMIRALPIETT</td>
+      <td>UNIT_ADMIRALPIETT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMIRALPIETT_SPEEDERBIKERAID</td>
+      <td>UNIT_ADMIRALPIETT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ADMIRALRADDUS</td>
+      <td>UNIT_ADMIRALRADDUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AHSOKATANO</td>
+      <td>UNIT_AHSOKATANO_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AMILYNHOLDO</td>
+      <td>UNIT_AMILYNHOLDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AMILYNHOLDO_RADDUS</td>
+      <td>UNIT_AMILYNHOLDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ANAKINKNIGHT</td>
+      <td>UNIT_ANAKINKNIGHT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>APPO</td>
+      <td>UNIT_APPO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ARC170CLONESERGEANT</td>
+      <td>UNIT_ARC170CLONESERGEANT_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>ARC170REX</td>
+      <td>UNIT_ARC170REX_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>ARCTROOPER501ST</td>
+      <td>UNIT_ARCTROOPER501ST_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ARCTROOPER501ST_GLE_INHERIT</td>
+      <td>UNIT_501ARCTROOPER501ST_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ARMORER</td>
+      <td>UNIT_ARMORER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ASAJJDARKDISCIPLE</td>
+      <td>UNIT_ASAJJDARKDISCIPLE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ASAJVENTRESS</td>
+      <td>UNIT_ASAJVENTRESS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ASAJVENTRESS_BOUNTYHUNTER</td>
+      <td>UNIT_ASAJVENTRESS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>50</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AURRA_SING</td>
+      <td>UNIT_AURRA_SING_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>AWAKENEDREY</td>
+      <td>UNIT_REY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>B1BATTLEDROIDV2</td>
+      <td>UNIT_B1BATTLEDROIDV2_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>B2SUPERBATTLEDROID</td>
+      <td>UNIT_B2SUPERBATTLEDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHECHO</td>
+      <td>UNIT_BADBATCHECHO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHHUNTER</td>
+      <td>UNIT_BADBATCHHUNTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHHUNTER_GLE</td>
+      <td>UNIT_BADBATCHHUNTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHOMEGA</td>
+      <td>UNIT_BADBATCHOMEGA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHTECH</td>
+      <td>UNIT_BADBATCHTECH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHTECH_GLE</td>
+      <td>UNIT_BADBATCHTECH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHWRECKER</td>
+      <td>UNIT_BADBATCHWRECKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BADBATCHWRECKER_GLE</td>
+      <td>UNIT_BADBATCHWRECKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BARRISSOFFEE</td>
+      <td>UNIT_BARRISSOFFEE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BASTILASHAN</td>
+      <td>UNIT_BASTILASHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BASTILASHANDARK</td>
+      <td>UNIT_BASTILASHANDARK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BATCHERS3</td>
+      <td>UNIT_BATCHERS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BAYLANSKOLL</td>
+      <td>UNIT_BAYLANSKOLL_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BAZEMALBUS</td>
+      <td>UNIT_BAZEMALBUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BB8</td>
+      <td>UNIT_BB8_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BENSOLO</td>
+      <td>UNIT_BENSOLO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BIGGSDARKLIGHTER</td>
+      <td>UNIT_BIGGSDARKLIGHTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BISHOP</td>
+      <td>UNIT_BISHOP_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BISTAN</td>
+      <td>UNIT_BISTAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BLADEOFDORIN</td>
+      <td>UNIT_BLADEOFDORIN_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>BOBAFETT</td>
+      <td>UNIT_BOBAFETT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOBAFETTSCION</td>
+      <td>UNIT_BOBAFETTSCION_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOBAFETT_GLE_INHERIT</td>
+      <td>UNIT_BOBAFETT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BODHIROOK</td>
+      <td>UNIT_BODHIROOK_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOKATAN</td>
+      <td>UNIT_BOKATAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOOMADIER</td>
+      <td>UNIT_BOOMADIER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOSSK</td>
+      <td>UNIT_BOSSK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOSSNASS</td>
+      <td>UNIT_BOSSNASS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BOUSHH</td>
+      <td>UNIT_BOUSHH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BRUTUS</td>
+      <td>UNIT_BRUTUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BT1</td>
+      <td>UNIT_BT1_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>BWINGREBEL</td>
+      <td>UNIT_BWINGREBEL_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>C3POCHEWBACCA</td>
+      <td>UNIT_C3POCHEWBACCA_V2_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>C3POLEGENDARY</td>
+      <td>UNIT_C3POLEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>C3POLEGENDARY_JKL_EVENT</td>
+      <td>UNIT_C3POLEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>C3POLEGENDARY_SPEEDERBIKERAID</td>
+      <td>UNIT_C3POLEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CADBANE</td>
+      <td>UNIT_CADBANE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CALKESTIS</td>
+      <td>UNIT_CALKESTIS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CANDEROUSORDO</td>
+      <td>UNIT_CANDEROUSORDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALCHIMAERA</td>
+      <td>UNIT_CAPITALCHIMAERA_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALEXECUTOR</td>
+      <td>UNIT_CAPITALEXECUTOR_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALFINALIZER</td>
+      <td>UNIT_CAPITALFINALIZER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALFINALIZER_EVENT</td>
+      <td>UNIT_CAPITALFINALIZER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALJEDICRUISER</td>
+      <td>UNIT_CAPITALJEDICRUISER_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALLEVIATHAN</td>
+      <td>UNIT_CAPITALLEVIATHAN_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALMALEVOLENCE</td>
+      <td>UNIT_CAPITALMALEVOLENCE_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALMONCALAMARICRUISER</td>
+      <td>UNIT_CAPITALMONCALAMARICRUISER_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALNEGOTIATOR</td>
+      <td>UNIT_CAPITALNEGOTIATOR_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALPROFUNDITY</td>
+      <td>UNIT_CAPITALPROFUNDITY_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALRADDUS</td>
+      <td>UNIT_CAPITALRADDUS_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALRADDUS_EVENT</td>
+      <td>UNIT_CAPITALRADDUS_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPITALSTARDESTROYER</td>
+      <td>UNIT_CAPITALSTARDESTROYER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINDROGAN</td>
+      <td>UNIT_CAPTAINDROGAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINDROGAN_SPEEDERBIKERAID</td>
+      <td>UNIT_CAPTAINDROGAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINENOCH</td>
+      <td>UNIT_CAPTAINENOCH_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINREX</td>
+      <td>UNIT_CAPTAINREX_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINREX_SPEEDERBIKERAID</td>
+      <td>UNIT_CAPTAINREX_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINSILVO</td>
+      <td>UNIT_CAPTAINSILVO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CAPTAINTARPALS</td>
+      <td>UNIT_CAPTAINTARPALS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARADUNE</td>
+      <td>UNIT_CARADUNE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARADUNE_MANDALORIAN_EVENT</td>
+      <td>UNIT_CARADUNE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARSONTEVA</td>
+      <td>UNIT_CARSONTEVA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARTELBRUISER_GLE_INHERIT</td>
+      <td>UNIT_CARTELBRUISER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARTELSABOTEUR_GLE_INHERIT</td>
+      <td>UNIT_CARTELSABOTEUR_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CARTHONASI</td>
+      <td>UNIT_CARTHONASI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CASSIANANDOR</td>
+      <td>UNIT_CASSIANANDOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CASSIANUNDERCOVER</td>
+      <td>UNIT_CASSIANUNDERCOVER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CC2224</td>
+      <td>UNIT_CC2224_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CC2224_GLE_INHERIT</td>
+      <td>UNIT_CC2224_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CEREJUNDA</td>
+      <td>UNIT_CEREJUNDA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHEWBACCALEGENDARY</td>
+      <td>UNIT_CHEWBACCALEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHEWBACCALEGENDARY_JKL_EVENT</td>
+      <td>UNIT_CHEWBACCALEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHEWBACCALEGENDARY_SPEEDERBIKERAID</td>
+      <td>UNIT_CHEWBACCALEGENDARY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHIEFCHIRPA</td>
+      <td>UNIT_CHIEFCHIRPA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHIEFCHIRPA_SPEEDERBIKERAID</td>
+      <td>UNIT_CHIEFCHIRPA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHIEFNEBIT</td>
+      <td>UNIT_CHIEFNEBIT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHIRRUTIMWE</td>
+      <td>UNIT_CHIRRUTIMWE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CHOPPERS3</td>
+      <td>UNIT_CHOPPERS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CINTA</td>
+      <td>UNIT_CINTA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONESERGEANTPHASEI</td>
+      <td>UNIT_CLONESERGEANTPHASEI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONETROOPER212_GLE</td>
+      <td>UNIT_CLONETROOPER212_GLE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONETROOPERP2FORESTSCOUT</td>
+      <td>UNIT_CLONETROOPERP2_FOREST_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONETROOPERP2FORESTSCOUT_V2</td>
+      <td>UNIT_CLONETROOPERP2_FOREST_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONEVETERAN212_GLE</td>
+      <td>UNIT_CLONEVETERAN212_GLE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CLONEWARSCHEWBACCA</td>
+      <td>UNIT_CLONEWARSCHEWBACCA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COBBVANTH</td>
+      <td>UNIT_COBBVANTH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COLONELSTARCK</td>
+      <td>UNIT_COLONELSTARCK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COLONELSTARCK_SPEEDERBIKERAID</td>
+      <td>UNIT_COLONELSTARCK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COMEUPPANCE</td>
+      <td>UNIT_COMEUPPANCE_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>COMMANDERAHSOKA</td>
+      <td>UNIT_COMMANDERAHSOKA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COMMANDERLUKESKYWALKER</td>
+      <td>UNIT_COMMANDERLUKESKYWALKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COMMANDERLUKESKYWALKER_HOTH_JKL_EVENT</td>
+      <td>UNIT_COMMANDERLUKESKYWALKER_HOTH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COMMANDERLUKESKYWALKER_JKL_EVENT</td>
+      <td>UNIT_COMMANDERLUKESKYWALKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COMMANDSHUTTLE</td>
+      <td>UNIT_COMMANDSHUTTLE_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>CORUSCANTUNDERWORLDPOLICE</td>
+      <td>UNIT_CORUSCANTUNDERWORLDPOLICE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>COUNTDOOKU</td>
+      <td>UNIT_COUNTDOOKU_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CROSSHAIRS3</td>
+      <td>UNIT_CROSSHAIRS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT210408</td>
+      <td>UNIT_CT210408_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT210408_GLE_INHERIT</td>
+      <td>UNIT_JMK_501_GLE_CT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT5555</td>
+      <td>UNIT_CT5555_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT5555_GLE_INHERIT</td>
+      <td>UNIT_JMK_501_GLE_VET_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT7567</td>
+      <td>UNIT_REX_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>CT7567_GLE_INHERIT</td>
+      <td>UNIT_JMK_501_GLE_CAP_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DAKA</td>
+      <td>UNIT_DAKA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARKREY</td>
+      <td>UNIT_DARKREY_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARKTROOPER</td>
+      <td>UNIT_DARKTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHBANE</td>
+      <td>UNIT_DARTHBANE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHMALAK</td>
+      <td>UNIT_DARTHMALAK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHMALGUS</td>
+      <td>UNIT_DARTHMALGUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHNIHILUS</td>
+      <td>UNIT_DARTHNIHILUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHREVAN</td>
+      <td>UNIT_DARTHREVAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHSIDIOUS</td>
+      <td>UNIT_DARTHSIDIOUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHSION</td>
+      <td>UNIT_DARTHSION_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHTALON</td>
+      <td>UNIT_DARTHTALON_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DARTHTRAYA</td>
+      <td>UNIT_DARTHTRAYA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DASHRENDAR</td>
+      <td>UNIT_DASHRENDAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DATHCHA</td>
+      <td>UNIT_DATHCHA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DEATHTROOPER</td>
+      <td>UNIT_DEATHTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DEATHTROOPERPERIDEA</td>
+      <td>UNIT_DEATHTROOPERPERIDEA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DEATHTROOPER_SPEEDERBIKERAID</td>
+      <td>UNIT_DEATHTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DEDRAMEERO</td>
+      <td>UNIT_DEDRAMEERO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DENGAR</td>
+      <td>UNIT_DENGAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DEPABILLABA</td>
+      <td>UNIT_DEPABILLABA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DIRECTORKRENNIC</td>
+      <td>UNIT_DIRECTORKRENNIC_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DISGUISEDCLONETROOPER</td>
+      <td>UNIT_DISGUISEDCLONETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DOCTORAPHRA</td>
+      <td>UNIT_DOCTORAPHRA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>DROIDEKA</td>
+      <td>UNIT_DROIDEKA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EBONHAWK</td>
+      <td>UNIT_EBONHAWK_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>EETHKOTH</td>
+      <td>UNIT_EETHKOTH_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EIGHTHBROTHER</td>
+      <td>UNIT_EIGHTHBROTHER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EMBO</td>
+      <td>UNIT_EMBO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EMPERORPALPATINE</td>
+      <td>UNIT_EMPERORPALPATINE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EMPERORSSHUTTLE</td>
+      <td>UNIT_EMPERORSSHUTTLE_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>ENFYSNEST</td>
+      <td>UNIT_ENFYSNEST_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EPIXFINN</td>
+      <td>UNIT_EPIXFINN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EPIXPOE</td>
+      <td>UNIT_EPIXPOE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EWOKELDER</td>
+      <td>UNIT_EWOKELDER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EWOKELDER_SPEEDERBIKERAID</td>
+      <td>UNIT_EWOKELDER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EWOKSCOUT</td>
+      <td>UNIT_EWOKSCOUT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EWOKSCOUT_SPEEDERBIKERAID</td>
+      <td>UNIT_EWOKSCOUT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EZRABRIDGERS3</td>
+      <td>UNIT_EZRABRIDGERS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EZRABRIDGERS3_GLE_INHERIT</td>
+      <td>UNIT_GAMORREAN_HONDO_MARQUEE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>EZRAEXILE</td>
+      <td>UNIT_EZRAEXILE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FENNECSHAND</td>
+      <td>UNIT_FENNECSHAND_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIFTHBROTHER</td>
+      <td>UNIT_FIFTHBROTHER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FINN</td>
+      <td>UNIT_FINN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDEREXECUTIONER</td>
+      <td>UNIT_FIRSTORDEREXECUTIONER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDEROFFICERMALE</td>
+      <td>UNIT_FIRSTORDEROFFICERMALE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDERSPECIALFORCESPILOT</td>
+      <td>UNIT_FIRSTORDERSPECIALFORCESPILOT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDERTIEECHELON</td>
+      <td>UNIT_FIRSTORDERTIEECHELON_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDERTIEPILOT</td>
+      <td>UNIT_FIRSTORDERTIEPILOT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FIRSTORDERTROOPER</td>
+      <td>UNIT_FIRSTORDERTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FOSITHTROOPER</td>
+      <td>UNIT_FOSITHTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FOTF_DEVASTATOR</td>
+      <td>UNIT_FOTF_DEVASTATOR_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>FOTF_VADER</td>
+      <td>UNIT_VADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FULCRUMAHSOKA</td>
+      <td>UNIT_FULCRUMAHSOKA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>FURYCLASSINTERCEPTOR</td>
+      <td>UNIT_FURYCLASSINTERCEPTOR_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GAMORREANGUARD</td>
+      <td>UNIT_GAMORREANGUARD_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GAMORREANGUARD_GLE_INHERIT</td>
+      <td>UNIT_GAMORREANGUARD_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GARSAXON</td>
+      <td>UNIT_GARSAXON_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GAUNTLETSTARFIGHTER</td>
+      <td>UNIT_GAUNTLETSTARFIGHTER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALHUX</td>
+      <td>UNIT_GENERALHUX_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALHUX_EVENT</td>
+      <td>UNIT_GENERALHUX_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALKENOBI</td>
+      <td>UNIT_GENERALKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALKENOBI_GLE</td>
+      <td>UNIT_GENERALKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALKENOBI_GLE_INHERIT</td>
+      <td>UNIT_GENERALKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALKENOBI_GLE_INHERIT_VADER</td>
+      <td>UNIT_GENERALKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALSKYWALKER</td>
+      <td>UNIT_GENERALSKYWALKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALSKYWALKER_GLE_INHERIT</td>
+      <td>UNIT_GENERALSKYWALKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALSKYWALKER_GLE_INHERIT_T3</td>
+      <td>UNIT_GENERALSKYWALKER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GENERALSYNDULLA</td>
+      <td>UNIT_GENERALSYNDULLA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANBROODALPHA</td>
+      <td>UNIT_GEONOSIANBROODALPHA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANSOLDIER</td>
+      <td>UNIT_GEONOSIANSOLDIER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANSPY</td>
+      <td>UNIT_GEONOSIANSPY_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANSTARFIGHTER1</td>
+      <td>UNIT_GEONOSIANSTARFIGHTER1_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANSTARFIGHTER2</td>
+      <td>UNIT_GEONOSIANSTARFIGHTER2_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GEONOSIANSTARFIGHTER3</td>
+      <td>UNIT_GEONOSIANSTARFIGHTER3_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GHOST</td>
+      <td>UNIT_GHOST_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>GLAHSOKATANO</td>
+      <td>UNIT_GLAHSOKATANO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLAHSOKATANO_GLE_INHERIT</td>
+      <td>UNIT_GLAHSOKATANO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLAHSOKA_GLAHSOKAEVENT</td>
+      <td>UNIT_GLAHSOKATANO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLE_AWAKENEDREY</td>
+      <td>UNIT_REY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLHONDO</td>
+      <td>UNIT_GLHONDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLHONDO_GLE_INHERIT</td>
+      <td>UNIT_GLHONDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLHONDO_GLE_INHERIT_NOULT</td>
+      <td>UNIT_GLHONDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLLEIA</td>
+      <td>UNIT_GLLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLLEIA_GLE_INHERIT</td>
+      <td>UNIT_GLLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLLEIA_GLE_INHERIT_STANDARD</td>
+      <td>UNIT_GLLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLLEIA_SPEEDERBIKERAID</td>
+      <td>UNIT_GLLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GLREY</td>
+      <td>UNIT_GLREY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GOPHERANTS</td>
+      <td>UNIT_GOPHERANTS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDADMIRALTHRAWN</td>
+      <td>UNIT_GRANDADMIRALTHRAWN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDINQUISITOR</td>
+      <td>UNIT_GRANDINQUISITOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDMASTERLUKE</td>
+      <td>UNIT_GRANDMASTERLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDMASTERLUKE_GL_EVENT</td>
+      <td>UNIT_GRANDMASTERLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDMASTERYODA</td>
+      <td>UNIT_GRANDMASTERYODA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRANDMOFFTARKIN</td>
+      <td>UNIT_GRANDMOFFTARKIN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GREATMOTHERS</td>
+      <td>UNIT_GREATMOTHERS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GREEDO</td>
+      <td>UNIT_GREEDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GREEFKARGA</td>
+      <td>UNIT_GREEFKARGA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GREEFKARGA_MANDALORIAN_EVENT</td>
+      <td>UNIT_GREEFKARGA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRIEVOUS</td>
+      <td>UNIT_GRIEVOUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GRIEVOUS_MARQUEE</td>
+      <td>UNIT_GRIEVOUS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>GUNGANPHALANX</td>
+      <td>UNIT_GUNGANPHALANX_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HANSOLO</td>
+      <td>UNIT_HANSOLO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HANSOLO_GL_EVENT</td>
+      <td>UNIT_HANSOLO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HANSOLO_SPEEDERBIKERAID</td>
+      <td>UNIT_HANSOLO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HERASYNDULLAS3</td>
+      <td>UNIT_HERASYNDULLAS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HERASYNDULLAS3_SPEEDERBIKERAID</td>
+      <td>UNIT_HERASYNDULLAS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HERMITYODA</td>
+      <td>UNIT_HERMITYODA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HK47</td>
+      <td>UNIT_HK47_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HONDO</td>
+      <td>UNIT_HONDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>NEUTRAL</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOTHHAN</td>
+      <td>UNIT_HOTHHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOTHLEIA</td>
+      <td>UNIT_HOTHLEIA_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOTHLEIA_JKL_EVENT</td>
+      <td>UNIT_HOTHLEIA_JKL_EVENT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOTHREBELSCOUT</td>
+      <td>UNIT_HOTHREBELSCOUT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOTHREBELSOLDIER</td>
+      <td>UNIT_HOTHREBELSOLDIER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HOUNDSTOOTH</td>
+      <td>UNIT_HOUNDSTOOTH_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>HUMANTHUG</td>
+      <td>UNIT_HUMANTHUG_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HUMANTHUG_GLE_INHERIT</td>
+      <td>UNIT_HUMANTHUG_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HUNTERS3</td>
+      <td>UNIT_HUNTERS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HUYANG</td>
+      <td>UNIT_HUYANG_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>HYENABOMBER</td>
+      <td>UNIT_HYENABOMBER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>IDENVERSIOEMPIRE</td>
+      <td>UNIT_IDENVERSIOEMPIRE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IDENVERSIOEMPIRE_SPEEDERBIKERAID</td>
+      <td>UNIT_IDENVERSIOEMPIRE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG11</td>
+      <td>UNIT_IG11_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG11_MANDALORIAN_EVENT</td>
+      <td>UNIT_IG11_MANDALORIAN_JOURNEY_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG12</td>
+      <td>UNIT_IG12_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG2000</td>
+      <td>UNIT_IG2000_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>IG86SENTINELDROID</td>
+      <td>UNIT_IG86SENTINELDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG88</td>
+      <td>UNIT_IG88_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IG90</td>
+      <td>UNIT_IG90_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IMAGUNDI</td>
+      <td>UNIT_IMAGUNDI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IMPERIALPROBEDROID</td>
+      <td>UNIT_IMPERIALPROBEDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IMPERIALSUPERCOMMANDO</td>
+      <td>UNIT_IMPERIALSUPERCOMMANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>IMPERIALSUPERCOMMANDO_PROVING_GROUNDS</td>
+      <td>UNIT_IMPERIALSUPERCOMMANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>INQUISITORBARRISS</td>
+      <td>UNIT_INQUISITORBARRISS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ITHANO</td>
+      <td>UNIT_ITHANO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JABBATHEHUTT</td>
+      <td>UNIT_JABBATHEHUTT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JABBATHEHUTT_GLE_INHERIT</td>
+      <td>UNIT_JABBATHEHUTT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JANGOFETT</td>
+      <td>UNIT_JANGOFETT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JARJARBINKS</td>
+      <td>UNIT_JARJARBINKS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JARJARBINKS_EVENT</td>
+      <td>UNIT_JARJARBINKS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JAWA</td>
+      <td>UNIT_JAWA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JAWAENGINEER</td>
+      <td>UNIT_JAWAENGINEER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JAWASCAVENGER</td>
+      <td>UNIT_JAWASCAVENGER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTCAL</td>
+      <td>UNIT_JEDIKNIGHTCAL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTCONSULAR</td>
+      <td>UNIT_JEDIKNIGHTCONSULAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTGUARDIAN</td>
+      <td>UNIT_JEDIKNIGHTGUARDIAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTLUKE</td>
+      <td>UNIT_JEDIKNIGHTLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTLUKE_ENDOR_GLE_INHERIT</td>
+      <td>UNIT_JEDIKNIGHTLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTLUKE_GLE_INHERIT</td>
+      <td>UNIT_JEDIKNIGHTLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTLUKE_SPEEDERBIKERAID</td>
+      <td>UNIT_JEDIKNIGHTLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIKNIGHTREVAN</td>
+      <td>UNIT_JEDIKNIGHTREVAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIMASTERKENOBI</td>
+      <td>UNIT_JEDIMASTERKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIMASTERKENOBI_GLE_INHERIT</td>
+      <td>UNIT_JEDIMASTERKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIMASTERKENOBI_GLE_INHERIT_T6</td>
+      <td>UNIT_JEDIMASTERKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDIMASTERMACEWINDU</td>
+      <td>UNIT_JEDIMASTERMACEWINDU_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JEDISTARFIGHTERAHSOKATANO</td>
+      <td>UNIT_JEDISTARFIGHTERAHSOKATANO_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>JEDISTARFIGHTERANAKIN</td>
+      <td>UNIT_JEDISTARFIGHTERANAKIN_NAME_V2</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>JEDISTARFIGHTERCONSULAR</td>
+      <td>UNIT_JEDISTARFIGHTERCONSULAR_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>JKL_GR75</td>
+      <td>UNIT_JKL_GR75_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>JKL_PILOT</td>
+      <td>UNIT_HOTHREBELSOLDIER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JOCASTANU</td>
+      <td>UNIT_JOCASTANU_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JOLEEBINDO</td>
+      <td>UNIT_JOLEEBINDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JUHANI</td>
+      <td>UNIT_JUHANI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>JYNERSO</td>
+      <td>UNIT_JYNERSO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>K2SO</td>
+      <td>UNIT_K2SO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KANANJARRUSS3</td>
+      <td>UNIT_KANANJARRUSS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KELLERANBEQ</td>
+      <td>UNIT_KELLERANBEQ_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KIADIMUNDI</td>
+      <td>UNIT_KIADIMUNDI_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KITFISTO</td>
+      <td>UNIT_KITFISTO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KIX</td>
+      <td>UNIT_KIX_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KLEYA</td>
+      <td>UNIT_KLEYA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KRRSANTAN</td>
+      <td>UNIT_KRRSANTAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KUIIL</td>
+      <td>UNIT_KUIIL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KXSECURITYDROID</td>
+      <td>UNIT_KXSECURITYDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KXSECURITYDROID_JGEVENT_1</td>
+      <td>UNIT_KXSECURITYDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KXSECURITYDROID_JGEVENT_2</td>
+      <td>UNIT_KXSECURITYDROID_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KYLEKATARN</td>
+      <td>UNIT_KYLEKATARN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KYLOREN</td>
+      <td>UNIT_KYLOREN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KYLORENUNMASKED</td>
+      <td>UNIT_KYLORENUNMASKED_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KYLORENUNMASKED_GLEVENT</td>
+      <td>UNIT_SUPREMELEADERKYLOREN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>KYLOREN_DUEL</td>
+      <td>UNIT_SUPREMELEADERKYLOREN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>L3_37</td>
+      <td>UNIT_L3_37_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LEIAJEDITRAINING</td>
+      <td>UNIT_LEIAJEDITRAINING_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LOBOT</td>
+      <td>UNIT_LOBOT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LOGRAY</td>
+      <td>UNIT_LOGRAY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LOGRAY_SPEEDERBIKERAID</td>
+      <td>UNIT_LOGRAY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LORDVADER</td>
+      <td>UNIT_LORDVADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LORDVADER_GLE</td>
+      <td>UNIT_LORDVADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LORDVADER_GLE_INHERIT</td>
+      <td>UNIT_LORDVADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LUKESKYWALKER</td>
+      <td>UNIT_LUKESKYWALKER_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LUMINARAUNDULI</td>
+      <td>UNIT_LUMINARAUNDULI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>LUTHENRAEL</td>
+      <td>UNIT_LUTHENRAEL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MACEWINDU</td>
+      <td>UNIT_MACEWINDU_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAGMATROOPER</td>
+      <td>UNIT_MAGMATROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAGMATROOPER_SPEEDERBIKERAID</td>
+      <td>UNIT_MAGMATROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAGNAGUARD</td>
+      <td>UNIT_MAGNAGUARD_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAJORPARTAGAZ</td>
+      <td>UNIT_MAJORPARTAGAZ_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MANDALORBOKATAN</td>
+      <td>UNIT_MANDALORBOKATAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MARAJADE</td>
+      <td>UNIT_MARAJADE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MARAUDER</td>
+      <td>UNIT_MARAUDER_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>MARROK</td>
+      <td>UNIT_MARROK_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MASTERQUIGON</td>
+      <td>UNIT_MASTERQUIGON_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAUL</td>
+      <td>UNIT_MAUL_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAULHATEFUELED</td>
+      <td>UNIT_MAULHATEFUELED_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAULS7</td>
+      <td>UNIT_MAULS7_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MAZKANATA</td>
+      <td>UNIT_MAZKANATA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MERRIN</td>
+      <td>UNIT_MERRIN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MG100STARFORTRESSSF17</td>
+      <td>UNIT_MG100STARFORTRESSSF17_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>MILLENNIUMFALCON</td>
+      <td>UNIT_MILLENNIUMFALCON_NAME_V2</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>MILLENNIUMFALCONEP7</td>
+      <td>UNIT_MILLENNIUMFALCONEP7_NAME_V2</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>MILLENNIUMFALCONPRISTINE</td>
+      <td>UNIT_MILLENNIUMFALCONPRISTINE_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>MISSIONVAO</td>
+      <td>UNIT_MISSIONVAO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MOFFGIDEONS1</td>
+      <td>UNIT_MOFFGIDEONS1_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MOFFGIDEONS1_SPEEDERBIKERAID</td>
+      <td>UNIT_MOFFGIDEONS1_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MOFFGIDEONS3</td>
+      <td>UNIT_MOFFGIDEONS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MONMOTHMA</td>
+      <td>UNIT_MONMOTHMA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MORGANELSBETH</td>
+      <td>UNIT_MORGANELSBETH_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>MOTHERTALZIN</td>
+      <td>UNIT_MOTHERTALZIN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIGHTSISTERACOLYTE</td>
+      <td>UNIT_NIGHTSISTERACOLYTE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIGHTSISTERINITIATE</td>
+      <td>UNIT_NIGHTSISTERINITIATE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIGHTSISTERSPIRIT</td>
+      <td>UNIT_NIGHTSISTERSPIRIT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIGHTSISTERZOMBIE</td>
+      <td>UNIT_NIGHTSISTERZOMBIE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIGHTTROOPER</td>
+      <td>UNIT_NIGHTTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NIKTOTHUG_GLE_INHERIT</td>
+      <td>UNIT_NIKTOTHUG_PVE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NINTHSISTER</td>
+      <td>UNIT_NINTHSISTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>NUTEGUNRAY</td>
+      <td>UNIT_NUTEGUNRAY_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>OLDBENKENOBI</td>
+      <td>UNIT_OLDBENKENOBI_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>OMEGAS3</td>
+      <td>UNIT_OMEGAS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>OPERATIVE</td>
+      <td>UNIT_OPERATIVE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>OUTRIDER</td>
+      <td>UNIT_OUTRIDER_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>PADAWANOBIWAN</td>
+      <td>UNIT_PADAWANOBIWAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PADAWANSABINE</td>
+      <td>UNIT_PADAWANSABINE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PADMEAMIDALA</td>
+      <td>UNIT_PADMEAMIDALA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PAO</td>
+      <td>UNIT_PAO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PAPLOO</td>
+      <td>UNIT_PAPLOO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PAPLOO_SPEEDERBIKERAID</td>
+      <td>UNIT_PAPLOO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PAZVIZSLA</td>
+      <td>UNIT_PAZVIZSLA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PHANTOM2</td>
+      <td>UNIT_PHANTOM2_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>PHASMA</td>
+      <td>UNIT_PHASMA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PLOKOON</td>
+      <td>UNIT_PLOKOON_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>POE</td>
+      <td>UNIT_POE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>POGGLETHELESSER</td>
+      <td>UNIT_POGGLETHELESSER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PRINCESSKNEESAA</td>
+      <td>UNIT_PRINCESSKNEESAA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PRINCESSKNEESAA_SPEEDERBIKERAID</td>
+      <td>UNIT_PRINCESSKNEESAA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PRINCESSLEIA</td>
+      <td>UNIT_PRINCESSLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PRINCESSLEIA_GLE_INHERIT</td>
+      <td>UNIT_HUTTSLAYERLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PRINCESSLEIA_GL_EVENT</td>
+      <td>UNIT_PRINCESSLEIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>PUNISHINGONE</td>
+      <td>UNIT_PUNISHINGONE_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>QIRA</td>
+      <td>UNIT_QIRA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>QUEENAMIDALA</td>
+      <td>UNIT_QUEENAMIDALA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>QUIGGOLD</td>
+      <td>UNIT_QUIGGOLD_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>QUIGONJINN</td>
+      <td>UNIT_QUIGONJINN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>R2D2_LEGENDARY</td>
+      <td>UNIT_R2D2_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>R5D4</td>
+      <td>UNIT_R5D4_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RACCOON</td>
+      <td>UNIT_RACCOON_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RANGERZEB</td>
+      <td>UNIT_RANGERZEB_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RANGETROOPER</td>
+      <td>UNIT_RANGETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RANGETROOPER_SPEEDERBIKERAID</td>
+      <td>UNIT_RANGETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RAVENSCLAW</td>
+      <td>UNIT_RAVENSCLAW_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>RAZORCREST</td>
+      <td>UNIT_RAZORCREST_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>REMNANTSNOWCOMMANDER</td>
+      <td>UNIT_REMNANTSNOWCOMMANDER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RESISTANCEPILOT</td>
+      <td>UNIT_RESISTANCEPILOT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>RESISTANCETROOPER</td>
+      <td>UNIT_RESISTANCETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>REY</td>
+      <td>UNIT_REY_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>REYJEDITRAINING</td>
+      <td>UNIT_REYJEDITRAINING_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>REYJEDITRAINING_GLEVENT</td>
+      <td>UNIT_GLREY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>REY_DUEL</td>
+      <td>UNIT_REY_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ROGUEONESHIP</td>
+      <td>UNIT_ROGUEONESHIP_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>ROSETICO</td>
+      <td>UNIT_ROSETICO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ROYALGUARD</td>
+      <td>UNIT_ROYALGUARD_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SABINEWRENS3</td>
+      <td>UNIT_SABINEWRENS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SANASTARROS</td>
+      <td>UNIT_SANASTARROS_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SATELESHAN</td>
+      <td>UNIT_SATELESHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SAVAGEOPRESS</td>
+      <td>UNIT_SAVAGEOPRESS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SAWGERRERA</td>
+      <td>UNIT_SAWGERRERA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SCARIFREBEL</td>
+      <td>UNIT_SCARIFREBEL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SCORCH</td>
+      <td>UNIT_SCORCH_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SCOUTTROOPER_V3</td>
+      <td>UNIT_SCOUTTROOPER_V3_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SCOUTTROOPER_V3_SPEEDERBIKERAID</td>
+      <td>UNIT_SCOUTTROOPER_V3_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SCYTHE</td>
+      <td>UNIT_SCYTHE_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SECONDSISTER</td>
+      <td>UNIT_SECONDSISTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SEVENTHSISTER</td>
+      <td>UNIT_SEVENTHSISTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SHAAKTI</td>
+      <td>UNIT_SHAAKTI_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SHINHATI</td>
+      <td>UNIT_SHINHATI_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SHORETROOPER</td>
+      <td>UNIT_SHORETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SHORETROOPER_SPEEDERBIKERAID</td>
+      <td>UNIT_SHORETROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SITHASSASSIN</td>
+      <td>UNIT_SITHASSASSIN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SITHBOMBER</td>
+      <td>UNIT_SITHBOMBER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SITHFIGHTER</td>
+      <td>UNIT_SITHFIGHTER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SITHINFILTRATOR</td>
+      <td>UNIT_SITHINFILTRATOR_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SITHMARAUDER</td>
+      <td>UNIT_SITHMARAUDER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SITHPALPATINE</td>
+      <td>UNIT_SITHPALPATINE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SITHPALPATINE_GL_EVENT</td>
+      <td>UNIT_SITHPALPATINE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SITHSUPREMACYCLASS</td>
+      <td>UNIT_SITHSUPREMACYCLASS_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SITHTROOPER</td>
+      <td>UNIT_SITHTROOPER_NAME_V2</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SLAVE1</td>
+      <td>UNIT_SLAVE1_NAMEV2</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>SM33</td>
+      <td>UNIT_SM33_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SMUGGLERCHEWBACCA</td>
+      <td>UNIT_SMUGGLERCHEWBACCA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SMUGGLERHAN</td>
+      <td>UNIT_SMUGGLERHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SNOWTROOPER</td>
+      <td>UNIT_SNOWTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SNOWTROOPER_JGEVENT</td>
+      <td>UNIT_SNOWTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STAP</td>
+      <td>UNIT_STAP_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STARKILLER</td>
+      <td>UNIT_STARKILLER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STARKILLER_LEGACYEVENT</td>
+      <td>UNIT_STARKILLER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STORMTROOPER</td>
+      <td>UNIT_STORMTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STORMTROOPERHAN</td>
+      <td>UNIT_STORMTROOPERHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STORMTROOPERLUKE</td>
+      <td>UNIT_STORMTROOPERLUKE_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STORMTROOPER_SPEEDERBIKERAID</td>
+      <td>UNIT_STORMTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>STRANGER</td>
+      <td>UNIT_STRANGER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SUNFAC</td>
+      <td>UNIT_SUNFAC_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>SUPREMELEADERKYLOREN</td>
+      <td>UNIT_SUPREMELEADERKYLOREN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>T3_M4</td>
+      <td>UNIT_T3_M4_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TALIA</td>
+      <td>UNIT_TALIA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TARFFUL</td>
+      <td>UNIT_TARFFUL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TARONMALICOS</td>
+      <td>UNIT_TARONMALICOS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TEEBO</td>
+      <td>UNIT_TEEBO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TEEBO_SPEEDERBIKERAID</td>
+      <td>UNIT_TEEBO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIAN</td>
+      <td>UNIT_THEMANDALORIAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIANBESKARARMOR</td>
+      <td>UNIT_THEMANDALORIANBESKARARMOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIANBESKARARMOR_JOURNEY_EVENT</td>
+      <td>UNIT_THEMANDALORIANBESKARARMOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIANBESKARARMOR_JOURNEY_EVENT_TIER4</td>
+      <td>UNIT_THEMANDALORIANBESKARARMOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIAN_JOURNEY_EVENT</td>
+      <td>UNIT_THEMANDALORIAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THEMANDALORIAN_MUDDY</td>
+      <td>UNIT_THEMANDALORIAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>THIRDSISTER</td>
+      <td>UNIT_THIRDSISTER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TIEADVANCED</td>
+      <td>UNIT_TIEADVANCED_NAME_V2</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEBOMBERIMPERIAL</td>
+      <td>UNIT_TIEBOMBERIMPERIAL_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEDAGGER</td>
+      <td>UNIT_TIEDAGGER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEDEFENDER</td>
+      <td>UNIT_TIEDEFENDER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEFIGHTERFIRSTORDER</td>
+      <td>UNIT_TIEFIGHTERFIRSTORDER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEFIGHTERFOSF</td>
+      <td>UNIT_TIEFIGHTERFOSF_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEFIGHTERIMPERIAL</td>
+      <td>UNIT_TIEFIGHTERIMPERIAL_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEFIGHTERPILOT</td>
+      <td>UNIT_TIEFIGHTERPILOT_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TIEINTERCEPTOR</td>
+      <td>UNIT_TIEINTERCEPTOR_NAME_V2</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIEREAPER</td>
+      <td>UNIT_TIEREAPER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TIESILENCER</td>
+      <td>UNIT_TIESILENCER_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>TKTROOPER_EVENT</td>
+      <td>UNIT_TKTROOPER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TRENCH</td>
+      <td>UNIT_TRENCH_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>330</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TRIPLEZERO</td>
+      <td>UNIT_TRIPLEZERO_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TUSKENCHIEFTAIN</td>
+      <td>UNIT_TUSKENCHIEFTAIN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TUSKENHUNTRESS</td>
+      <td>UNIT_TUSKENHUNTRESS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TUSKENRAIDER</td>
+      <td>UNIT_TUSKENRAIDER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>TUSKENSHAMAN</td>
+      <td>UNIT_TUSKENSHAMAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>UGNAUGHT</td>
+      <td>UNIT_UGNAUGHT_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>UMBARANSTARFIGHTER</td>
+      <td>UNIT_UMBARANSTARFIGHTER_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>UNDERCOVERLANDO</td>
+      <td>UNIT_UNDERCOVERLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>URORRURRR</td>
+      <td>UNIT_URORRURRR_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>UWINGROGUEONE</td>
+      <td>UNIT_UWINGROGUEONE_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>UWINGSCARIF</td>
+      <td>UNIT_UWINGSCARIF_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>VADER</td>
+      <td>UNIT_VADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VADERDUELSEND</td>
+      <td>UNIT_VADERDUELSEND_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VADER_JKL_EVENT</td>
+      <td>UNIT_VADER_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VANE</td>
+      <td>UNIT_VANE_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VANGUARDTEMPLEGUARD</td>
+      <td>UNIT_VANGUARDTEMPLEGUARD_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VEERS</td>
+      <td>UNIT_VEERS_GENERAL_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VEERS_SPEEDERBIKERAID</td>
+      <td>UNIT_VEERS_GENERAL_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VEL</td>
+      <td>UNIT_VEL_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VISASMARR</td>
+      <td>UNIT_VISASMARR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>VULTUREDROID</td>
+      <td>UNIT_VULTUREDROID_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>VULTUREDROID_tb</td>
+      <td>UNIT_VULTUREDROID_NAME</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>WAMPA</td>
+      <td>UNIT_WAMPA_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WATTAMBOR</td>
+      <td>UNIT_WATTAMBOR_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>80</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WEDGEANTILLES</td>
+      <td>UNIT_WEDGEANTILLES_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WEDGEANTILLES_SPEEDERBIKERAID</td>
+      <td>UNIT_WEDGEANTILLES_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WICKET</td>
+      <td>UNIT_WICKET_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WICKET_SPEEDERBIKERAID</td>
+      <td>UNIT_WICKET_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>145</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>WRECKERS3</td>
+      <td>UNIT_WRECKERS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>XANADUBLOOD</td>
+      <td>UNIT_XANADUBLOOD_NAME_V3</td>
+      <td>SHIP</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>XWINGBLACKONE</td>
+      <td>UNIT_XWINGBLACKONE_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>XWINGRED2</td>
+      <td>UNIT_XWINGRED2_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>XWINGRED3</td>
+      <td>UNIT_XWINGRED3_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>XWINGRESISTANCE</td>
+      <td>UNIT_XWINGRESISTANCE_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>10</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>YODACHEWBACCA</td>
+      <td>UNIT_YODACHEWBACCA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>YOUNGCHEWBACCA</td>
+      <td>UNIT_YOUNGCHEWBACCA_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>YOUNGHAN</td>
+      <td>UNIT_YOUNGHAN_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>YOUNGLANDO</td>
+      <td>UNIT_YOUNGLANDO_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>YWINGCLONEWARS</td>
+      <td>UNIT_YWINGCLONEWARS_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>YWINGREBEL</td>
+      <td>UNIT_YWINGREBEL_NAME</td>
+      <td>SHIP</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>—</td>
+    </tr>
+    
+    <tr>
+      <td>ZAALBAR</td>
+      <td>UNIT_ZAALBAR_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ZAMWESELL</td>
+      <td>UNIT_ZAMWESELL_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ZEBS3</td>
+      <td>UNIT_ZEBS3_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ZORIIBLISS_V2</td>
+      <td>UNIT_ZORIIBLISS_V2_NAME</td>
+      <td>CHARACTER</td>
+      <td>LIGHT</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+    <tr>
+      <td>ZUCKUSS</td>
+      <td>UNIT_ZUCKUSS_NAME</td>
+      <td>CHARACTER</td>
+      <td>DARK</td>
+      <td>25</td>
+      <td>100</td>
+    </tr>
+    
+  </table>
+  
+  <script>
+    function filterTable() {
+      const q = document.getElementById("search").value.toLowerCase();
+      const rows = document.querySelectorAll("#farmTable tr:not(:first-child)");
+      rows.forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+      });
+    }
+  </script>
+<style>
+  th { cursor: pointer; user-select: none; }
+  th.sorted-asc::after { content: " B2"; }
+  th.sorted-desc::after { content: " BC"; }
+</style>
+<script>
+  function sortTable(th) {
+    const table = th.closest("table");
+    const colIndex = th.cellIndex;
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
+    const asc = !th.classList.contains("sorted-asc");
+    rows.sort((a, b) => {
+      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const aNum = parseFloat(aText), bNum = parseFloat(bText);
+      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+  }
+</script>
+</body>
+</html>

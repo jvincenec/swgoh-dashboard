@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "6BoackXUQJm5VAPYQwSFJw",
+      "name": "Stevie P",
+      "values": {
+        "total": [
+          1551,
+          1553,
+          1553
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

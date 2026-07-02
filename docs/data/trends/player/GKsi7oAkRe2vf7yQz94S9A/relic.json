@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "GKsi7oAkRe2vf7yQz94S9A",
+      "name": "Lakota",
+      "values": {
+        "total": [
+          436,
+          436,
+          436
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

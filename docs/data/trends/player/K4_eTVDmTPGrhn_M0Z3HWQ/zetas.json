@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "K4_eTVDmTPGrhn_M0Z3HWQ",
+      "name": "Bullethead",
+      "values": {
+        "total": [
+          0,
+          361,
+          361
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

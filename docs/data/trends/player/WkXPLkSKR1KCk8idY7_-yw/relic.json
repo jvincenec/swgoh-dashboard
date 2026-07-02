@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "WkXPLkSKR1KCk8idY7_-yw",
+      "name": "DarthLink15",
+      "values": {
+        "total": [
+          2414,
+          2420,
+          2420
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

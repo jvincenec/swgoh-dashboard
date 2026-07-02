@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "awCqc74wTuqXA-exwbt0Ng",
+      "name": "Barbecue Brisket",
+      "values": {
+        "total": [
+          1344,
+          1344,
+          1344
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Pq56iNuoQL2nc_PGQmFoJg",
+      "name": "Heavy",
+      "values": {
+        "total": [
+          894,
+          894,
+          894
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

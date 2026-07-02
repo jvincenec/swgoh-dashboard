@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "PNMQ1bmnQJ6MqCk7dAx8dg",
+      "name": "HighlanderTM",
+      "values": {
+        "total": [
+          0,
+          467,
+          467
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

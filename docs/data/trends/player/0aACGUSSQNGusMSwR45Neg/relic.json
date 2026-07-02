@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "0aACGUSSQNGusMSwR45Neg",
+      "name": "HollaTables",
+      "values": {
+        "total": [
+          970,
+          970,
+          970
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Qpwb2GrRRd-oa7lfkYhDlg",
+      "name": "KKong",
+      "values": {
+        "total": [
+          1838,
+          1838,
+          1838
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

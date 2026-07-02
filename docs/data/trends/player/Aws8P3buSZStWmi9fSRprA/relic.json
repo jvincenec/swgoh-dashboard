@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Aws8P3buSZStWmi9fSRprA",
+      "name": "Doof",
+      "values": {
+        "total": [
+          561,
+          561,
+          561
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

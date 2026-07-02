@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "0DTHMRpyQ5WMXXyx6wU0VA",
+      "name": "Niko",
+      "values": {
+        "total": [
+          0,
+          406,
+          406
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

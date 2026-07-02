@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "5nxJfhS2TMS7WFWMhHizKg",
+      "name": "Guinness Nighttoots",
+      "values": {
+        "total": [
+          1450,
+          1450,
+          1450
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

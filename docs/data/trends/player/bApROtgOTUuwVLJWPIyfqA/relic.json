@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "bApROtgOTUuwVLJWPIyfqA",
+      "name": "DarthCaedus",
+      "values": {
+        "total": [
+          1170,
+          1170,
+          1170
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

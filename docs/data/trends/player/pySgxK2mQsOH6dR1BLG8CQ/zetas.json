@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "pySgxK2mQsOH6dR1BLG8CQ",
+      "name": "Soren Kai",
+      "values": {
+        "total": [
+          0,
+          404,
+          404
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "JhnPcQ00SZu_fQKajwz6rQ",
+      "name": "Ninja",
+      "values": {
+        "total": [
+          0,
+          436,
+          436
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

@@ -1,0 +1,65 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Banes disciples",
+      "name": "Banes disciples",
+      "values": {
+        "total": [
+          0,
+          15280,
+          15280
+        ]
+      }
+    },
+    {
+      "id": "Ender's",
+      "name": "Ender's",
+      "values": {
+        "total": [
+          0,
+          13082,
+          13082
+        ]
+      }
+    },
+    {
+      "id": "Oddworld Abe Exodus",
+      "name": "Oddworld Abe Exodus",
+      "values": {
+        "total": [
+          0,
+          23055,
+          23055
+        ]
+      }
+    },
+    {
+      "id": "Return of the Oddballs",
+      "name": "Return of the Oddballs",
+      "values": {
+        "total": [
+          0,
+          5387,
+          5387
+        ]
+      }
+    },
+    {
+      "id": "Thick as Thieves",
+      "name": "Thick as Thieves",
+      "values": {
+        "total": [
+          0,
+          18947,
+          18948
+        ]
+      }
+    }
+  ],
+  "y": "Total Zetas"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "4ktiaQX8QrOI5s9MorgBow",
+      "name": "BackDown",
+      "values": {
+        "total": [
+          0,
+          453,
+          453
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

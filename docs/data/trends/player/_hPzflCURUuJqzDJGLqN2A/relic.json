@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "_hPzflCURUuJqzDJGLqN2A",
+      "name": "raichan",
+      "values": {
+        "total": [
+          1006,
+          1008,
+          1008
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

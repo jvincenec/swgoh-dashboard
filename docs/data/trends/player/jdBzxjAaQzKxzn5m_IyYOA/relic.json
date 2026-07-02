@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "jdBzxjAaQzKxzn5m_IyYOA",
+      "name": "chef",
+      "values": {
+        "total": [
+          906,
+          906,
+          906
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

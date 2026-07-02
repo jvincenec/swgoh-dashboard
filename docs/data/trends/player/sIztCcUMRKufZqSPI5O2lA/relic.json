@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "sIztCcUMRKufZqSPI5O2lA",
+      "name": "MINI Brightframe",
+      "values": {
+        "total": [
+          1330,
+          1330,
+          1330
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

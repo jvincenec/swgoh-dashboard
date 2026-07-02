@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "idqiVdTzSW2ZTwnsM5kz5w",
+      "name": "Drex",
+      "values": {
+        "total": [
+          0,
+          468,
+          468
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

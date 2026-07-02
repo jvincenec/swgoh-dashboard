@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "3mePOaUMTi68tsenj-NqNw",
+      "name": "JohnDaJedi",
+      "values": {
+        "total": [
+          906,
+          906,
+          906
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

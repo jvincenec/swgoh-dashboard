@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "csqi48rkTyCYDWV9Q_brYg",
+      "name": "a",
+      "values": {
+        "total": [
+          2100,
+          2100,
+          2100
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

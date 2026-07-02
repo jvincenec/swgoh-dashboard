@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "YRwdo12lRW-kTHxMTRhAVg",
+      "name": "Danzunka",
+      "values": {
+        "total": [
+          2005,
+          2005,
+          2005
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

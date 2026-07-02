@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Characters</title>
+  <link rel="stylesheet" href="/static/toons.css">
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; vertical-align: middle; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    a.char { color: #58a6ff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .icon { width: 32px; height: 32px; border-radius: 4px; background-color: #1c2530; flex-shrink: 0; }
+    .empty { color: #6e7681; font-style: italic; }
+    .note { color: #6e7681; font-size: 12px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Characters</h1>
+  <a href="/export/characters.csv" style="color:#3fb950;">Export CSV</a>
+  
+  <table>
+    <tr><th onclick="sortTable(this)">Character</th><th onclick="sortTable(this)">Owners</th><th onclick="sortTable(this)">Avg Relic</th></tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BARRISSOFFEE"><span class="icon BARRISSOFFEE-i"></span>BARRISSOFFEE</a></td>
+      <td>214</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DENGAR"><span class="icon DENGAR-i"></span>DENGAR</a></td>
+      <td>214</td>
+      <td>4.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAGNAGUARD"><span class="icon MAGNAGUARD-i"></span>MAGNAGUARD</a></td>
+      <td>214</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TALIA"><span class="icon TALIA-i"></span>TALIA</a></td>
+      <td>214</td>
+      <td>1.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SABINEWRENS3"><span class="icon SABINEWRENS3-i"></span>SABINEWRENS3</a></td>
+      <td>214</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GOPHERANTS">GOPHERANTS</a></td>
+      <td>214</td>
+      <td>0.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ANAKINKNIGHT"><span class="icon ANAKINKNIGHT-i"></span>ANAKINKNIGHT</a></td>
+      <td>214</td>
+      <td>5.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VEERS"><span class="icon VEERS-i"></span>VEERS</a></td>
+      <td>214</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IG88"><span class="icon IG88-i"></span>IG88</a></td>
+      <td>214</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/REY"><span class="icon REY-i"></span>REY</a></td>
+      <td>214</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KYLORENUNMASKED"><span class="icon KYLORENUNMASKED-i"></span>KYLORENUNMASKED</a></td>
+      <td>214</td>
+      <td>6.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/THEMANDALORIAN"><span class="icon THEMANDALORIAN-i"></span>THEMANDALORIAN</a></td>
+      <td>214</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/R2D2_LEGENDARY"><span class="icon R2D2_LEGENDARY-i"></span>R2D2_LEGENDARY</a></td>
+      <td>214</td>
+      <td>6.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MOFFGIDEONS1"><span class="icon MOFFGIDEONS1-i"></span>MOFFGIDEONS1</a></td>
+      <td>214</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ASAJVENTRESS"><span class="icon ASAJVENTRESS-i"></span>ASAJVENTRESS</a></td>
+      <td>214</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KANANJARRUSS3"><span class="icon KANANJARRUSS3-i"></span>KANANJARRUSS3</a></td>
+      <td>214</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STORMTROOPERHAN"><span class="icon STORMTROOPERHAN-i"></span>STORMTROOPERHAN</a></td>
+      <td>214</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HERASYNDULLAS3"><span class="icon HERASYNDULLAS3-i"></span>HERASYNDULLAS3</a></td>
+      <td>214</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOSSK"><span class="icon BOSSK-i"></span>BOSSK</a></td>
+      <td>214</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VADER"><span class="icon VADER-i"></span>VADER</a></td>
+      <td>214</td>
+      <td>6.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/COUNTDOOKU"><span class="icon COUNTDOOKU-i"></span>COUNTDOOKU</a></td>
+      <td>214</td>
+      <td>6.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOBAFETT"><span class="icon BOBAFETT-i"></span>BOBAFETT</a></td>
+      <td>214</td>
+      <td>6.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MACEWINDU"><span class="icon MACEWINDU-i"></span>MACEWINDU</a></td>
+      <td>214</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/R5D4">R5D4</a></td>
+      <td>214</td>
+      <td>0.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/RESISTANCEPILOT"><span class="icon RESISTANCEPILOT-i"></span>RESISTANCEPILOT</a></td>
+      <td>214</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CADBANE"><span class="icon CADBANE-i"></span>CADBANE</a></td>
+      <td>214</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TIEFIGHTERPILOT"><span class="icon TIEFIGHTERPILOT-i"></span>TIEFIGHTERPILOT</a></td>
+      <td>214</td>
+      <td>3.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRANDMASTERYODA"><span class="icon GRANDMASTERYODA-i"></span>GRANDMASTERYODA</a></td>
+      <td>214</td>
+      <td>6.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GREEFKARGA"><span class="icon GREEFKARGA-i"></span>GREEFKARGA</a></td>
+      <td>214</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ZEBS3"><span class="icon ZEBS3-i"></span>ZEBS3</a></td>
+      <td>214</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EWOKSCOUT"><span class="icon EWOKSCOUT-i"></span>EWOKSCOUT</a></td>
+      <td>214</td>
+      <td>1.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IG86SENTINELDROID"><span class="icon IG86SENTINELDROID-i"></span>IG86SENTINELDROID</a></td>
+      <td>214</td>
+      <td>1.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ROYALGUARD"><span class="icon ROYALGUARD-i"></span>ROYALGUARD</a></td>
+      <td>214</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRANDADMIRALTHRAWN"><span class="icon GRANDADMIRALTHRAWN-i"></span>GRANDADMIRALTHRAWN</a></td>
+      <td>214</td>
+      <td>5.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LUKESKYWALKER"><span class="icon LUKESKYWALKER-i"></span>LUKESKYWALKER</a></td>
+      <td>214</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NIGHTSISTERSPIRIT"><span class="icon NIGHTSISTERSPIRIT-i"></span>NIGHTSISTERSPIRIT</a></td>
+      <td>214</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CLONESERGEANTPHASEI"><span class="icon CLONESERGEANTPHASEI-i"></span>CLONESERGEANTPHASEI</a></td>
+      <td>214</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ADMIRALACKBAR"><span class="icon ADMIRALACKBAR-i"></span>ADMIRALACKBAR</a></td>
+      <td>214</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STORMTROOPER"><span class="icon STORMTROOPER-i"></span>STORMTROOPER</a></td>
+      <td>214</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EMPERORPALPATINE"><span class="icon EMPERORPALPATINE-i"></span>EMPERORPALPATINE</a></td>
+      <td>214</td>
+      <td>6.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRANDMOFFTARKIN"><span class="icon GRANDMOFFTARKIN-i"></span>GRANDMOFFTARKIN</a></td>
+      <td>214</td>
+      <td>6.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/OLDBENKENOBI"><span class="icon OLDBENKENOBI-i"></span>OLDBENKENOBI</a></td>
+      <td>214</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/RANGERZEB">RANGERZEB</a></td>
+      <td>214</td>
+      <td>0.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARKTROOPER"><span class="icon DARKTROOPER-i"></span>DARKTROOPER</a></td>
+      <td>214</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BISHOP">BISHOP</a></td>
+      <td>214</td>
+      <td>0.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIKNIGHTCONSULAR"><span class="icon JEDIKNIGHTCONSULAR-i"></span>JEDIKNIGHTCONSULAR</a></td>
+      <td>214</td>
+      <td>1.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/AHSOKATANO"><span class="icon AHSOKATANO-i"></span>AHSOKATANO</a></td>
+      <td>214</td>
+      <td>6.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CHOPPERS3"><span class="icon CHOPPERS3-i"></span>CHOPPERS3</a></td>
+      <td>214</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CARSONTEVA">CARSONTEVA</a></td>
+      <td>214</td>
+      <td>0.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SNOWTROOPER"><span class="icon SNOWTROOPER-i"></span>SNOWTROOPER</a></td>
+      <td>214</td>
+      <td>1.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PRINCESSLEIA"><span class="icon PRINCESSLEIA-i"></span>PRINCESSLEIA</a></td>
+      <td>214</td>
+      <td>3.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PHASMA"><span class="icon PHASMA-i"></span>PHASMA</a></td>
+      <td>214</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EZRABRIDGERS3"><span class="icon EZRABRIDGERS3-i"></span>EZRABRIDGERS3</a></td>
+      <td>214</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IG11"><span class="icon IG11-i"></span>IG11</a></td>
+      <td>214</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GEONOSIANSPY"><span class="icon GEONOSIANSPY-i"></span>GEONOSIANSPY</a></td>
+      <td>213</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PLOKOON"><span class="icon PLOKOON-i"></span>PLOKOON</a></td>
+      <td>213</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CARADUNE"><span class="icon CARADUNE-i"></span>CARADUNE</a></td>
+      <td>213</td>
+      <td>3.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIRSTORDERTIEPILOT"><span class="icon FIRSTORDERTIEPILOT-i"></span>FIRSTORDERTIEPILOT</a></td>
+      <td>213</td>
+      <td>3.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FINN"><span class="icon FINN-i"></span>FINN</a></td>
+      <td>213</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/K2SO"><span class="icon K2SO-i"></span>K2SO</a></td>
+      <td>213</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/QUIGONJINN"><span class="icon QUIGONJINN-i"></span>QUIGONJINN</a></td>
+      <td>213</td>
+      <td>3.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EWOKELDER"><span class="icon EWOKELDER-i"></span>EWOKELDER</a></td>
+      <td>213</td>
+      <td>2.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CT5555"><span class="icon CT5555-i"></span>CT5555</a></td>
+      <td>213</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ADMINISTRATORLANDO"><span class="icon ADMINISTRATORLANDO-i"></span>ADMINISTRATORLANDO</a></td>
+      <td>213</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHSIDIOUS"><span class="icon DARTHSIDIOUS-i"></span>DARTHSIDIOUS</a></td>
+      <td>213</td>
+      <td>5.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SUNFAC"><span class="icon SUNFAC-i"></span>SUNFAC</a></td>
+      <td>213</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRIEVOUS"><span class="icon GRIEVOUS-i"></span>GRIEVOUS</a></td>
+      <td>213</td>
+      <td>5.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAUL"><span class="icon MAUL-i"></span>MAUL</a></td>
+      <td>213</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TEEBO"><span class="icon TEEBO-i"></span>TEEBO</a></td>
+      <td>213</td>
+      <td>2.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SHAAKTI"><span class="icon SHAAKTI-i"></span>SHAAKTI</a></td>
+      <td>213</td>
+      <td>5.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KYLOREN"><span class="icon KYLOREN-i"></span>KYLOREN</a></td>
+      <td>212</td>
+      <td>6.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EIGHTHBROTHER">EIGHTHBROTHER</a></td>
+      <td>212</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHNIHILUS"><span class="icon DARTHNIHILUS-i"></span>DARTHNIHILUS</a></td>
+      <td>212</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GEONOSIANSOLDIER"><span class="icon GEONOSIANSOLDIER-i"></span>GEONOSIANSOLDIER</a></td>
+      <td>212</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CASSIANANDOR"><span class="icon CASSIANANDOR-i"></span>CASSIANANDOR</a></td>
+      <td>212</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CLONEWARSCHEWBACCA"><span class="icon CLONEWARSCHEWBACCA-i"></span>CLONEWARSCHEWBACCA</a></td>
+      <td>212</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/COMMANDERLUKESKYWALKER"><span class="icon COMMANDERLUKESKYWALKER-i"></span>COMMANDERLUKESKYWALKER</a></td>
+      <td>212</td>
+      <td>6.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GREEDO"><span class="icon GREEDO-i"></span>GREEDO</a></td>
+      <td>212</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/POE"><span class="icon POE-i"></span>POE</a></td>
+      <td>212</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DAKA"><span class="icon DAKA-i"></span>DAKA</a></td>
+      <td>212</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HK47"><span class="icon HK47-i"></span>HK47</a></td>
+      <td>212</td>
+      <td>4.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BIGGSDARKLIGHTER"><span class="icon BIGGSDARKLIGHTER-i"></span>BIGGSDARKLIGHTER</a></td>
+      <td>212</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CC2224"><span class="icon CC2224-i"></span>CC2224</a></td>
+      <td>212</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIRSTORDERTROOPER"><span class="icon FIRSTORDERTROOPER-i"></span>FIRSTORDERTROOPER</a></td>
+      <td>212</td>
+      <td>4.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CHEWBACCALEGENDARY"><span class="icon CHEWBACCALEGENDARY-i"></span>CHEWBACCALEGENDARY</a></td>
+      <td>212</td>
+      <td>5.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIKNIGHTGUARDIAN"><span class="icon JEDIKNIGHTGUARDIAN-i"></span>JEDIKNIGHTGUARDIAN</a></td>
+      <td>212</td>
+      <td>0.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/POGGLETHELESSER"><span class="icon POGGLETHELESSER-i"></span>POGGLETHELESSER</a></td>
+      <td>211</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NIGHTSISTERZOMBIE"><span class="icon NIGHTSISTERZOMBIE-i"></span>NIGHTSISTERZOMBIE</a></td>
+      <td>211</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CT7567"><span class="icon CT7567-i"></span>CT7567</a></td>
+      <td>211</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/WEDGEANTILLES"><span class="icon WEDGEANTILLES-i"></span>WEDGEANTILLES</a></td>
+      <td>211</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KUIIL"><span class="icon KUIIL-i"></span>KUIIL</a></td>
+      <td>211</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CT210408"><span class="icon CT210408-i"></span>CT210408</a></td>
+      <td>211</td>
+      <td>5.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIFTHBROTHER">FIFTHBROTHER</a></td>
+      <td>211</td>
+      <td>5.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SCARIFREBEL"><span class="icon SCARIFREBEL-i"></span>SCARIFREBEL</a></td>
+      <td>211</td>
+      <td>2.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CHIEFCHIRPA"><span class="icon CHIEFCHIRPA-i"></span>CHIEFCHIRPA</a></td>
+      <td>211</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HOTHREBELSCOUT"><span class="icon HOTHREBELSCOUT-i"></span>HOTHREBELSCOUT</a></td>
+      <td>211</td>
+      <td>1.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CAPTAINREX">CAPTAINREX</a></td>
+      <td>211</td>
+      <td>5.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NINTHSISTER">NINTHSISTER</a></td>
+      <td>211</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JYNERSO"><span class="icon JYNERSO-i"></span>JYNERSO</a></td>
+      <td>211</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIRSTORDEROFFICERMALE"><span class="icon FIRSTORDEROFFICERMALE-i"></span>FIRSTORDEROFFICERMALE</a></td>
+      <td>211</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAGMATROOPER"><span class="icon MAGMATROOPER-i"></span>MAGMATROOPER</a></td>
+      <td>210</td>
+      <td>1.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HERMITYODA"><span class="icon HERMITYODA-i"></span>HERMITYODA</a></td>
+      <td>210</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/COLONELSTARCK"><span class="icon COLONELSTARCK-i"></span>COLONELSTARCK</a></td>
+      <td>210</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GENERALHUX"><span class="icon GENERALHUX-i"></span>GENERALHUX</a></td>
+      <td>210</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/WAMPA"><span class="icon WAMPA-i"></span>WAMPA</a></td>
+      <td>210</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SMUGGLERCHEWBACCA"><span class="icon SMUGGLERCHEWBACCA-i"></span>SMUGGLERCHEWBACCA</a></td>
+      <td>210</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ZAMWESELL"><span class="icon ZAMWESELL-i"></span>ZAMWESELL</a></td>
+      <td>210</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SECONDSISTER">SECONDSISTER</a></td>
+      <td>210</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PAPLOO"><span class="icon PAPLOO-i"></span>PAPLOO</a></td>
+      <td>210</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JANGOFETT"><span class="icon JANGOFETT-i"></span>JANGOFETT</a></td>
+      <td>210</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/B2SUPERBATTLEDROID"><span class="icon B2SUPERBATTLEDROID-i"></span>B2SUPERBATTLEDROID</a></td>
+      <td>210</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/T3_M4"><span class="icon T3_M4-i"></span>T3_M4</a></td>
+      <td>210</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HOTHREBELSOLDIER"><span class="icon HOTHREBELSOLDIER-i"></span>HOTHREBELSOLDIER</a></td>
+      <td>210</td>
+      <td>0.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DIRECTORKRENNIC"><span class="icon DIRECTORKRENNIC-i"></span>DIRECTORKRENNIC</a></td>
+      <td>210</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BASTILASHANDARK"><span class="icon BASTILASHANDARK-i"></span>BASTILASHANDARK</a></td>
+      <td>210</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BISTAN"><span class="icon BISTAN-i"></span>BISTAN</a></td>
+      <td>210</td>
+      <td>3.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DROIDEKA"><span class="icon DROIDEKA-i"></span>DROIDEKA</a></td>
+      <td>209</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ADMIRALPIETT"><span class="icon ADMIRALPIETT-i"></span>ADMIRALPIETT</a></td>
+      <td>209</td>
+      <td>6.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NUTEGUNRAY"><span class="icon NUTEGUNRAY-i"></span>NUTEGUNRAY</a></td>
+      <td>209</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/WICKET"><span class="icon WICKET-i"></span>WICKET</a></td>
+      <td>209</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SITHASSASSIN"><span class="icon SITHASSASSIN-i"></span>SITHASSASSIN</a></td>
+      <td>209</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SEVENTHSISTER">SEVENTHSISTER</a></td>
+      <td>209</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BASTILASHAN"><span class="icon BASTILASHAN-i"></span>BASTILASHAN</a></td>
+      <td>209</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ZAALBAR"><span class="icon ZAALBAR-i"></span>ZAALBAR</a></td>
+      <td>209</td>
+      <td>2.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SMUGGLERHAN"><span class="icon SMUGGLERHAN-i"></span>SMUGGLERHAN</a></td>
+      <td>209</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GENERALKENOBI"><span class="icon GENERALKENOBI-i"></span>GENERALKENOBI</a></td>
+      <td>208</td>
+      <td>7.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SITHTROOPER"><span class="icon SITHTROOPER-i"></span>SITHTROOPER</a></td>
+      <td>208</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FULCRUMAHSOKA"><span class="icon FULCRUMAHSOKA-i"></span>FULCRUMAHSOKA</a></td>
+      <td>208</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MONMOTHMA"><span class="icon MONMOTHMA-i"></span>MONMOTHMA</a></td>
+      <td>208</td>
+      <td>4.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KELLERANBEQ">KELLERANBEQ</a></td>
+      <td>208</td>
+      <td>5.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TUSKENRAIDER"><span class="icon TUSKENRAIDER-i"></span>TUSKENRAIDER</a></td>
+      <td>208</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HANSOLO"><span class="icon HANSOLO-i"></span>HANSOLO</a></td>
+      <td>208</td>
+      <td>6.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LOBOT"><span class="icon LOBOT-i"></span>LOBOT</a></td>
+      <td>208</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MISSIONVAO"><span class="icon MISSIONVAO-i"></span>MISSIONVAO</a></td>
+      <td>208</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LUMINARAUNDULI"><span class="icon LUMINARAUNDULI-i"></span>LUMINARAUNDULI</a></td>
+      <td>208</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/THEMANDALORIANBESKARARMOR"><span class="icon THEMANDALORIANBESKARARMOR-i"></span>THEMANDALORIANBESKARARMOR</a></td>
+      <td>208</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JUHANI"><span class="icon JUHANI-i"></span>JUHANI</a></td>
+      <td>208</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SAVAGEOPRESS"><span class="icon SAVAGEOPRESS-i"></span>SAVAGEOPRESS</a></td>
+      <td>208</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/AAYLASECURA"><span class="icon AAYLASECURA-i"></span>AAYLASECURA</a></td>
+      <td>208</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIRSTORDERSPECIALFORCESPILOT"><span class="icon FIRSTORDERSPECIALFORCESPILOT-i"></span>FIRSTORDERSPECIALFORCESPILOT</a></td>
+      <td>207</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PAO"><span class="icon PAO-i"></span>PAO</a></td>
+      <td>207</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LOGRAY"><span class="icon LOGRAY-i"></span>LOGRAY</a></td>
+      <td>207</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GARSAXON"><span class="icon GARSAXON-i"></span>GARSAXON</a></td>
+      <td>207</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KITFISTO"><span class="icon KITFISTO-i"></span>KITFISTO</a></td>
+      <td>207</td>
+      <td>2.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EMBO"><span class="icon EMBO-i"></span>EMBO</a></td>
+      <td>207</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FENNECSHAND"><span class="icon FENNECSHAND-i"></span>FENNECSHAND</a></td>
+      <td>207</td>
+      <td>5.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DEATHTROOPER"><span class="icon DEATHTROOPER-i"></span>DEATHTROOPER</a></td>
+      <td>207</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BB8"><span class="icon BB8-i"></span>BB8</a></td>
+      <td>206</td>
+      <td>5.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BAZEMALBUS"><span class="icon BAZEMALBUS-i"></span>BAZEMALBUS</a></td>
+      <td>206</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MOTHERTALZIN"><span class="icon MOTHERTALZIN-i"></span>MOTHERTALZIN</a></td>
+      <td>206</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CHIRRUTIMWE"><span class="icon CHIRRUTIMWE-i"></span>CHIRRUTIMWE</a></td>
+      <td>206</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CARTHONASI"><span class="icon CARTHONASI-i"></span>CARTHONASI</a></td>
+      <td>206</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/C3POCHEWBACCA"><span class="icon C3POCHEWBACCA-i"></span>C3POCHEWBACCA</a></td>
+      <td>206</td>
+      <td>5.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/APPO">APPO</a></td>
+      <td>206</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHTRAYA"><span class="icon DARTHTRAYA-i"></span>DARTHTRAYA</a></td>
+      <td>206</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CAPTAINDROGAN">CAPTAINDROGAN</a></td>
+      <td>206</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HUMANTHUG"><span class="icon HUMANTHUG-i"></span>HUMANTHUG</a></td>
+      <td>206</td>
+      <td>3.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FIRSTORDEREXECUTIONER"><span class="icon FIRSTORDEREXECUTIONER-i"></span>FIRSTORDEREXECUTIONER</a></td>
+      <td>206</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/RESISTANCETROOPER"><span class="icon RESISTANCETROOPER-i"></span>RESISTANCETROOPER</a></td>
+      <td>205</td>
+      <td>3.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PADMEAMIDALA"><span class="icon PADMEAMIDALA-i"></span>PADMEAMIDALA</a></td>
+      <td>205</td>
+      <td>6.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JOLEEBINDO"><span class="icon JOLEEBINDO-i"></span>JOLEEBINDO</a></td>
+      <td>205</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JAWA"><span class="icon JAWA-i"></span>JAWA</a></td>
+      <td>205</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HOTHHAN"><span class="icon HOTHHAN-i"></span>HOTHHAN</a></td>
+      <td>205</td>
+      <td>4.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOUSHH">BOUSHH</a></td>
+      <td>205</td>
+      <td>5.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IMPERIALSUPERCOMMANDO"><span class="icon IMPERIALSUPERCOMMANDO-i"></span>IMPERIALSUPERCOMMANDO</a></td>
+      <td>204</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HOTHLEIA"><span class="icon HOTHLEIA-i"></span>HOTHLEIA</a></td>
+      <td>204</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BODHIROOK"><span class="icon BODHIROOK-i"></span>BODHIROOK</a></td>
+      <td>204</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MARAJADE">MARAJADE</a></td>
+      <td>204</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SHORETROOPER"><span class="icon SHORETROOPER-i"></span>SHORETROOPER</a></td>
+      <td>204</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PADAWANOBIWAN">PADAWANOBIWAN</a></td>
+      <td>204</td>
+      <td>5.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TUSKENSHAMAN"><span class="icon TUSKENSHAMAN-i"></span>TUSKENSHAMAN</a></td>
+      <td>204</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JAWASCAVENGER"><span class="icon JAWASCAVENGER-i"></span>JAWASCAVENGER</a></td>
+      <td>203</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BADBATCHOMEGA"><span class="icon BADBATCHOMEGA-i"></span>BADBATCHOMEGA</a></td>
+      <td>203</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GREATMOTHERS">GREATMOTHERS</a></td>
+      <td>203</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BADBATCHWRECKER"><span class="icon BADBATCHWRECKER-i"></span>BADBATCHWRECKER</a></td>
+      <td>203</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NIGHTSISTERINITIATE"><span class="icon NIGHTSISTERINITIATE-i"></span>NIGHTSISTERINITIATE</a></td>
+      <td>203</td>
+      <td>1.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOSSNASS">BOSSNASS</a></td>
+      <td>203</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EETHKOTH"><span class="icon EETHKOTH-i"></span>EETHKOTH</a></td>
+      <td>203</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GEONOSIANBROODALPHA"><span class="icon GEONOSIANBROODALPHA-i"></span>GEONOSIANBROODALPHA</a></td>
+      <td>203</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHSION"><span class="icon DARTHSION-i"></span>DARTHSION</a></td>
+      <td>203</td>
+      <td>3.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/B1BATTLEDROIDV2"><span class="icon B1BATTLEDROIDV2-i"></span>B1BATTLEDROIDV2</a></td>
+      <td>203</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BADBATCHTECH"><span class="icon BADBATCHTECH-i"></span>BADBATCHTECH</a></td>
+      <td>203</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CANDEROUSORDO"><span class="icon CANDEROUSORDO-i"></span>CANDEROUSORDO</a></td>
+      <td>203</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BADBATCHHUNTER"><span class="icon BADBATCHHUNTER-i"></span>BADBATCHHUNTER</a></td>
+      <td>202</td>
+      <td>3.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DEDRAMEERO">DEDRAMEERO</a></td>
+      <td>202</td>
+      <td>1.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/C3POLEGENDARY"><span class="icon C3POLEGENDARY-i"></span>C3POLEGENDARY</a></td>
+      <td>202</td>
+      <td>6.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CHIEFNEBIT"><span class="icon CHIEFNEBIT-i"></span>CHIEFNEBIT</a></td>
+      <td>202</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KLEYA">KLEYA</a></td>
+      <td>202</td>
+      <td>1.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KXSECURITYDROID">KXSECURITYDROID</a></td>
+      <td>202</td>
+      <td>1.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GAMORREANGUARD"><span class="icon GAMORREANGUARD-i"></span>GAMORREANGUARD</a></td>
+      <td>202</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CINTA">CINTA</a></td>
+      <td>202</td>
+      <td>1.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VEL">VEL</a></td>
+      <td>202</td>
+      <td>1.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAJORPARTAGAZ">MAJORPARTAGAZ</a></td>
+      <td>202</td>
+      <td>1.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KYLEKATARN">KYLEKATARN</a></td>
+      <td>202</td>
+      <td>4.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOKATAN"><span class="icon BOKATAN-i"></span>BOKATAN</a></td>
+      <td>201</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CORUSCANTUNDERWORLDPOLICE"><span class="icon CORUSCANTUNDERWORLDPOLICE-i"></span>CORUSCANTUNDERWORLDPOLICE</a></td>
+      <td>201</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MERRIN">MERRIN</a></td>
+      <td>201</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CAPTAINENOCH">CAPTAINENOCH</a></td>
+      <td>201</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BADBATCHECHO"><span class="icon BADBATCHECHO-i"></span>BADBATCHECHO</a></td>
+      <td>201</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DATHCHA"><span class="icon DATHCHA-i"></span>DATHCHA</a></td>
+      <td>201</td>
+      <td>2.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHTALON">DARTHTALON</a></td>
+      <td>200</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/FOSITHTROOPER"><span class="icon FOSITHTROOPER-i"></span>FOSITHTROOPER</a></td>
+      <td>200</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MASTERQUIGON">MASTERQUIGON</a></td>
+      <td>200</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NIGHTTROOPER">NIGHTTROOPER</a></td>
+      <td>200</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CALKESTIS">CALKESTIS</a></td>
+      <td>200</td>
+      <td>4.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IMAGUNDI"><span class="icon IMAGUNDI-i"></span>IMAGUNDI</a></td>
+      <td>200</td>
+      <td>1.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/AURRA_SING"><span class="icon AURRA_SING-i"></span>AURRA_SING</a></td>
+      <td>200</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STORMTROOPERLUKE">STORMTROOPERLUKE</a></td>
+      <td>199</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MARROK">MARROK</a></td>
+      <td>199</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IG90">IG90</a></td>
+      <td>199</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GUNGANPHALANX">GUNGANPHALANX</a></td>
+      <td>199</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/YOUNGCHEWBACCA"><span class="icon YOUNGCHEWBACCA-i"></span>YOUNGCHEWBACCA</a></td>
+      <td>199</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ENFYSNEST"><span class="icon ENFYSNEST-i"></span>ENFYSNEST</a></td>
+      <td>199</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/YODACHEWBACCA">YODACHEWBACCA</a></td>
+      <td>199</td>
+      <td>2.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DEATHTROOPERPERIDEA">DEATHTROOPERPERIDEA</a></td>
+      <td>198</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CAPTAINTARPALS">CAPTAINTARPALS</a></td>
+      <td>198</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ASAJJDARKDISCIPLE">ASAJJDARKDISCIPLE</a></td>
+      <td>198</td>
+      <td>2.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DASHRENDAR">DASHRENDAR</a></td>
+      <td>197</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SHINHATI">SHINHATI</a></td>
+      <td>197</td>
+      <td>4.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/NIGHTSISTERACOLYTE"><span class="icon NIGHTSISTERACOLYTE-i"></span>NIGHTSISTERACOLYTE</a></td>
+      <td>197</td>
+      <td>2.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KRRSANTAN">KRRSANTAN</a></td>
+      <td>197</td>
+      <td>5.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SCOUTTROOPER_V3">SCOUTTROOPER_V3</a></td>
+      <td>197</td>
+      <td>5.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PRINCESSKNEESAA">PRINCESSKNEESAA</a></td>
+      <td>197</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IDENVERSIOEMPIRE">IDENVERSIOEMPIRE</a></td>
+      <td>197</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/URORRURRR"><span class="icon URORRURRR-i"></span>URORRURRR</a></td>
+      <td>197</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VADERDUELSEND">VADERDUELSEND</a></td>
+      <td>196</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIKNIGHTREVAN"><span class="icon JEDIKNIGHTREVAN-i"></span>JEDIKNIGHTREVAN</a></td>
+      <td>196</td>
+      <td>5.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SAWGERRERA">SAWGERRERA</a></td>
+      <td>196</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CEREJUNDA">CEREJUNDA</a></td>
+      <td>196</td>
+      <td>4.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/RANGETROOPER"><span class="icon RANGETROOPER-i"></span>RANGETROOPER</a></td>
+      <td>196</td>
+      <td>3.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VISASMARR"><span class="icon VISASMARR-i"></span>VISASMARR</a></td>
+      <td>196</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/L3_37"><span class="icon L3_37-i"></span>L3_37</a></td>
+      <td>195</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MORGANELSBETH">MORGANELSBETH</a></td>
+      <td>195</td>
+      <td>5.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PADAWANSABINE">PADAWANSABINE</a></td>
+      <td>195</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/UGNAUGHT"><span class="icon UGNAUGHT-i"></span>UGNAUGHT</a></td>
+      <td>195</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHREVAN"><span class="icon DARTHREVAN-i"></span>DARTHREVAN</a></td>
+      <td>195</td>
+      <td>6.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/INQUISITORBARRISS">INQUISITORBARRISS</a></td>
+      <td>195</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/PAZVIZSLA">PAZVIZSLA</a></td>
+      <td>194</td>
+      <td>5.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/OMEGAS3">OMEGAS3</a></td>
+      <td>194</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ARCTROOPER501ST"><span class="icon ARCTROOPER501ST-i"></span>ARCTROOPER501ST</a></td>
+      <td>194</td>
+      <td>6.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SITHMARAUDER"><span class="icon SITHMARAUDER-i"></span>SITHMARAUDER</a></td>
+      <td>194</td>
+      <td>5.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CROSSHAIRS3">CROSSHAIRS3</a></td>
+      <td>194</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SCORCH">SCORCH</a></td>
+      <td>194</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HONDO">HONDO</a></td>
+      <td>194</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TARFFUL">TARFFUL</a></td>
+      <td>194</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/AMILYNHOLDO"><span class="icon AMILYNHOLDO-i"></span>AMILYNHOLDO</a></td>
+      <td>194</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ADMIRALRADDUS">ADMIRALRADDUS</a></td>
+      <td>193</td>
+      <td>6.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/YOUNGLANDO"><span class="icon YOUNGLANDO-i"></span>YOUNGLANDO</a></td>
+      <td>193</td>
+      <td>3.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BATCHERS3">BATCHERS3</a></td>
+      <td>193</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/QIRA"><span class="icon QIRA-i"></span>QIRA</a></td>
+      <td>193</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EPIXPOE"><span class="icon EPIXPOE-i"></span>EPIXPOE</a></td>
+      <td>193</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/OPERATIVE">OPERATIVE</a></td>
+      <td>193</td>
+      <td>4.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOOMADIER">BOOMADIER</a></td>
+      <td>192</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/REYJEDITRAINING"><span class="icon REYJEDITRAINING-i"></span>REYJEDITRAINING</a></td>
+      <td>192</td>
+      <td>6.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IG12">IG12</a></td>
+      <td>192</td>
+      <td>5.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/YOUNGHAN"><span class="icon YOUNGHAN-i"></span>YOUNGHAN</a></td>
+      <td>191</td>
+      <td>2.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HUNTERS3">HUNTERS3</a></td>
+      <td>191</td>
+      <td>2.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DISGUISEDCLONETROOPER">DISGUISEDCLONETROOPER</a></td>
+      <td>191</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GENERALSYNDULLA">GENERALSYNDULLA</a></td>
+      <td>191</td>
+      <td>3.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STAP">STAP</a></td>
+      <td>191</td>
+      <td>2.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/HUYANG">HUYANG</a></td>
+      <td>191</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/UNDERCOVERLANDO">UNDERCOVERLANDO</a></td>
+      <td>189</td>
+      <td>4.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/WRECKERS3">WRECKERS3</a></td>
+      <td>189</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VANGUARDTEMPLEGUARD">VANGUARDTEMPLEGUARD</a></td>
+      <td>188</td>
+      <td>4.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/50RT">50RT</a></td>
+      <td>188</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/4LOM">4LOM</a></td>
+      <td>188</td>
+      <td>1.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EPIXFINN"><span class="icon EPIXFINN-i"></span>EPIXFINN</a></td>
+      <td>188</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ZUCKUSS">ZUCKUSS</a></td>
+      <td>187</td>
+      <td>1.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BT1">BT1</a></td>
+      <td>187</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/WATTAMBOR"><span class="icon WATTAMBOR-i"></span>WATTAMBOR</a></td>
+      <td>187</td>
+      <td>5.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ARMORER"><span class="icon ARMORER-i"></span>ARMORER</a></td>
+      <td>185</td>
+      <td>2.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TRIPLEZERO">TRIPLEZERO</a></td>
+      <td>185</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JAWAENGINEER"><span class="icon JAWAENGINEER-i"></span>JAWAENGINEER</a></td>
+      <td>185</td>
+      <td>2.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ROSETICO"><span class="icon ROSETICO-i"></span>ROSETICO</a></td>
+      <td>184</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/IMPERIALPROBEDROID"><span class="icon IMPERIALPROBEDROID-i"></span>IMPERIALPROBEDROID</a></td>
+      <td>184</td>
+      <td>2.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GENERALSKYWALKER"><span class="icon GENERALSKYWALKER-i"></span>GENERALSKYWALKER</a></td>
+      <td>184</td>
+      <td>7.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ITHANO">ITHANO</a></td>
+      <td>183</td>
+      <td>2.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/ZORIIBLISS_V2">ZORIIBLISS_V2</a></td>
+      <td>183</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/QUIGGOLD">QUIGGOLD</a></td>
+      <td>182</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SANASTARROS">SANASTARROS</a></td>
+      <td>181</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BRUTUS">BRUTUS</a></td>
+      <td>180</td>
+      <td>3.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHMALAK"><span class="icon DARTHMALAK-i"></span>DARTHMALAK</a></td>
+      <td>180</td>
+      <td>6.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KIX">KIX</a></td>
+      <td>179</td>
+      <td>2.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DEPABILLABA">DEPABILLABA</a></td>
+      <td>179</td>
+      <td>4.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIKNIGHTLUKE"><span class="icon JEDIKNIGHTLUKE-i"></span>JEDIKNIGHTLUKE</a></td>
+      <td>178</td>
+      <td>7.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SUPREMELEADERKYLOREN"><span class="icon SUPREMELEADERKYLOREN-i"></span>SUPREMELEADERKYLOREN</a></td>
+      <td>173</td>
+      <td>8.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/VANE">VANE</a></td>
+      <td>172</td>
+      <td>3.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TUSKENCHIEFTAIN">TUSKENCHIEFTAIN</a></td>
+      <td>171</td>
+      <td>3.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CAPTAINSILVO">CAPTAINSILVO</a></td>
+      <td>171</td>
+      <td>3.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/COMMANDERAHSOKA"><span class="icon COMMANDERAHSOKA-i"></span>COMMANDERAHSOKA</a></td>
+      <td>169</td>
+      <td>7.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TUSKENHUNTRESS">TUSKENHUNTRESS</a></td>
+      <td>166</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STARKILLER">STARKILLER</a></td>
+      <td>163</td>
+      <td>5.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRANDMASTERLUKE"><span class="icon GRANDMASTERLUKE-i"></span>GRANDMASTERLUKE</a></td>
+      <td>159</td>
+      <td>8.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GRANDINQUISITOR">GRANDINQUISITOR</a></td>
+      <td>158</td>
+      <td>6.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIKNIGHTCAL">JEDIKNIGHTCAL</a></td>
+      <td>157</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAULS7"><span class="icon MAULS7-i"></span>MAULS7</a></td>
+      <td>154</td>
+      <td>5.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHBANE">DARTHBANE</a></td>
+      <td>154</td>
+      <td>6.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SITHPALPATINE"><span class="icon SITHPALPATINE-i"></span>SITHPALPATINE</a></td>
+      <td>153</td>
+      <td>7.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TARONMALICOS">TARONMALICOS</a></td>
+      <td>152</td>
+      <td>4.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BENSOLO">BENSOLO</a></td>
+      <td>152</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BOBAFETTSCION">BOBAFETTSCION</a></td>
+      <td>150</td>
+      <td>3.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/KIADIMUNDI"><span class="icon KIADIMUNDI-i"></span>KIADIMUNDI</a></td>
+      <td>149</td>
+      <td>4.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/QUEENAMIDALA">QUEENAMIDALA</a></td>
+      <td>149</td>
+      <td>5.9</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARTHMALGUS">DARTHMALGUS</a></td>
+      <td>148</td>
+      <td>6.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MOFFGIDEONS3">MOFFGIDEONS3</a></td>
+      <td>146</td>
+      <td>3.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GLREY"><span class="icon GLREY-i"></span>GLREY</a></td>
+      <td>146</td>
+      <td>8.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/TRENCH">TRENCH</a></td>
+      <td>138</td>
+      <td>3.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GLLEIA">GLLEIA</a></td>
+      <td>138</td>
+      <td>8.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIMASTERKENOBI"><span class="icon JEDIMASTERKENOBI-i"></span>JEDIMASTERKENOBI</a></td>
+      <td>137</td>
+      <td>8.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JABBATHEHUTT">JABBATHEHUTT</a></td>
+      <td>137</td>
+      <td>7.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LUTHENRAEL">LUTHENRAEL</a></td>
+      <td>133</td>
+      <td>3.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/EZRAEXILE">EZRAEXILE</a></td>
+      <td>131</td>
+      <td>5.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/THIRDSISTER">THIRDSISTER</a></td>
+      <td>126</td>
+      <td>7.1</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/LORDVADER"><span class="icon LORDVADER-i"></span>LORDVADER</a></td>
+      <td>124</td>
+      <td>8.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DARKREY">DARKREY</a></td>
+      <td>120</td>
+      <td>6.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/CASSIANUNDERCOVER">CASSIANUNDERCOVER</a></td>
+      <td>120</td>
+      <td>2.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MANDALORBOKATAN">MANDALORBOKATAN</a></td>
+      <td>117</td>
+      <td>6.7</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAULHATEFUELED">MAULHATEFUELED</a></td>
+      <td>108</td>
+      <td>4.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JARJARBINKS">JARJARBINKS</a></td>
+      <td>106</td>
+      <td>5.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/DOCTORAPHRA">DOCTORAPHRA</a></td>
+      <td>99</td>
+      <td>5.6</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/BAYLANSKOLL">BAYLANSKOLL</a></td>
+      <td>98</td>
+      <td>6.8</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/RACCOON">RACCOON</a></td>
+      <td>97</td>
+      <td>0.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GLAHSOKATANO">GLAHSOKATANO</a></td>
+      <td>93</td>
+      <td>9.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JOCASTANU">JOCASTANU</a></td>
+      <td>90</td>
+      <td>6.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/JEDIMASTERMACEWINDU">JEDIMASTERMACEWINDU</a></td>
+      <td>84</td>
+      <td>7.3</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/STRANGER">STRANGER</a></td>
+      <td>79</td>
+      <td>7.2</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SATELESHAN">SATELESHAN</a></td>
+      <td>78</td>
+      <td>6.4</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/MAZKANATA">MAZKANATA</a></td>
+      <td>72</td>
+      <td>5.5</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/SM33">SM33</a></td>
+      <td>71</td>
+      <td>7.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/GLHONDO">GLHONDO</a></td>
+      <td>61</td>
+      <td>9.0</td>
+    </tr>
+    
+    <tr>
+      <td><a class="char" href="/c/COBBVANTH">COBBVANTH</a></td>
+      <td>45</td>
+      <td>6.0</td>
+    </tr>
+    
+  </table>
+  <p class="note">Showing raw base IDs, not display names — no name-resolution data source wired up yet (Comlink's roster data only returns base IDs).</p>
+  
+<style>
+  th { cursor: pointer; user-select: none; }
+  th.sorted-asc::after { content: " B2"; }
+  th.sorted-desc::after { content: " BC"; }
+</style>
+<script>
+  function sortTable(th) {
+    const table = th.closest("table");
+    const colIndex = th.cellIndex;
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
+    const asc = !th.classList.contains("sorted-asc");
+    rows.sort((a, b) => {
+      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const aNum = parseFloat(aText), bNum = parseFloat(bText);
+      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Community</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1, h2 { font-size: 20px; }
+    h2 { font-size: 15px; color: #58a6ff; margin-top: 32px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    th, td { border: 1px solid #30363d; padding: 6px 10px; text-align: left; font-size: 13px; }
+    th { background: #161b22; cursor: pointer; user-select: none; }
+    th.sorted-asc::after { content: " ▲"; }
+    th.sorted-desc::after { content: " ▼"; }
+    tr:nth-child(even) { background: #11161c; }
+    tr.totals { font-weight: bold; background: #1c2530; }
+    a.guild-link { color: #c9d1d9; text-decoration: none; }
+    a.guild-link:hover { color: #58a6ff; }
+    .empty { color: #6e7681; font-style: italic; }
+    .chart-card { background: #ffffff; border-radius: 6px; padding: 12px; margin: 8px 0 20px 0; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/gl-readiness">GL Readiness</a><a href="/leaderboards">Leaderboards</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Community</h1>
+  <p style="font-size:12px;margin:4px 0 12px">
+    <a href="/alliance/mods" style="color:#58a6ff;">📊 Alliance Mod Report</a>
+  </p>
+  <a href="/export/community.csv" style="color:#3fb950;">Export CSV</a>
+
+  
+  <table id="communityTable">
+    <tr>
+      <th onclick="sortTable(this)">Guild</th>
+      <th onclick="sortTable(this)">Members</th>
+      <th onclick="sortTable(this)">Total GP</th>
+      <th onclick="sortTable(this)">Last TB Stars</th>
+      <th onclick="sortTable(this)">Recent TWs</th>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/oddworld-abe-exodus">Oddworld Abe Exodus</a></td>
+      <td>50</td>
+      <td>724,516,662</td>
+      <td>
+        
+          45
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/thick-as-thieves">Thick as Thieves</a></td>
+      <td>50</td>
+      <td>558,033,652</td>
+      <td>
+        
+          32
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/banes-disciples">Banes disciples</a></td>
+      <td>47</td>
+      <td>455,386,100</td>
+      <td>
+        
+          27
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/enders">Ender&#39;s</a></td>
+      <td>50</td>
+      <td>364,266,572</td>
+      <td>
+        
+          20
+        
+      </td>
+      <td>
+        
+          8 recorded
+        
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <td><a class="guild-link" href="/guild/return-of-the-oddballs">Return of the Oddballs</a></td>
+      <td>17</td>
+      <td>151,140,433</td>
+      <td>
+        
+          18
+        
+      </td>
+      <td>
+        —
+      </td>
+    </tr>
+    
+    <tr class="totals">
+      <td>5 guilds</td>
+      <td>214</td>
+      <td>2,253,343,419</td>
+      <td></td><td></td>
+    </tr>
+  </table>
+
+  <h2>Community Total GP Over Time</h2>
+  <div class="chart-card"><div id="community-gp-chart"></div></div>
+  <h2>Community Total Members Over Time</h2>
+  <div class="chart-card"><div id="community-player-chart"></div></div>
+  <h2>Guild GP Over Time</h2>
+  <div class="chart-card"><div id="guild-gp-chart"></div></div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="/static/graph.js"></script>
+  <script>
+    var c1 = new Chart("/data/community-gp-stats.json", null, "total");
+    c1.id = "community-gp-chart"; c1.height = 350; c1.width = 900; c1.tightScale = true;
+    c1.display();
+    var c2 = new Chart("/data/community-player-stats.json", null, "total");
+    c2.id = "community-player-chart"; c2.height = 300; c2.width = 900; c2.tightScale = true;
+    c2.display();
+    var c3 = new Chart("/data/guilds-gp-stats.json", null, "total");
+    c3.id = "guild-gp-chart"; c3.height = 350; c3.width = 900; c3.tightScale = true;
+    c3.display();
+
+    function sortTable(th) {
+      const table = th.closest("table");
+      const colIndex = th.cellIndex;
+      const rows = Array.from(table.querySelectorAll("tr")).slice(1, -1);
+      const asc = !th.classList.contains("sorted-asc");
+      rows.sort((a, b) => {
+        const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+        const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+        const aNum = parseFloat(aText), bNum = parseFloat(bText);
+        if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
+        return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+      const tbody = table;
+      const footer = table.querySelector("tr.totals");
+      rows.forEach(r => tbody.insertBefore(r, footer));
+      table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+      th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+    }
+  </script>
+  
+</body>
+</html>

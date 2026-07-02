@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "h5KbJTftQ-6iG-FymeWuyg",
+      "name": "Smudlax",
+      "values": {
+        "total": [
+          0,
+          403,
+          403
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

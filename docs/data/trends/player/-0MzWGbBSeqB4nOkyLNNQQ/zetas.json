@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "-0MzWGbBSeqB4nOkyLNNQQ",
+      "name": "Stephen Mejia",
+      "values": {
+        "total": [
+          0,
+          339,
+          339
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

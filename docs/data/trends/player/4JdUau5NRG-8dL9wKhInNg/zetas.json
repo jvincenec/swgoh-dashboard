@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "4JdUau5NRG-8dL9wKhInNg",
+      "name": "Rhody",
+      "values": {
+        "total": [
+          0,
+          321,
+          321
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

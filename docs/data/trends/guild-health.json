@@ -1,0 +1,65 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Banes disciples",
+      "name": "Banes disciples",
+      "values": {
+        "total": [
+          68.5,
+          88.5,
+          88.5
+        ]
+      }
+    },
+    {
+      "id": "Ender's",
+      "name": "Ender's",
+      "values": {
+        "total": [
+          53.8,
+          73.8,
+          73.8
+        ]
+      }
+    },
+    {
+      "id": "Oddworld Abe Exodus",
+      "name": "Oddworld Abe Exodus",
+      "values": {
+        "total": [
+          72.8,
+          92.8,
+          92.8
+        ]
+      }
+    },
+    {
+      "id": "Return of the Oddballs",
+      "name": "Return of the Oddballs",
+      "values": {
+        "total": [
+          66.4,
+          87.1,
+          87.1
+        ]
+      }
+    },
+    {
+      "id": "Thick as Thieves",
+      "name": "Thick as Thieves",
+      "values": {
+        "total": [
+          68.0,
+          88.0,
+          88.0
+        ]
+      }
+    }
+  ],
+  "y": "Health Score"
+}

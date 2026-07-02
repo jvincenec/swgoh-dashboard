@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "ugzcUho2SMqrf0yer6KrkA",
+      "name": "bupsbricks",
+      "values": {
+        "total": [
+          1081,
+          1092,
+          1092
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

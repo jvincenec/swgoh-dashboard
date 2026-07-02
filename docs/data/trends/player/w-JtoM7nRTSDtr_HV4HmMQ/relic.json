@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "w-JtoM7nRTSDtr_HV4HmMQ",
+      "name": "Doo Doo",
+      "values": {
+        "total": [
+          1606,
+          1606,
+          1606
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

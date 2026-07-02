@@ -1,0 +1,197 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Ahsoka",
+      "name": "Ahsoka",
+      "values": {
+        "total": [
+          92,
+          93,
+          93
+        ]
+      }
+    },
+    {
+      "id": "Chimaera",
+      "name": "Chimaera",
+      "values": {
+        "total": [
+          204,
+          206,
+          206
+        ]
+      }
+    },
+    {
+      "id": "DR",
+      "name": "DR",
+      "values": {
+        "total": [
+          193,
+          195,
+          195
+        ]
+      }
+    },
+    {
+      "id": "Exec",
+      "name": "Exec",
+      "values": {
+        "total": [
+          145,
+          146,
+          146
+        ]
+      }
+    },
+    {
+      "id": "GAS",
+      "name": "GAS",
+      "values": {
+        "total": [
+          183,
+          184,
+          184
+        ]
+      }
+    },
+    {
+      "id": "JKL",
+      "name": "JKL",
+      "values": {
+        "total": [
+          177,
+          178,
+          178
+        ]
+      }
+    },
+    {
+      "id": "JKR",
+      "name": "JKR",
+      "values": {
+        "total": [
+          195,
+          196,
+          196
+        ]
+      }
+    },
+    {
+      "id": "JMK",
+      "name": "JMK",
+      "values": {
+        "total": [
+          136,
+          137,
+          137
+        ]
+      }
+    },
+    {
+      "id": "JML",
+      "name": "JML",
+      "values": {
+        "total": [
+          158,
+          159,
+          159
+        ]
+      }
+    },
+    {
+      "id": "Jabba",
+      "name": "Jabba",
+      "values": {
+        "total": [
+          136,
+          137,
+          137
+        ]
+      }
+    },
+    {
+      "id": "LV",
+      "name": "LV",
+      "values": {
+        "total": [
+          123,
+          124,
+          124
+        ]
+      }
+    },
+    {
+      "id": "Mal",
+      "name": "Mal",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "Malak",
+      "name": "Malak",
+      "values": {
+        "total": [
+          179,
+          180,
+          180
+        ]
+      }
+    },
+    {
+      "id": "Neg",
+      "name": "Neg",
+      "values": {
+        "total": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "Rey",
+      "name": "Rey",
+      "values": {
+        "total": [
+          145,
+          146,
+          146
+        ]
+      }
+    },
+    {
+      "id": "SEE",
+      "name": "SEE",
+      "values": {
+        "total": [
+          152,
+          153,
+          153
+        ]
+      }
+    },
+    {
+      "id": "SLK",
+      "name": "SLK",
+      "values": {
+        "total": [
+          172,
+          173,
+          173
+        ]
+      }
+    }
+  ],
+  "y": "Players Who Own"
+}

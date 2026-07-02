@@ -1,0 +1,77 @@
+{
+  "dates": [
+    "06/30/2026",
+    "06/30/2026",
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "R97aQ9FiRvejErBrwW82HQ",
+      "name": "Banes disciples",
+      "values": {
+        "total": [
+          454553160,
+          454722226,
+          454722226,
+          455386100,
+          455386100
+        ]
+      }
+    },
+    {
+      "id": "MhiIQJEqThCKKv2M1P3M_w",
+      "name": "Ender's",
+      "values": {
+        "total": [
+          363370746,
+          363684291,
+          363684291,
+          364266572,
+          364266572
+        ]
+      }
+    },
+    {
+      "id": "dUOhVxkMTh6EBP0OVmxWpA",
+      "name": "Oddworld Abe Exodus",
+      "values": {
+        "total": [
+          723931522,
+          724058461,
+          724058461,
+          724516662,
+          724516662
+        ]
+      }
+    },
+    {
+      "id": "lHWoh-HiSbWmV5bYKtZAvg",
+      "name": "Return of the Oddballs",
+      "values": {
+        "total": [
+          138747794,
+          151094878,
+          151094878,
+          151140433,
+          151140433
+        ]
+      }
+    },
+    {
+      "id": "MJbzxyoLSdeIQ3K04qWq1Q",
+      "name": "Thick as Thieves",
+      "values": {
+        "total": [
+          557580640,
+          557779187,
+          557779187,
+          558033652,
+          558033652
+        ]
+      }
+    }
+  ],
+  "y": "Galactic Power"
+}

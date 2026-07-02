@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "FtUbiShJTMWIUMURwVfEQw",
+      "name": "Finrod Felagund",
+      "values": {
+        "total": [
+          734,
+          735,
+          735
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

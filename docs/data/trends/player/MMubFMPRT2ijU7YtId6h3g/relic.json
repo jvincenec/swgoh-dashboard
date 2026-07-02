@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "MMubFMPRT2ijU7YtId6h3g",
+      "name": "Dubi Nuz",
+      "values": {
+        "total": [
+          1130,
+          1130,
+          1130
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

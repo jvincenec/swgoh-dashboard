@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "7ywzmVuuQ0SFSpYJqzz4dg",
+      "name": "BORG",
+      "values": {
+        "total": [
+          2186,
+          2186,
+          2186
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

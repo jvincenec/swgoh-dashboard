@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "I_gHIEnqTMqGr39TeeLVbg",
+      "name": "Fida",
+      "values": {
+        "total": [
+          0,
+          460,
+          460
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

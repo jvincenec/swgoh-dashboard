@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "x5oXtZ8oR5yyXBKwozdiig",
+      "name": "Hootsman92",
+      "values": {
+        "total": [
+          0,
+          333,
+          333
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

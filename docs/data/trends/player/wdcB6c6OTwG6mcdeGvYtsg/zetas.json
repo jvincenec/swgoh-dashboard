@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "wdcB6c6OTwG6mcdeGvYtsg",
+      "name": "Mol",
+      "values": {
+        "total": [
+          0,
+          45,
+          45
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

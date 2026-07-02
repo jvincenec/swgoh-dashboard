@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "0SRA3OpRQP6bHGfRIrrvmg",
+      "name": "Inquistadadur",
+      "values": {
+        "total": [
+          213,
+          213,
+          213
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "oK8pPcE_SrKd-achAdKjeA",
+      "name": "Mulzar",
+      "values": {
+        "total": [
+          0,
+          450,
+          450
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

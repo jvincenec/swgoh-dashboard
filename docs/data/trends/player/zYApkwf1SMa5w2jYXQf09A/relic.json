@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "zYApkwf1SMa5w2jYXQf09A",
+      "name": "Inspector Frost",
+      "values": {
+        "total": [
+          1385,
+          1385,
+          1385
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

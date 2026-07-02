@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "-0MzWGbBSeqB4nOkyLNNQQ",
+      "name": "Stephen Mejia",
+      "values": {
+        "total": [
+          1248,
+          1249,
+          1250
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

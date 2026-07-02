@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "fx_6W57aRxi4H8husL5UjA",
+      "name": "Taggart Wag II",
+      "values": {
+        "total": [
+          2586,
+          2586,
+          2586
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

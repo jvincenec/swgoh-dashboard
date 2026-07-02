@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "hXvnib_eQ8yypJ6uslYeig",
+      "name": "Phantom",
+      "values": {
+        "total": [
+          2035,
+          2037,
+          2037
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

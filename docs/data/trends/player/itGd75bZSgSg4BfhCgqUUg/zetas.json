@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "itGd75bZSgSg4BfhCgqUUg",
+      "name": "Calaveylon Kwai",
+      "values": {
+        "total": [
+          0,
+          432,
+          432
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

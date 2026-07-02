@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "UobEuzkzQWewfXvlfMyteQ",
+      "name": "SithMaster",
+      "values": {
+        "total": [
+          1728,
+          1728,
+          1728
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "P8q5nKLnSUSWZ7InryjDJA",
+      "name": "Yosoylechuga",
+      "values": {
+        "total": [
+          0,
+          175,
+          175
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

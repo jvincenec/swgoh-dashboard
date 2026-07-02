@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "lRfkClpLRuy85eXeBqWbWQ",
+      "name": "skytalent",
+      "values": {
+        "total": [
+          0,
+          468,
+          468
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

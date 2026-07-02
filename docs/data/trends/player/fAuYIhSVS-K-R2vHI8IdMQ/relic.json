@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "fAuYIhSVS-K-R2vHI8IdMQ",
+      "name": "BlockiestHalo",
+      "values": {
+        "total": [
+          741,
+          741,
+          741
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

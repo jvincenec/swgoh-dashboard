@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "MOMsrAgTT-mAAAu24u9c8w",
+      "name": "Marvin the wise",
+      "values": {
+        "total": [
+          141,
+          141,
+          141
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

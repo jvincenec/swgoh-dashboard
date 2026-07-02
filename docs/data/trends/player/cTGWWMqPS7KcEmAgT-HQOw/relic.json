@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "cTGWWMqPS7KcEmAgT-HQOw",
+      "name": "Rick Deckard",
+      "values": {
+        "total": [
+          2194,
+          2194,
+          2194
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

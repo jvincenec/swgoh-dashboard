@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "GCIkJ40oRIucdS5JyikOXw",
+      "name": "Orzo Kast",
+      "values": {
+        "total": [
+          1041,
+          1041,
+          1041
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "Jf_ZoE8zTYqlje_iAbMgCw",
+      "name": "Meat3",
+      "values": {
+        "total": [
+          0,
+          469,
+          469
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

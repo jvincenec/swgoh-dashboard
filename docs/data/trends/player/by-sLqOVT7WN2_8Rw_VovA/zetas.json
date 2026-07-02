@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "by-sLqOVT7WN2_8Rw_VovA",
+      "name": "Force Ghost",
+      "values": {
+        "total": [
+          0,
+          461,
+          461
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

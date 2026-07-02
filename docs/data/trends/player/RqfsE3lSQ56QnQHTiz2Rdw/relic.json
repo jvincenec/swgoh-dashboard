@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "RqfsE3lSQ56QnQHTiz2Rdw",
+      "name": "IG88",
+      "values": {
+        "total": [
+          1610,
+          1620,
+          1620
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

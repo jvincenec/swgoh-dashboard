@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "cepsv2KwQhOERd_2QQI1pw",
+      "name": "87th legion",
+      "values": {
+        "total": [
+          0,
+          386,
+          386
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

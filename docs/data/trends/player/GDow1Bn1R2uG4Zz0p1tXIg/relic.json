@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "GDow1Bn1R2uG4Zz0p1tXIg",
+      "name": "Crush290",
+      "values": {
+        "total": [
+          1295,
+          1295,
+          1295
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

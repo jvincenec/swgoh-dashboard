@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "MMRibuHDS0iF9gkmzFBeNw",
+      "name": "Andrew Wiggin",
+      "values": {
+        "total": [
+          1712,
+          1715,
+          1715
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

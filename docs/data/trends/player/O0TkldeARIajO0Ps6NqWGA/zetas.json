@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "O0TkldeARIajO0Ps6NqWGA",
+      "name": "Tilly Time",
+      "values": {
+        "total": [
+          0,
+          345,
+          345
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

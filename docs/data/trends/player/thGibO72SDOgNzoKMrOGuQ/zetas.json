@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "thGibO72SDOgNzoKMrOGuQ",
+      "name": "IsawaSteve",
+      "values": {
+        "total": [
+          0,
+          469,
+          469
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

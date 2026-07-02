@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "bV15CmecRW67XT9dqijVuw",
+      "name": "carovnicek",
+      "values": {
+        "total": [
+          335,
+          335,
+          335
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

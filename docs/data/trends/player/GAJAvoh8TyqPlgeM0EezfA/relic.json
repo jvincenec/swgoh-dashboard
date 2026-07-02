@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "GAJAvoh8TyqPlgeM0EezfA",
+      "name": "Nevermind",
+      "values": {
+        "total": [
+          2116,
+          2117,
+          2117
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

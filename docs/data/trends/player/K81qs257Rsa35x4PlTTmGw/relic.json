@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "K81qs257Rsa35x4PlTTmGw",
+      "name": "Syfo Dyaz",
+      "values": {
+        "total": [
+          1495,
+          1497,
+          1497
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

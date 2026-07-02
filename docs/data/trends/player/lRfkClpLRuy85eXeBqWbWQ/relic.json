@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "lRfkClpLRuy85eXeBqWbWQ",
+      "name": "skytalent",
+      "values": {
+        "total": [
+          1849,
+          1849,
+          1849
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

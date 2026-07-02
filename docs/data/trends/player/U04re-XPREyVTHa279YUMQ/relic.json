@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "U04re-XPREyVTHa279YUMQ",
+      "name": "Alatac",
+      "values": {
+        "total": [
+          1962,
+          1962,
+          1962
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

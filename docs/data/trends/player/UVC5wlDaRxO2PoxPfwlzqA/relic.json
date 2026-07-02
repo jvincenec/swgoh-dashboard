@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "UVC5wlDaRxO2PoxPfwlzqA",
+      "name": "Mol Eliza",
+      "values": {
+        "total": [
+          90,
+          90,
+          90
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "RWJOxgBKSGOTCr35Qf1n7A",
+      "name": "EmeraldAssassin",
+      "values": {
+        "total": [
+          0,
+          88,
+          88
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "yt8BxQPmRQe6ANs8MLwh3g",
+      "name": "Sneeuw Bal",
+      "values": {
+        "total": [
+          1059,
+          1059,
+          1059
+        ]
+      }
+    }
+  ],
+  "y": "Relic Total"
+}

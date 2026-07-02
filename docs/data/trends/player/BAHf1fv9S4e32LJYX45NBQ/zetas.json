@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "BAHf1fv9S4e32LJYX45NBQ",
+      "name": "Loreck Avery",
+      "values": {
+        "total": [
+          0,
+          180,
+          180
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}

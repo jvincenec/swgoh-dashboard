@@ -1,0 +1,21 @@
+{
+  "dates": [
+    "07/01/2026",
+    "07/01/2026",
+    "07/01/2026"
+  ],
+  "series": [
+    {
+      "id": "QbQfJy7XQXaOPduiP3SXXg",
+      "name": "Cal",
+      "values": {
+        "total": [
+          0,
+          162,
+          162
+        ]
+      }
+    }
+  ],
+  "y": "Zetas"
+}
