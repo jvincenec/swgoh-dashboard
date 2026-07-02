@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Guilds</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+    th, td { border: 1px solid #30363d; padding: 6px 10px; text-align: left; font-size: 13px; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .empty { color: #6e7681; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/guilds">Guilds</a><a href="/history">History</a></nav>
+  <h1>Tracked Guilds</h1>
+  {% if not guilds %}
+    <p class="empty">No guilds tracked yet — run fetch_guilds.py first.</p>
+  {% else %}
+  <table>
+    <tr><th>Guild</th><th>Members</th><th>Guild GP</th></tr>
+    {% for g in guilds %}
+    <tr>
+      <td>{{ g.name }}</td>
+      <td>{{ g.member_count }}</td>
+      <td>{{ "{:,}".format(g.guild_gp or 0) }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</body>
+</html>

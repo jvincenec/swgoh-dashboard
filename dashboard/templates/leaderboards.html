@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Guild Leaderboards</title>
+  <style>
+    body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+    h1{font-size:18px}
+    nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+    table{border-collapse:collapse;width:100%;max-width:700px;font-size:13px}
+    th,td{border:1px solid #21262d;padding:6px 12px}
+    th{background:#161b22;color:#58a6ff}
+    tr:nth-child(even){background:#0d1117}tr:nth-child(odd){background:#11161c}tr:hover{background:#1c2530}
+    .note{color:#6e7681;font-size:11px;margin:6px 0}
+    a.pl{color:#58a6ff;text-decoration:none}
+    .rank{color:#e3b341;font-weight:bold}
+  </style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/gl-readiness">GL Readiness</a></nav>
+<h1>Guild Leaderboards</h1>
+<p class="note">GP rank = global position among all guilds. Only top 200 guilds appear; others show "outside top 200".<br>
+Run <code>fetch_leaderboards.py</code> to refresh.</p>
+
+<table>
+  <tr><th>Guild</th><th>Total GP</th><th>GP Rank (Global)</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td><a class="pl" href="/guild/{{ r.slug }}">{{ r.name }}</a></td>
+    <td>{{ "%.1fm"|format(r.gp/1e6) if r.gp else "—" }}</td>
+    <td>{% if r.gp_rank %}<span class="rank">#{{ r.gp_rank }}</span>{% else %}<span style="color:#6e7681">outside top 200</span>{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% if not rows %}
+<p style="color:#6e7681">No leaderboard data yet — run: <code>.env\Scripts\python.exe fetch_leaderboards.py</code></p>
+{% endif %}
+</body>
+</html>

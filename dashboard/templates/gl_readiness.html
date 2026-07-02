@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>GL Readiness</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+    h1{font-size:18px}h2{font-size:13px;color:#58a6ff;margin:16px 0 4px}
+    nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+    table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse}
+    table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:5px 8px;white-space:nowrap}
+    table.dataTable tbody td{border:1px solid #21262d;padding:3px 7px;white-space:nowrap;font-size:12px}
+    table.dataTable tbody tr:nth-child(even){background:#0d1117}
+    table.dataTable tbody tr:nth-child(odd){background:#11161c}
+    table.dataTable tbody tr:hover{background:#1c2530}
+    .dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+    .dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+    .paginate_button{color:#58a6ff !important}
+    .note{color:#6e7681;font-size:11px;margin:6px 0}
+    .owned{color:#3fb950;font-weight:bold}.close{color:#e3b341}.far{color:#f85149}.none{color:#6e7681}
+    a.pl{color:#58a6ff;text-decoration:none}
+    .legend{font-size:11px;margin:8px 0;display:flex;gap:16px}
+    .legend span{padding:2px 8px;border-radius:4px}
+  </style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/leaderboards">Leaderboards</a></nav>
+<h1>GL Readiness — Alliance</h1>
+<div class="legend">
+  <span style="background:#1a3a1a;color:#3fb950">&#10003; Owned</span>
+  <span style="background:#3a3a1a;color:#e3b341">&#9650; Close</span>
+  <span style="background:#3a1a1a;color:#f85149">&#10007; Missing</span>
+  <span style="background:#1a1a2a;color:#6e7681">— No data</span>
+</div>
+<p class="note">Requirements based on confirmed game journey data. Sorted by number of GLs owned descending.</p>
+
+<table id="tbl" class="display" style="width:100%">
+  <thead><tr>
+    <th>Player</th><th>Guild</th><th>GLs Owned</th>
+    {% for gl_id, gl in all_gls.items() %}
+    <th title="{{ gl.name }}">{{ gl.name[:8] }}</th>
+    {% endfor %}
+  </tr></thead>
+  <tbody>
+  {% for r in rows %}
+  <tr>
+    <td><a class="pl" href="/player/{{ r.ally_code }}">{{ r.name }}</a></td>
+    <td>{{ r.guild }}</td>
+    <td data-order="{{ r.gls.values()|selectattr('owned')|list|length }}">
+      <strong style="color:#3fb950">{{ r.gls.values()|selectattr('owned')|list|length }}</strong>/{{ all_gls|length }}
+    </td>
+    {% for gl_id, gl in all_gls.items() %}
+    {% set g = r.gls.get(gl_id, {}) %}
+    {% if g.get('owned') %}
+    <td data-order="999" style="background:#1a3a1a" title="Owned R{{ g.get('relic',0) }}">
+      <span class="owned">R{{ g.get('relic',0) }}</span>
+    </td>
+    {% elif g.get('total') %}
+    {% set pct = (g.met / g.total * 100)|int %}
+    <td data-order="{{ pct }}" style="background:{% if pct >= 75 %}#3a3a1a{% elif pct >= 40 %}#2a1a1a{% else %}#1a1a1a{% endif %}"
+        title="{{ g.met }}/{{ g.total }} reqs met&#10;{% for gap in g.gaps[:3] %}{{ gap.base_id }}: have R{{ gap.have_relic }}/G{{ gap.have_gear }} need R{{ gap.need_relic }}/G{{ gap.need_gear }}&#10;{% endfor %}">
+      <span class="{% if pct >= 75 %}close{% else %}far{% endif %}">{{ g.met }}/{{ g.total }}</span>
+    </td>
+    {% else %}
+    <td data-order="0"><span class="none">—</span></td>
+    {% endif %}
+    {% endfor %}
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){
+  $('#tbl').DataTable({paging:true,pageLength:25,info:true,fixedHeader:true,scrollX:true,order:[[2,'desc']]});
+});</script>
+</body>
+</html>

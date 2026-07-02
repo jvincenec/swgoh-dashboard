@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Players</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/4.3.0/css/fixedColumns.dataTables.min.css">
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 16px; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 14px; color: #58a6ff; margin: 20px 0 4px; }
+    nav a { color: #58a6ff; margin-right: 14px; text-decoration: none; font-size: 13px; }
+    .dataTables_wrapper { font-size: 12px; }
+    table.dataTable { background: #0d1117; color: #c9d1d9; border-collapse: collapse; }
+    table.dataTable thead th {
+      background: #161b22; color: #58a6ff; border-bottom: 1px solid #30363d;
+      padding: 6px 8px; white-space: nowrap;
+    }
+    table.dataTable tbody td { border: 1px solid #21262d; padding: 4px 8px; white-space: nowrap; }
+    table.dataTable tbody tr:nth-child(even) { background: #0d1117; }
+    table.dataTable tbody tr:nth-child(odd)  { background: #11161c; }
+    table.dataTable tbody tr:hover { background: #1c2530; }
+    .dataTables_filter input, .dataTables_length select {
+      background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 3px 6px;
+    }
+    .dataTables_info, .dataTables_paginate { color: #6e7681; font-size: 11px; }
+    .paginate_button { color: #58a6ff !important; }
+    .paginate_button.current { background: #1c2530 !important; color: #c9d1d9 !important; }
+    .own1 { color: #3fb950; text-align: center; }
+    .own0 { color: #6e7681; text-align: center; }
+    .empty { color: #6e7681; font-style: italic; }
+    .note { color: #6e7681; font-size: 11px; margin: 6px 0; }
+    .guild-header { margin-top: 28px; padding: 6px 10px; background: #161b22; border-left: 3px solid #58a6ff; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/gl-readiness">GL Readiness</a><a href="/leaderboards">Leaderboards</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Players</h1>
+  <a href="/export/players.csv" style="color:#3fb950; font-size:12px;">Export CSV</a>
+  <p class="note">DataTables search works across all columns. Click headers to sort. Gear Score = (G13+ + R5+ + Relic/5) / chars_gp × 100K. Mod Score requires re-running fetch_player_rosters.py (column shows — until then). Balance = LS chars owned − DS chars owned.</p>
+
+  {% if not players %}
+    <p class="empty">No player data — run fetch_guilds.py first.</p>
+  {% else %}
+
+  {% set ns = namespace(current_guild=None) %}
+  {% for p in players %}
+    {% if p.guild_name != ns.current_guild %}
+      {% if ns.current_guild is not none %}</table>{% endif %}
+      <div class="guild-header"><strong>{{ p.guild_name }}</strong></div>
+      <table class="dtable display" style="width:100%">
+        <thead><tr>
+          <th title="Player name">Name</th>
+          <th title="Galactic Power">GP</th>
+          <th title="Character GP">Chars GP</th>
+          <th title="Ships GP">Ships GP</th>
+          <th title="Chars/Ships ratio">Ratio</th>
+          <th title="Light side minus dark side chars owned">Balance</th>
+          <th title="# mods speed secondary ≥15 / chars_gp / 100K — needs roster refetch">Mod Score</th>
+          <th title="(G13+ + R5+ + Relic/5) / chars_gp / 100K">Gear Score</th>
+          <th title="Total relic levels">Relics</th>
+          <th title="7-star units">7★</th>
+          <th>R5+</th><th>G13+</th><th>G12+</th><th>G10+</th><th title="Zeta upgrades">Zetas</th><th title="Omicron upgrades">Omicrons</th>
+          {% for label in p.named.keys() %}<th title="{{ label }}">{{ label }}</th>{% endfor %}
+        </tr></thead>
+        <tbody>
+      {% set ns.current_guild = p.guild_name %}
+    {% endif %}
+    <tr>
+      <td><a href="/player/{{ p.ally_code }}" style="color:#58a6ff; text-decoration:none;">{{ p.name }}</a></td>
+      <td data-order="{{ p.gp or 0 }}">{{ "%.1fm"|format((p.gp or 0)/1e6) if (p.gp or 0) > 1e6 else "{:,}".format(p.gp or 0) }}</td>
+      <td data-order="{{ p.chars_gp or 0 }}">{{ "%.1fm"|format((p.chars_gp or 0)/1e6) if (p.chars_gp or 0) > 1e6 else "{:,}".format(p.chars_gp or 0) }}</td>
+      <td data-order="{{ p.ships_gp or 0 }}">{{ "%.1fm"|format((p.ships_gp or 0)/1e6) if (p.ships_gp or 0) > 1e6 else "{:,}".format(p.ships_gp or 0) }}</td>
+      <td>{{ "%.0f"|format((p.chars_gp or 0) / ((p.ships_gp or 1) or 1) * 100) if p.ships_gp else "—" }}</td>
+      <td data-order="{{ p.balance if p.balance is not none else 0 }}" {% if p.balance is not none %}title="{{ p.balance }}"{% endif %}>{{ p.balance_label if p.balance_label is not none else "—" }}</td>
+      <td>{{ "%.2f"|format(p.mod_score) if p.mod_score is not none else "—" }}</td>
+      <td data-order="{{ p.gear_score or 0 }}">{{ "%.2f"|format(p.gear_score) if p.gear_score is not none else "—" }}</td>
+      <td data-order="{{ p.relic_total or 0 }}">{{ p.relic_total if p.relic_total is not none else "—" }}</td>
+      <td data-order="{{ p.seven_star or 0 }}">{{ p.seven_star if p.seven_star is not none else "—" }}</td>
+      <td data-order="{{ p.r5_plus or 0 }}">{{ p.r5_plus if p.r5_plus is not none else "—" }}</td>
+      <td data-order="{{ p.g13_plus or 0 }}">{{ p.g13_plus if p.g13_plus is not none else "—" }}</td>
+      <td data-order="{{ p.g12_plus or 0 }}">{{ p.g12_plus if p.g12_plus is not none else "—" }}</td>
+      <td data-order="{{ p.g10_plus or 0 }}">{{ p.g10_plus if p.g10_plus is not none else "—" }}</td>
+      <td data-order="{{ p.zeta_count or 0 }}">{{ p.zeta_count if p.zeta_count else "—" }}</td>
+      <td data-order="{{ p.omicron_count or 0 }}">{{ p.omicron_count if p.omicron_count else "—" }}</td>
+      {% if p.named %}
+        {% for label, owns in p.named.items() %}
+        <td class="{{ 'own1' if owns else 'own0' }}" data-order="{{ owns }}">{{ "✓" if owns else "·" }}</td>
+        {% endfor %}
+      {% endif %}
+    </tr>
+  {% endfor %}
+  {% if players %}</tbody></table>{% endif %}
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".dtable").DataTable({
+        paging: false,
+        info: false,
+        fixedHeader: true,
+        orderCellsTop: true,
+      });
+    });
+  </script>
+  {% endif %}
+</body>
+</html>

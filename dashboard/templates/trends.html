@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH — Trends</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 14px; color: #58a6ff; margin: 28px 0 4px; }
+    nav a { color: #58a6ff; margin-right: 14px; text-decoration: none; font-size: 13px; }
+    .chart-card { background: #fff; border-radius: 6px; padding: 12px; margin: 6px 0 20px; overflow-x: auto; }
+    .note { color: #6e7681; font-size: 11px; margin: 4px 0 8px; }
+    .empty { color: #6e7681; font-style: italic; }
+    select { background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 5px 10px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Trends</h1>
+  <p class="note">Powered by compact stats snapshots written each time fetch_player_rosters.py runs. {{ snap_count }} snapshot(s) collected so far — charts need ≥2 to draw a line.</p>
+
+  {% if not has_data %}
+  <p class="empty">Not enough data yet — run fetch_player_rosters.py at least twice (on different days) to see trends. Each run writes one snapshot.</p>
+  {% else %}
+
+  <h2>Alliance — Total Relic Levels</h2>
+  <div class="chart-card"><div id="allianceRelicChart"></div></div>
+
+  <h2>Alliance — Total R5+ Units</h2>
+  <div class="chart-card"><div id="allianceR5Chart"></div></div>
+
+  <h2>Named Toon Ownership (how many alliance members own each key unit)</h2>
+  <p class="note">Shows the count of players across the whole alliance who own each key unit. Rising means more people unlocked it.</p>
+  <h2>Zetas &amp; Omicrons</h2>
+  <div class="chart-card"><div id="allianceZetaChart"></div></div>
+  <div class="chart-card"><div id="allianceOmiChart"></div></div>
+  <h2>Mod Score &amp; GL Coverage</h2>
+  <div class="chart-card"><div id="allianceModChart"></div></div>
+  <div class="chart-card"><div id="allianceGLChart"></div></div>
+  <h2>Named Toon Ownership</h2>
+  <div class="chart-card"><div id="namedToonChart"></div></div>
+  <h2>Guild Health Scores</h2>
+  <div class="chart-card"><div id="guildHealthChart"></div></div>
+  <h2>Guild Zetas</h2>
+  <div class="chart-card"><div id="guildZetaChart"></div></div>
+
+  <h2>Per-Guild — Total Relic Levels</h2>
+  <div class="chart-card"><div id="guildRelicChart"></div></div>
+
+  <h2>Individual Player Progress</h2>
+  <select id="playerSelect" onchange="loadPlayerChart()">
+    <option value="">— pick a player —</option>
+    {% for p in players %}
+    <option value="{{ p.ally_code }}">{{ p.name }} ({{ p.guild }})</option>
+    {% endfor %}
+  </select>
+  <div class="chart-card" style="display:none" id="playerChartCard"><div id="playerChart"></div></div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="/static/graph.js"></script>
+  <script>
+    function makeChart(id, url, height) {
+      var c = new Chart(url, null, "total");
+      c.id = id; c.height = height || 300; c.width = 900; c.tightScale = true;
+      c.display();
+    }
+    makeChart("allianceRelicChart",  "/data/trends/alliance-relic.json",    280);
+    makeChart("allianceR5Chart",     "/data/trends/alliance-r5plus.json",   280);
+    makeChart("allianceZetaChart",   "/data/trends/alliance-zetas.json",    260);
+    makeChart("allianceOmiChart",    "/data/trends/alliance-omicrons.json", 260);
+    makeChart("allianceModChart",    "/data/trends/alliance-mod-score.json",260);
+    makeChart("allianceGLChart",     "/data/trends/alliance-gl.json",       260);
+    makeChart("namedToonChart",      "/data/trends/named-toons.json",       320);
+    makeChart("guildRelicChart",     "/data/trends/guild-relic.json",       320);
+    makeChart("guildHealthChart",    "/data/trends/guild-health.json",      280);
+    makeChart("guildZetaChart",      "/data/trends/guild-zetas.json",       280);
+
+    function loadPlayerChart() {
+      var ac = document.getElementById("playerSelect").value;
+      if (!ac) { document.getElementById("playerChartCard").style.display = "none"; return; }
+      document.getElementById("playerChartCard").style.display = "block";
+      document.getElementById("playerChart").innerHTML = "";
+      makeChart("playerChart", "/data/trends/player/" + ac + "/relic.json", 260);
+    }
+  </script>
+  {% endif %}
+</body>
+</html>

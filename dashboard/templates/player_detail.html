@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ name }} — SWGOH Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+    h1{font-size:20px;margin-bottom:4px}
+    h2{font-size:14px;color:#58a6ff;margin:24px 0 6px}
+    nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+    .tabs{display:flex;gap:4px;margin:16px 0 0}
+    .tab-btn{padding:6px 14px;background:#161b22;border:1px solid #30363d;border-radius:6px 6px 0 0;cursor:pointer;color:#c9d1d9;font-size:13px}
+    .tab-btn.active{background:#1c2530;border-bottom-color:#1c2530;color:#58a6ff}
+    .tab-panel{display:none;padding:16px;background:#161b22;border:1px solid #30363d;border-radius:0 6px 6px 6px}
+    .tab-panel.active{display:block}
+    /* Stats cards */
+    .cards{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+    .card{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:10px 16px;min-width:110px}
+    .card-label{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px}
+    .card-value{font-size:20px;font-weight:bold;color:#c9d1d9;margin-top:2px}
+    .card-value.hi{color:#3fb950}
+    /* Tables */
+    table{border-collapse:collapse;width:100%;font-size:12px}
+    th,td{border:1px solid #21262d;padding:4px 8px;text-align:left;white-space:nowrap}
+    th{background:#161b22;color:#58a6ff;cursor:pointer;user-select:none}
+    tr:nth-child(even){background:#0d1117}
+    tr:nth-child(odd){background:#11161c}
+    tr:hover{background:#1c2530}
+    .dataTables_wrapper{font-size:12px;color:#c9d1d9}
+    .dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+    .dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+    .paginate_button{color:#58a6ff !important}
+    /* Omicron mode badges */
+    .badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:bold;margin:1px}
+    .badge-GAC{background:#1a3a5c;color:#58a6ff}
+    .badge-TW{background:#3a1a1a;color:#f85149}
+    .badge-TB{background:#1a3a1a;color:#3fb950}
+    .badge-Raid{background:#3a2a1a;color:#e3b341}
+    .badge-CQ{background:#2a1a3a;color:#bc8cff}
+    .badge-other{background:#21262d;color:#8b949e}
+    /* Mod slots */
+    .mod-chip{display:inline-block;background:#161b22;border:1px solid #30363d;border-radius:4px;padding:2px 5px;font-size:10px;margin:1px}
+    .mod-chip .spd{color:#3fb950;font-weight:bold}
+    .chart-card{background:#fff;border-radius:6px;padding:12px;margin:8px 0;overflow-x:auto;display:inline-block}
+    .empty{color:#6e7681;font-style:italic}
+    a.pl{color:#58a6ff;text-decoration:none}
+  </style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+
+<h1>
+  {{ name }}
+  <span style="color:#6e7681;font-size:14px;">({{ ally_code }})</span>
+  {% if guild_role %}<span style="font-size:12px;padding:2px 8px;border-radius:10px;margin-left:8px;
+    background:{% if 'LEADER' in guild_role %}#2a1a3a{% elif 'OFFICER' in guild_role %}#1a2a3a{% else %}#1a2a1a{% endif %};
+    color:{% if 'LEADER' in guild_role %}#bc8cff{% elif 'OFFICER' in guild_role %}#58a6ff{% else %}#3fb950{% endif %}">
+    {{ guild_role.replace('GUILD_MEMBER_LEVEL_','').replace('_',' ')|title }}
+  </span>{% endif %}
+  {% if last_activity %}<span style="font-size:11px;color:#6e7681;margin-left:8px;">
+    Last active: <span id="last-act" data-ts="{{ last_activity }}">{{ last_activity }}</span>
+  </span>{% endif %}
+</h1>
+
+{% if summary %}
+<div class="cards">
+  {% if summary.gp %}<div class="card"><div class="card-label">Total GP</div><div class="card-value">{{ "%.1fm"|format(summary.gp/1e6) }}</div></div>{% endif %}
+  {% if summary.chars_gp %}<div class="card"><div class="card-label">Chars GP</div><div class="card-value">{{ "%.1fm"|format(summary.chars_gp/1e6) }}</div></div>{% endif %}
+  {% if summary.ships_gp %}<div class="card"><div class="card-label">Ships GP</div><div class="card-value">{{ "%.1fm"|format(summary.ships_gp/1e6) }}</div></div>{% endif %}
+  {% if summary.seven_star is not none %}<div class="card"><div class="card-label">7★</div><div class="card-value">{{ summary.seven_star }}</div></div>{% endif %}
+  {% if summary.r5_plus is not none %}<div class="card"><div class="card-label">R5+</div><div class="card-value hi">{{ summary.r5_plus }}</div></div>{% endif %}
+  {% if summary.g13_plus is not none %}<div class="card"><div class="card-label">G13+</div><div class="card-value">{{ summary.g13_plus }}</div></div>{% endif %}
+  {% if summary.relic_total %}<div class="card"><div class="card-label">Relic Total</div><div class="card-value">{{ summary.relic_total }}</div></div>{% endif %}
+  {% if summary.zeta_count %}<div class="card"><div class="card-label">Zetas</div><div class="card-value hi">{{ summary.zeta_count }}</div></div>{% endif %}
+  {% if summary.omicron_count %}<div class="card"><div class="card-label">Omicrons</div><div class="card-value hi">{{ summary.omicron_count }}</div></div>{% endif %}
+  {% if summary.mod_score is not none %}<div class="card"><div class="card-label">Mod Score</div><div class="card-value">{{ "%.2f"|format(summary.mod_score) }}</div></div>{% endif %}
+  {% if summary.gear_score is not none %}<div class="card"><div class="card-label">Gear Score</div><div class="card-value">{{ "%.2f"|format(summary.gear_score) }}</div></div>{% endif %}
+  {% if summary.balance_label %}<div class="card" title="Balance: {{ summary.balance }}"><div class="card-label">Balance</div><div class="card-value" style="font-size:14px">{{ summary.balance_label }}</div></div>{% endif %}
+  {% if summary.squad_arena_rank %}<div class="card"><div class="card-label">Squad Arena</div><div class="card-value">#{{ summary.squad_arena_rank }}</div></div>{% endif %}
+  {% if summary.fleet_arena_rank %}<div class="card"><div class="card-label">Fleet Arena</div><div class="card-value">#{{ summary.fleet_arena_rank }}</div></div>{% endif %}
+  {% if summary.datacron_count %}<div class="card"><div class="card-label">Datacrons</div><div class="card-value">{{ summary.datacron_count }}</div></div>{% endif %}
+  {% if summary.player_level %}<div class="card"><div class="card-label">Level</div><div class="card-value">{{ summary.player_level }}</div></div>{% endif %}
+</div>
+{% endif %}
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('roster')">Roster ({{ all_units|length }})</button>
+  <button class="tab-btn" onclick="showTab('zetas')">Zetas{% if zetas_list %} ({{ zetas_list|length }}){% endif %}</button>
+  <button class="tab-btn" onclick="showTab('omicrons')">Omicrons{% if summary and summary.omicron_count %} ({{ summary.omicron_count }}){% endif %}</button>
+  <button class="tab-btn" onclick="showTab('mods')">Mods</button>
+  <button class="tab-btn" onclick="showTab('squads')">Squads ({{ squads|length }}{% if squads_close %}/{{ squads_close|length }} close{% endif %})</button>
+  <button class="tab-btn" onclick="showTab('gac')">GAC History</button>
+  <button class="tab-btn" onclick="showTab('datacrons')">Datacrons{% if summary and summary.datacron_count %} ({{ summary.datacron_count }}){% endif %}</button>
+  <button class="tab-btn" onclick="showTab('contributions')">Contributions</button>
+  <button class="tab-btn" onclick="showTab('progression')">Progression</button>
+</div>
+
+<!-- ROSTER TAB -->
+<div id="tab-roster" class="tab-panel active">
+  {% if all_units %}
+  <table id="tbl-roster" class="display" style="width:100%">
+    <thead><tr>
+      <th>Character</th><th>Relic</th><th>Gear</th><th>★</th>
+      <th>Lvl</th><th>Spd≥15</th><th>Zetas</th><th>Omicrons</th>
+    </tr></thead>
+    <tbody>
+    {% for u in all_units %}
+    <tr>
+      <td>
+        {% if u.base_id in icon_base_ids %}<span class="toons-icon {{ u.base_id }}-i" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;"></span>{% endif %}
+        <a class="pl" href="/c/{{ u.base_id }}">{{ u.base_id }}</a>
+      </td>
+      <td data-order="{{ u.relic or 0 }}">{% if u.relic %}R{{ u.relic }}{% else %}—{% endif %}</td>
+      <td data-order="{{ u.gear or 0 }}">G{{ u.gear }}</td>
+      <td data-order="{{ u.rarity or 0 }}">{{ u.rarity }}★</td>
+      <td data-order="{{ u.level or 0 }}">{{ u.level or "—" }}</td>
+      <td data-order="{{ u.speed_secondary_count or 0 }}">
+        {% if u.speed_secondary_count %}<span style="color:#3fb950">{{ u.speed_secondary_count }}</span>{% else %}—{% endif %}
+      </td>
+      <td data-order="{{ u.zeta_skills|length if u.zeta_skills else 0 }}">
+        {% if u.zeta_skills %}{{ u.zeta_skills|length }}{% else %}—{% endif %}
+      </td>
+      <td data-order="{{ u.omicron_skills|length if u.omicron_skills else 0 }}">
+        {% if u.omicron_skills %}
+          {% for ab_id in u.omicron_skills %}
+          <span class="badge badge-other" title="{{ ab_id }}">&#9672;</span>
+          {% endfor %}
+        {% else %}—{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No roster data — run fetch_player_rosters.py first.</p>
+  {% endif %}
+</div>
+
+<!-- ZETAS TAB -->
+<div id="tab-zetas" class="tab-panel">
+  {% if zetas_list %}
+  <p style="font-size:11px;color:#6e7681">{{ zetas_list|length }} zeta ability upgrades applied.</p>
+  <table style="max-width:600px">
+    <tr><th>Character</th><th>Ability</th></tr>
+    {% for z in zetas_list %}
+    <tr>
+      <td><a class="pl" href="/c/{{ z.base_id }}">{{ z.base_id }}</a></td>
+      <td>{{ z.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No zeta data — run analysis\build_zeta_map.py then re-run fetch_player_rosters.py.</p>
+  {% endif %}
+</div>
+
+<!-- OMICRONS TAB -->
+<div id="tab-omicrons" class="tab-panel">
+  {% if omicrons_by_mode %}
+  {% for mode, oms in omicrons_by_mode.items() %}
+  <h2>{{ mode }} ({{ oms|length }})</h2>
+  <table style="max-width:700px">
+    <tr><th>Character</th><th>Skill</th></tr>
+    {% for om in oms %}
+    <tr>
+      <td><a class="pl" href="/c/{{ om.base_id }}">{{ om.base_id }}</a></td>
+      <td>{{ om.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endfor %}
+  {% else %}
+  <p class="empty">No omicron data yet — re-run fetch_player_rosters.py after running analysis\build_zeta_map.py.</p>
+  {% endif %}
+</div>
+
+<!-- MODS TAB -->
+<div id="tab-mods" class="tab-panel">
+  {% if all_units %}
+  <table id="tbl-mods" class="display" style="width:100%">
+    <thead><tr>
+      <th>Character</th><th>Relic</th><th>Spd≥15</th>
+      <th>Mod 1</th><th>Mod 2</th><th>Mod 3</th><th>Mod 4</th><th>Mod 5</th><th>Mod 6</th>
+    </tr></thead>
+    <tbody>
+    {% for u in all_units %}{% if u.mods %}
+    <tr>
+      <td><a class="pl" href="/c/{{ u.base_id }}">{{ u.base_id }}</a></td>
+      <td data-order="{{ u.relic or 0 }}">{% if u.relic %}R{{ u.relic }}{% else %}G{{ u.gear }}{% endif %}</td>
+      <td data-order="{{ u.speed_secondary_count or 0 }}">
+        {% if u.speed_secondary_count %}<span style="color:#3fb950">{{ u.speed_secondary_count }}</span>{% else %}0{% endif %}
+      </td>
+      {% for m in u.mods %}
+      <td>
+        <div class="mod-chip">
+          {{ m.set|default("?")|truncate(3,true,"") }}/{{ m.slot|default("?")|truncate(3,true,"") }}/{{ m.rarity|default("?") }}★
+          {% if m.speed_secondary and m.speed_secondary > 0 %}
+          <span class="spd"> +{{ m.speed_secondary|int }}spd</span>
+          {% endif %}
+        </div>
+      </td>
+      {% endfor %}
+      {% for _ in range(6 - u.mods|length) %}<td></td>{% endfor %}
+    </tr>
+    {% endif %}{% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No mod data yet.</p>
+  {% endif %}
+</div>
+
+<!-- SQUADS TAB -->
+<div id="tab-squads" class="tab-panel">
+  {% if squads %}
+  <h2>Viable Squads</h2>
+  <p style="color:#6e7681;font-size:11px;">Owns all units and meets relic/omicron thresholds based on meta squad templates.</p>
+  <table>
+    <tr><th>Squad</th><th>Category</th><th>Limiting Relic</th></tr>
+    {% for s in squads %}
+    <tr>
+      <td>{{ s.name }}</td>
+      <td>{{ s.category|default("—") }}</td>
+      <td>{{ s.limiting_relic }} (needs {{ s.required_relic }}+)</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% if squads_close %}
+  <h2>Close (missing 1 unit or slightly under relic)</h2>
+  <table>
+    <tr><th>Squad</th><th>Missing / Gap</th></tr>
+    {% for s in squads_close %}
+    <tr>
+      <td>{{ s.name }}</td>
+      <td>{% for m in s.get("missing_units", []) %}{{ m }} {% endfor %}{% if s.get("limiting_relic") %}R{{ s.limiting_relic }}/{{ s.required_relic }} needed{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% if not squads and not squads_close %}
+  <p class="empty">No squad data — run fetch_player_rosters.py.</p>
+  {% endif %}
+</div>
+
+<!-- GAC TAB -->
+<div id="tab-gac" class="tab-panel">
+  {% if gac_history %}
+  <table>
+    <tr><th>Season</th><th>League</th><th>Division</th><th>W</th><th>L</th><th>Points</th><th>Rank</th></tr>
+    {% for s in gac_history %}
+    <tr>
+      <td>{{ s.season_id }}</td><td>{{ s.league }}</td><td>{{ s.division }}</td>
+      <td>{{ s.wins }}</td><td>{{ s.losses }}</td>
+      <td>{{ "{:,}".format(s.season_points or 0) }}</td>
+      <td>{{ s.rank if s.rank else "—" }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No GAC history available.</p>
+  {% endif %}
+</div>
+
+<!-- CONTRIBUTIONS TAB -->
+<div id="tab-contributions" class="tab-panel">
+  {% if contributions %}
+  <table style="max-width:500px">
+    <tr><th>Type</th><th>Current</th><th>Lifetime</th></tr>
+    {% for key, val in contributions.items() %}
+    <tr>
+      <td>{{ key.replace("_"," ")|title }}</td>
+      <td>{{ val.current }}</td>
+      <td>{{ "{:,}".format(val.lifetime) }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if summary and summary.lifetime_stats %}
+  <h2>Career Stats</h2>
+  <table style="max-width:400px">
+    <tr><th>Stat</th><th>Count</th></tr>
+    {% for k, v in summary.lifetime_stats.items() %}
+    <tr><td>{{ k.replace("_"," ")|title }}</td><td>{{ "{:,}".format(v) }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% else %}
+  <p class="empty">No contribution data — player must be in a tracked guild.</p>
+  {% endif %}
+</div>
+
+<!-- DATACRONS TAB -->
+<div id="tab-datacrons" class="tab-panel">
+  {% if datacrons %}
+  <p style="font-size:11px;color:#6e7681">Datacrons provide temporary combat bonuses. Higher level = stronger bonus.</p>
+  <table style="max-width:600px">
+    <tr><th>ID</th><th>Set</th><th>Level</th><th>Rerolls</th></tr>
+    {% for dc in datacrons %}
+    {% set ds = datacron_sets.get(dc.defId, {}) %}
+    <tr>
+      <td style="font-size:10px;color:#6e7681">{{ dc.id[:12] if dc.id else "—" }}</td>
+      <td>{% if ds.name %}{{ ds.name }}{% if ds.faction %} <span style="color:#6e7681">({{ ds.faction }})</span>{% endif %}{% else %}{{ dc.defId or "Unknown" }}{% endif %}</td>
+      <td><span style="color:{% if dc.level >= 9 %}#3fb950{% elif dc.level >= 6 %}#e3b341{% else %}#c9d1d9{% endif %}">{{ dc.level }}</span>/{{ ds.max_level or "?" }}</td>
+      <td>{{ dc.rerollCount or 0 }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No datacron data — re-run fetch_player_rosters.py.</p>
+  {% endif %}
+</div>
+
+<!-- PROGRESSION TAB -->
+<div id="tab-progression" class="tab-panel">
+  {% if history|length > 1 %}
+  <h2>GP Over Time</h2>
+  <div class="chart-card">
+    <div id="player-gp-chart"></div>
+  </div>
+  <h2>Snapshot History</h2>
+  <table style="max-width:500px">
+    <tr><th>Date</th><th>Guild</th><th>GP</th></tr>
+    {% for h in history|sort(attribute='timestamp', reverse=True) %}
+    <tr>
+      <td>{{ h.timestamp[:10] }}</td>
+      <td>{{ h.guild_name }}</td>
+      <td>{{ "{:,}".format(h.gp or 0) }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">Need 2+ snapshots for a progression chart. Run fetch_guilds.py + snapshot.py regularly.</p>
+  {% if history %}
+  <table style="max-width:500px">
+    <tr><th>Date</th><th>Guild</th><th>GP</th></tr>
+    {% for h in history %}
+    <tr><td>{{ h.timestamp[:10] }}</td><td>{{ h.guild_name }}</td><td>{{ "{:,}".format(h.gp or 0) }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% endif %}
+</div>
+
+<link rel="stylesheet" href="/static/toons.css">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/static/graph.js"></script>
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+$(document).ready(function() {
+  $('#tbl-roster').DataTable({ paging: false, info: false, fixedHeader: true });
+  $('#tbl-mods').DataTable({ paging: false, info: false, fixedHeader: true, scrollX: true });
+});
+// GP progression chart
+{% if player_gp_chart and player_gp_chart.series[0].values.total|length > 1 %}
+const chartData = {{ player_gp_chart|tojson }};
+const chartJson = 'data:application/json;base64,' + btoa(JSON.stringify(chartData));
+var c1 = new Chart(chartData, null, "total");
+c1.id = "player-gp-chart";
+c1.height = 250; c1.width = 700;
+c1.tightScale = true;
+c1._data = chartData;
+// Override fetch with inline data
+const origFetch = window.fetch;
+c1.display = function() {
+  if (typeof d3 === 'undefined') return;
+  const data = this._data;
+  const container = d3.select('#' + this.id);
+  container.selectAll('*').remove();
+  const margin = {top:20,right:30,bottom:30,left:80};
+  const W = this.width - margin.left - margin.right;
+  const H = this.height - margin.top - margin.bottom;
+  const svg = container.append('svg').attr('width',this.width).attr('height',this.height)
+    .append('g').attr('transform','translate('+margin.left+','+margin.top+')');
+  const dates = data.dates.map(d => {const p=d.split('/');return new Date(p[2],p[0]-1,p[1]);});
+  const vals = data.series[0].values.total.filter(v=>v>=0);
+  const allVals = data.series[0].values.total;
+  const x = d3.scaleTime().domain(d3.extent(dates)).range([0,W]);
+  const y = d3.scaleLinear().domain([d3.min(vals)*0.98,d3.max(vals)*1.01]).range([H,0]).nice();
+  svg.append('g').attr('transform','translate(0,'+H+')').call(d3.axisBottom(x).ticks(5));
+  svg.append('g').call(d3.axisLeft(y).tickFormat(d=>d>=1e6?(d/1e6).toFixed(1)+'m':d));
+  const line = d3.line().defined((_,i)=>allVals[i]>=0).x((_,i)=>x(dates[i])).y((_,i)=>y(allVals[i])).curve(d3.curveMonotoneX);
+  svg.append('path').datum(allVals).attr('fill','none').attr('stroke','#58a6ff').attr('stroke-width',2).attr('d',line);
+};
+c1.display();
+{% endif %}
+</script>
+<script>
+(function(){
+  var el = document.getElementById("last-act");
+  if (!el) return;
+  var ts = parseInt(el.getAttribute("data-ts"), 10);
+  if (!ts) return;
+  // Comlink timestamps are in milliseconds if > 1e12, else seconds
+  var ms = ts > 1e12 ? ts : ts * 1000;
+  var d = new Date(ms);
+  var now = Date.now();
+  var diff = Math.floor((now - ms) / 86400000);
+  var fmt = diff === 0 ? "Today" : diff === 1 ? "Yesterday" : diff + " days ago";
+  el.textContent = fmt + " (" + d.toLocaleDateString() + ")";
+})();
+</script>
+</body>
+</html>

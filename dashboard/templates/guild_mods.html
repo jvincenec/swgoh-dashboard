@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ guild.name }} — Mods Report</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+    h1{font-size:18px}h2{font-size:13px;color:#58a6ff;margin:20px 0 4px}
+    nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+    table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse}
+    table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:6px 8px;white-space:nowrap}
+    table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap}
+    table.dataTable tbody tr:nth-child(even){background:#0d1117}
+    table.dataTable tbody tr:nth-child(odd){background:#11161c}
+    table.dataTable tbody tr:hover{background:#1c2530}
+    .dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+    .dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+    .note{color:#6e7681;font-size:11px;margin:6px 0}
+    a.pl{color:#58a6ff;text-decoration:none}
+  </style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/guild/{{ guild.name|lower|replace(' ','-')|replace("'","") }}">{{ guild.name }}</a></nav>
+<h1>{{ guild.name }} — Mod Report</h1>
+<p class="note">Mod Score = mods with speed secondary ≥15 / chars GP / 100,000 (higher is better, aim for 3.0+). Sorted by Mod Score descending.</p>
+
+<table id="tbl" class="display" style="width:100%">
+  <thead><tr>
+    <th>Player</th><th>Chars GP</th>
+    <th title="Mods with speed secondary ≥15">Spd≥15</th>
+    <th title="DSR-style mod score">Mod Score</th>
+    <th>Zetas</th><th>Omicrons</th>
+    <th>Top Speed Chars</th>
+  </tr></thead>
+  <tbody>
+  {% for r in rows %}
+  <tr>
+    <td><a class="pl" href="/player/{{ r.ally_code }}">{{ r.name }}</a></td>
+    <td data-order="{{ r.chars_gp }}">{{ "%.1fm"|format(r.chars_gp/1e6) if r.chars_gp > 1e6 else "{:,}".format(r.chars_gp) }}</td>
+    <td data-order="{{ r.speed_15plus }}">{{ r.speed_15plus }}</td>
+    <td data-order="{{ r.mod_score or 0 }}">
+      {% if r.mod_score is not none %}
+        <span style="color:{{ '#3fb950' if r.mod_score >= 3 else '#e3b341' if r.mod_score >= 2 else '#f85149' }}">
+          {{ "%.2f"|format(r.mod_score) }}
+        </span>
+      {% else %}—{% endif %}
+    </td>
+    <td data-order="{{ r.zeta_count }}">{{ r.zeta_count or "—" }}</td>
+    <td data-order="{{ r.omicron_count }}">{{ r.omicron_count or "—" }}</td>
+    <td style="font-size:11px">
+      {% for c in r.top_chars %}
+        <span style="color:#6e7681">{{ c.base_id }}({{ c.speed_sec }})</span>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){$('#tbl').DataTable({paging:false,info:false,fixedHeader:true,order:[[3,'desc']]});});</script>
+</body>
+</html>

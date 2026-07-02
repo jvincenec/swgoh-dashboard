@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>{{ guild.name }} — All Squads</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"><style>body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}h2{font-size:13px;color:#58a6ff;margin:16px 0 4px}
+nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse;width:100%}
+table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:5px 8px;white-space:nowrap}
+table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap;font-size:12px}
+table.dataTable tbody tr:nth-child(even){background:#0d1117}
+table.dataTable tbody tr:nth-child(odd){background:#11161c}
+table.dataTable tbody tr:hover{background:#1c2530}
+.dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+.dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+.paginate_button{color:#58a6ff !important}
+.note{color:#6e7681;font-size:11px;margin:6px 0}
+a.pl{color:#58a6ff;text-decoration:none}
+.bar-bg{background:#21262d;border-radius:4px;height:8px;width:120px;display:inline-block;vertical-align:middle}
+.bar-fg{height:8px;border-radius:4px;display:inline-block}</style></head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/guild/{{ guild.name|lower|replace(' ','-')|replace("'","") }}">{{ guild.name }}</a></nav>
+<h1>{{ guild.name }} — All Viable Squads</h1>
+<p class="note">{{ rows|length }} viable squads across all members. Use DataTables search to filter by squad name or category for TW planning.</p>
+<table id="tbl" class="display">
+  <thead><tr><th>Player</th><th>Squad</th><th>Category</th><th>Limiting Relic</th><th>Required</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+  <tr>
+    <td><a class="pl" href="/player/{{ r.ally_code }}">{{ r.player }}</a></td>
+    <td>{{ r.squad }}</td>
+    <td>{{ r.category or '—' }}</td>
+    <td data-order="{{ r.limiting_relic or 0 }}">{{ 'R'~r.limiting_relic if r.limiting_relic else '—' }}</td>
+    <td>{{ 'R'~r.required_relic if r.required_relic else '—' }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){$('#tbl').DataTable({paging:true,pageLength:50,info:true,fixedHeader:true,order:[[1,'asc'],[0,'asc']]});});</script>
+</body></html>

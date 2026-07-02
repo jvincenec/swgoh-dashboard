@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWGOH Dashboard — {{ player_name }}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #11151c;
+    --border: #1e2a3a;
+    --accent: #4fc3f7;
+    --good: #10b981;
+    --warn: #f59e0b;
+    --bad: #ef4444;
+    --text: #c8d6e5;
+    --text-dim: #5a7a99;
+    --text-bright: #e8f4ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-bright);
+  }
+
+  header .meta { font-size: 12px; color: var(--text-dim); }
+
+  .refresh-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 24px;
+  }
+  .refresh-note code {
+    background: #000;
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+  }
+
+  .card h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .val { color: var(--text-bright); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th {
+    text-align: left;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .relic { color: #a78bfa; font-weight: 600; }
+
+  .rec-list { list-style: none; }
+  .rec-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .rec-list li:last-child { border-bottom: none; }
+  .rec-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    margin-right: 8px;
+    font-weight: 600;
+  }
+  .tag-meta { background: rgba(16,185,129,0.15); color: var(--good); }
+  .tag-relic { background: rgba(167,139,250,0.15); color: #a78bfa; }
+  .tag-general { background: rgba(79,195,247,0.12); color: var(--accent); }
+
+  .empty {
+    color: var(--text-dim);
+    font-size: 12px;
+    font-style: italic;
+    padding: 8px 0;
+  }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .currency-item {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .currency-item .label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+  .currency-item .amount { font-size: 15px; font-weight: 700; color: var(--text-bright); }
+</style>
+</head>
+<body>
+<nav style="padding:10px 16px; font-size:13px;"><a href="/" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Dashboard</a><a href="/community" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Community</a><a href="/players" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Players</a><a href="/characters" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Characters</a><a href="/squads" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Squads</a><a href="/squad-templates" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Squad Templates</a><a href="/farming" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Farming</a><a href="/mods" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">Mods</a><a href="/history" style="color:#4fc3f7; margin-right:16px; text-decoration:none;">History</a><a href="/transfers" style="color:#4fc3f7; text-decoration:none;">Transfers</a></nav>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>{{ player_name }}</h1>
+      <div class="meta">Level {{ player_level }} · Squad Arena rank {{ squad_rank }} · Fleet Arena rank {{ fleet_rank }}</div>
+    </div>
+    <div class="meta">{{ guild_name }}</div>
+  </header>
+
+  <div class="refresh-note">
+    Data is only as fresh as your last <code>python fetch.py</code> run. Re-run it, then reload this page, to pull current numbers from Comlink.
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h2>Top Characters (by relic / gear)</h2>
+      {% if characters %}
+      <table>
+        <tr><th onclick="sortTable(this)">Unit</th><th onclick="sortTable(this)">Lvl</th><th onclick="sortTable(this)">★</th><th onclick="sortTable(this)">Gear</th><th onclick="sortTable(this)">Relic</th></tr>
+        {% for c in characters %}
+        <tr>
+          <td>{{ c.base_id }}</td>
+          <td>{{ c.level }}</td>
+          <td>{{ c.rarity }}</td>
+          <td>{{ c.gear }}</td>
+          <td class="relic">{{ c.relic }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="empty">No roster data yet — run fetch.py first.</div>
+      {% endif %}
+    </div>
+
+    <div class="card">
+      <h2>Guild Members ({{ members|length }})</h2>
+      {% if members %}
+      <table>
+        <tr><th onclick="sortTable(this)">Name</th><th onclick="sortTable(this)">Lvl</th><th onclick="sortTable(this)">GP</th></tr>
+        {% for m in members[:15] %}
+        <tr>
+          <td>{{ m.name }}</td>
+          <td>{{ m.level }}</td>
+          <td>{{ "{:,}".format(m.gp) if m.gp is number else m.gp }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="empty">No guild data yet — run fetch.py first.</div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Currency Snapshot (manually entered — see currencies.json)</h2>
+    <div class="currency-grid">
+      {% for key, value in currencies.items() %}
+        {% if key != "_comment" and key != "last_updated" and value is not mapping %}
+        <div class="currency-item">
+          <div class="label">{{ key.replace("_", " ") }}</div>
+          <div class="amount">{{ "{:,}".format(value) if value is number else value }}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if guild_analyses %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Guild Analysis ({{ guild_analyses|length }} guild{{ "s" if guild_analyses|length != 1 else "" }} analyzed)</h2>
+
+    {% if guild_analyses|length > 1 %}
+    <table style="margin-bottom:16px;">
+      <tr><th onclick="sortTable(this)">Guild</th><th onclick="sortTable(this)">Members</th><th onclick="sortTable(this)">Guild GP</th></tr>
+      {% for g in guild_analyses %}
+      <tr>
+        <td>{{ g.guild_name }}</td>
+        <td>{{ g.member_count }}</td>
+        <td>{{ "{:,}".format(g.guild_gp) if g.guild_gp is number else g.guild_gp }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+    {% for g in guild_analyses %}
+    <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 8px; text-transform:uppercase; letter-spacing:1px;">
+      {{ g.guild_name }} — squad inventory (who can field what)
+    </h3>
+    {% if g.squad_inventory %}
+    <table style="margin-bottom:16px;">
+      <tr><th onclick="sortTable(this)">Squad</th><th onclick="sortTable(this)">Type</th><th onclick="sortTable(this)">Members who can field it</th></tr>
+      {% for s in g.squad_inventory %}
+      <tr>
+        <td>{{ s.name }}</td>
+        <td>{% if s.category == "gac_meta" %}<span style="color:var(--good);">meta</span>{% else %}<span style="color:var(--text-dim);">legacy</span>{% endif %}</td>
+        <td>{{ s.count }}/{{ g.member_count }} — {{ s.members | join(", ") }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="empty">No viable squads detected across any member.</div>
+    {% endif %}
+
+    <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 8px; text-transform:uppercase; letter-spacing:1px;">
+      {{ g.guild_name }} — member breakdown
+    </h3>
+    <table>
+      <tr><th onclick="sortTable(this)">Member</th><th onclick="sortTable(this)">GP</th><th onclick="sortTable(this)">Viable meta squads detected</th></tr>
+      {% for m in g.members %}
+      <tr>
+        <td>{{ m.name }}</td>
+        <td>{{ "{:,}".format(m.gp) if m.gp is number else m.gp }}</td>
+        <td>
+          {% if m.error %}
+            <span style="color:var(--bad);">{{ m.error }}</span>
+          {% else %}
+            {% set meta_teams = m.detected_teams | selectattr("viable") | selectattr("category", "equalto", "gac_meta") | list %}
+            {% set legacy_teams = m.detected_teams | selectattr("viable") | selectattr("category", "equalto", "legacy_strong") | list %}
+            {% if meta_teams %}
+              {% for t in meta_teams %}{{ t.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+            {% endif %}
+            {% if legacy_teams %}
+              {% if meta_teams %}<br>{% endif %}
+              <span style="color:var(--text-dim); font-size:11px;">(legacy) {% for t in legacy_teams %}{{ t.name }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+            {% endif %}
+            {% if not meta_teams and not legacy_teams %}
+              <span style="color:var(--text-dim);">none detected</span>
+            {% endif %}
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Guild Analysis</h2>
+    <div class="empty">
+      No guild analysis yet. Run <code style="color:var(--accent);">python analysis/guild_analyzer.py "Guild Name"</code>
+      for your own guild or a TW opponent, then reload this page.
+    </div>
+  </div>
+  {% endif %}
+
+  {% if raid_tb_report %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Last Raid Results</h2>
+    {% if raid_tb_report.raids %}
+      {% for r in raid_tb_report.raids %}
+      <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 8px; text-transform:uppercase; letter-spacing:1px;">
+        {{ r.raid_id }} — {{ r.outcome }}
+      </h3>
+      <table style="margin-bottom:12px;">
+        <tr><th onclick="sortTable(this)">Member</th><th onclick="sortTable(this)">Damage</th><th onclick="sortTable(this)">Rank</th></tr>
+        {% for m in r.members[:15] %}
+        <tr>
+          <td>{{ m.name }}</td>
+          <td>{{ "{:,}".format(m.damage) if m.damage is number else m.damage }}</td>
+          <td>{{ m.rank }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endfor %}
+    {% else %}
+    <div class="empty">No raid results found. Run <code style="color:var(--accent);">python analysis/raid_tb_report.py</code> after fetch.py.</div>
+    {% endif %}
+
+    <h2 style="margin-top:18px;">Last Territory Battle Result</h2>
+    {% if raid_tb_report.territory_battles %}
+    <table>
+      <tr><th onclick="sortTable(this)">Territory Battle</th><th onclick="sortTable(this)">Stars earned</th></tr>
+      {% for tb in raid_tb_report.territory_battles %}
+      <tr>
+        <td>{{ tb.tb_id }}</td>
+        <td>{{ tb.stars }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="empty" style="margin-top:8px;">
+      Note: this is only the single best-starred TB run in the last 60 days — Comlink doesn't expose a full history or per-member contribution breakdown for Territory Battles.
+    </div>
+    {% else %}
+    <div class="empty">No Territory Battle results found in the last 60 days.</div>
+    {% endif %}
+
+    <h2 style="margin-top:18px;">Territory War History (last 8 wars)</h2>
+    {% if raid_tb_report.territory_wars %}
+    <table>
+      <tr><th onclick="sortTable(this)">Result</th><th onclick="sortTable(this)">Opponent</th><th onclick="sortTable(this)">Score</th></tr>
+      {% for tw in raid_tb_report.territory_wars %}
+      <tr>
+        <td>
+          {% if tw.won == true %}<span style="color:var(--good);">WON</span>
+          {% elif tw.won == false %}<span style="color:var(--bad);">LOST</span>
+          {% else %}<span style="color:var(--text-dim);">?</span>{% endif %}
+        </td>
+        <td>{{ tw.opponent_name or "unknown" }}</td>
+        <td>{{ tw.own_score }} – {{ tw.opponent_score }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="empty">No Territory War history found.</div>
+    {% endif %}
+
+    <h2 style="margin-top:18px;">Raid Launch Config</h2>
+    {% if raid_tb_report.raid_launch_config %}
+    <table>
+      <tr><th onclick="sortTable(this)">Raid</th><th onclick="sortTable(this)">Auto-launch</th><th onclick="sortTable(this)">Sim eligible</th></tr>
+      {% for c in raid_tb_report.raid_launch_config %}
+      <tr>
+        <td>{{ c.raid_id }}</td>
+        <td>{{ c.auto_launch }}</td>
+        <td>{{ c.sim_eligible }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="empty">No raid launch config found.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if member_activity_report %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Member Activity (threshold: {{ member_activity_report.threshold_days }} day{{ "s" if member_activity_report.threshold_days != 1 else "" }} inactive)</h2>
+    <table>
+      <tr>
+        <th onclick="sortTable(this)">Member</th><th onclick="sortTable(this)">GP</th><th onclick="sortTable(this)">Last active</th>
+        <th onclick="sortTable(this)">Guild Act.</th><th onclick="sortTable(this)">Raid Tickets</th><th onclick="sortTable(this)">Gear Don.</th><th onclick="sortTable(this)">GAC (latest)</th>
+      </tr>
+      {% for m in member_activity_report.members | sort(attribute="gp", reverse=True) %}
+      <tr{% if m.inactivity.flagged %} style="background:rgba(239,68,68,0.08);"{% endif %}>
+        <td>{{ m.name }}{% if m.inactivity.flagged %} <span style="color:var(--bad); font-size:10px;">[INACTIVE]</span>{% endif %}</td>
+        <td>{{ "{:,}".format(m.gp) if m.gp is number else m.gp }}</td>
+        <td>{% if m.inactivity.days_inactive is not none %}{{ m.inactivity.days_inactive }}d ago{% else %}unknown{% endif %}</td>
+        <td>{{ m.contributions.guild_activities.current }}</td>
+        <td>{{ m.contributions.raid_tickets.current }}</td>
+        <td>{{ m.contributions.gear_donations.current }}</td>
+        <td>
+          {% if m.gac_history %}
+            {{ m.gac_history[0].league }} D{{ m.gac_history[0].division }} ({{ m.gac_history[0].points }}pts)
+          {% else %}
+            <span style="color:var(--text-dim);">none</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="empty" style="margin-top:8px;">
+      "Current" contribution values reset to 0 at each Guild Reset — a 0 doesn't necessarily mean inactive, check the last-active column too.
+    </div>
+  </div>
+  {% endif %}
+
+  {% if player_pvp_report %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Live GAC Standing &amp; Last-Used Arena Teams</h2>
+    {% set rating = player_pvp_report.gac_rating %}
+    {% if rating and rating.league %}
+    <div class="stat-row"><span>League</span><span class="val">{{ rating.league }}</span></div>
+    <div class="stat-row"><span>Division</span><span class="val">{{ rating.division }}</span></div>
+    <div class="stat-row"><span>Skill Rating</span><span class="val">{{ rating.skill_rating }}</span></div>
+    {% else %}
+    <div class="empty">No current GAC rating found.</div>
+    {% endif %}
+
+    {% set teams = player_pvp_report.arena_teams %}
+    <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 8px; text-transform:uppercase; letter-spacing:1px;">
+      Last-used teams
+    </h3>
+    {% if teams.squad_arena %}
+    <div class="stat-row"><span>Squad Arena (rank {{ teams.squad_arena.rank }})</span><span class="val">{{ teams.squad_arena.last_used_team | join(", ") }}</span></div>
+    {% endif %}
+    {% if teams.fleet_arena %}
+    <div class="stat-row"><span>Fleet Arena (rank {{ teams.fleet_arena.rank }})</span><span class="val">{{ teams.fleet_arena.last_used_team | join(", ") }}</span></div>
+    {% endif %}
+    {% if not teams.squad_arena and not teams.fleet_arena %}
+    <div class="empty">No arena team data found.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if mods_report %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Equipped Mods</h2>
+    {% if mods_report %}
+      {% for entry in mods_report %}
+      <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 8px; text-transform:uppercase; letter-spacing:1px;">
+        {{ entry.name }} ({{ entry.mod_count }}/6)
+      </h3>
+      <table style="margin-bottom:12px;">
+        <tr><th onclick="sortTable(this)">Slot</th><th onclick="sortTable(this)">Set</th><th onclick="sortTable(this)">Rarity</th></tr>
+        {% for m in entry.mods %}
+        <tr>
+          <td>{{ m.slot }}</td>
+          <td>{{ m.set }}</td>
+          <td>{{ m.rarity }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endfor %}
+    {% else %}
+    <div class="empty">No equipped mods found. Run <code style="color:var(--accent);">python analysis/mods_report.py</code> after fetch.py.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if relic_gap_report %}
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Squad Gaps — What's Missing</h2>
+    {% for squad in relic_gap_report %}
+      {% if 'None' not in squad.bottleneck %}
+      <h3 style="font-family:'Rajdhani',sans-serif; font-size:13px; color:var(--text-bright); margin:14px 0 6px; text-transform:uppercase; letter-spacing:1px;">
+        {{ squad.name }}
+      </h3>
+      <div class="empty" style="margin-bottom:6px; color:var(--accent);">{{ squad.bottleneck }}</div>
+      <table style="margin-bottom:10px;">
+        <tr><th onclick="sortTable(this)">Character</th><th onclick="sortTable(this)">Status</th></tr>
+        {% for m in squad.members %}
+        <tr>
+          <td>{{ m.name }}</td>
+          <td>
+            {% if not m.owned %}
+              <span style="color:var(--bad);">Not owned</span>
+            {% elif m.relic_gap > 0 %}
+              Relic {{ m.current_relic }} → need {{ m.target_relic }} (+{{ m.relic_gap }})
+            {% else %}
+              <span style="color:var(--good);">OK</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    {% endfor %}
+    <div class="empty" style="margin-top:8px;">
+      Relic-level gaps are confirmed from live roster data. Material costs
+      to close those gaps aren't shown yet — I couldn't verify a reliable
+      source for exact quantities, so it's not guessed at. Shard counts for
+      unowned characters aren't available through this API at all.
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="card">
+    <h2>Recommendations</h2>
+    <ul class="rec-list">
+      {% for item in recommendations.get("meta_relevant_owned", []) %}
+      <li><span class="rec-tag tag-meta">Meta</span>{{ item.note }}</li>
+      {% endfor %}
+      {% for item in recommendations.get("relic_push_targets", []) %}
+      <li><span class="rec-tag tag-relic">Relic</span>{{ item.base_id }} is at Relic {{ item.current_relic }} — {{ item.suggested_action }}</li>
+      {% endfor %}
+      {% for item in recommendations.get("general", []) %}
+      <li><span class="rec-tag tag-general">General</span>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+<style>
+  th { cursor: pointer; user-select: none; }
+  th.sorted-asc::after { content: " \25B2"; }
+  th.sorted-desc::after { content: " \25BC"; }
+</style>
+<script>
+  function sortTable(th) {
+    const table = th.closest("table");
+    const colIndex = th.cellIndex;
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1);
+    const asc = !th.classList.contains("sorted-asc");
+    rows.sort((a, b) => {
+      const aText = (a.cells[colIndex] ? a.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const bText = (b.cells[colIndex] ? b.cells[colIndex].textContent : "").trim().replace(/,/g, "");
+      const aNum = parseFloat(aText), bNum = parseFloat(bText);
+      if (!isNaN(aNum) && !isNaN(bNum) && aText !== "" && bText !== "") return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+    rows.forEach(r => table.appendChild(r));
+    table.querySelectorAll("th").forEach(h => h.classList.remove("sorted-asc", "sorted-desc"));
+    th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+  }
+</script>
+</body>
+</html>

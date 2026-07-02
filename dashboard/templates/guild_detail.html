@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — {{ guild.name }}</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1, h2 { font-size: 20px; }
+    h2 { font-size: 15px; color: #58a6ff; margin-top: 28px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .empty { color: #6e7681; font-style: italic; }
+    .note { color: #6e7681; font-size: 12px; margin-top: 6px; }
+    .stat { display: inline-block; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 10px 18px; margin: 4px; }
+    .stat-label { font-size: 11px; color: #6e7681; text-transform: uppercase; }
+    .stat-value { font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>{{ guild.name }}</h1>
+
+  <div style="margin: 12px 0;">
+    <div class="stat"><div class="stat-label">Members</div><div class="stat-value">{{ guild.member_count }}</div></div>
+    <div class="stat"><div class="stat-label">Total GP</div><div class="stat-value">{{ "{:,}".format(guild.guild_gp or 0) }}</div></div>
+    {% if guild.recent_tb_results %}
+    <div class="stat"><div class="stat-label">Last TB Stars</div><div class="stat-value">{{ guild.recent_tb_results[0].totalStars }}</div></div>
+    {% endif %}
+  </div>
+
+  {% set slug = guild.name|lower|replace(" ", "-")|replace("'", "") %}
+  <p style="margin:8px 0;display:flex;gap:16px;flex-wrap:wrap;font-size:13px">
+    <a href="/guild/{{ slug }}/mods" style="color:#58a6ff">📊 Mod Report</a>
+    <a href="/guild/{{ slug }}/mods-characters" style="color:#58a6ff">📊 Mods by Char</a>
+    <a href="/guild/{{ slug }}/important-toons" style="color:#58a6ff">⭐ Important Toons</a>
+    <a href="/guild/{{ slug }}/rare-units" style="color:#58a6ff">🔍 Rare Units</a>
+    <a href="/guild/{{ slug }}/squads-all" style="color:#58a6ff">⚔️ All Squads</a>
+  </p>
+  <h2>Members</h2>
+  <table>
+    <tr><th>Player</th><th>GP</th><th>Chars GP</th><th>Ships GP</th><th>Level</th><th>Raid Tickets (this week)</th><th>Lifetime Tickets</th></tr>
+    {% for m in guild.members | sort(attribute="gp", reverse=True) %}
+    <tr>
+      <td><a href="/player/{{ m.ally_code }}" style="color:#58a6ff; text-decoration:none;">{{ m.name }}</a></td>
+      <td>{{ "{:,}".format(m.gp or 0) }}</td>
+      <td>{{ "{:,}".format(m.chars_gp or 0) }}</td>
+      <td>{{ "{:,}".format(m.ships_gp or 0) }}</td>
+      <td>{{ m.level }}</td>
+      <td>{{ m.contributions.raid_tickets.current if m.contributions and m.contributions.raid_tickets else "—" }}</td>
+      <td>{{ "{:,}".format(m.contributions.raid_tickets.lifetime) if m.contributions and m.contributions.raid_tickets else "—" }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Recent Territory Wars</h2>
+  {% if guild.recent_tw_results %}
+  <p class="note">Field names shown as-is from Comlink — exact TW score field names are not officially documented. This shows all available fields per TW entry.</p>
+  <table>
+    <tr><th>TW Entry</th><th>Raw Data</th></tr>
+    {% for tw in guild.recent_tw_results %}
+    <tr>
+      <td>TW {{ loop.index }}</td>
+      <td style="font-family: monospace; font-size: 11px;">{{ tw | tojson }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No TW history available for this guild yet (may not have participated recently, or Comlink returned no records).</p>
+  {% endif %}
+
+  <h2>Recent Territory Battles</h2>
+  {% if guild.recent_tb_results %}
+  <table>
+    <tr><th>Definition</th><th>Stars</th><th>End Time</th></tr>
+    {% for tb in guild.recent_tb_results %}
+    <tr>
+      <td>{{ tb.definitionId }}</td>
+      <td>{{ tb.totalStars }}</td>
+      <td>{{ tb.endTime }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No TB history available for this guild.</p>
+  {% endif %}
+</body>
+</html>

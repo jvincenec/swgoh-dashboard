@@ -1,0 +1,40 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Game data (large, regenerable)
+game_data/full_data_dump_enums.json
+
+# Live data (contains personal ally codes — decide if you want these in git)
+# Comment out if you want data in the repo for reference
+data/
+
+# Probe/debug output
+probe*.txt
+probe*.json
+
+# Keep these game data files (small, needed to rebuild zeta_map etc.)
+!game_data/unit_alignment.json
+!game_data/ship_ids.json
+!game_data/zeta_map.json
+!game_data/omicron_abilities.json
+!game_data/gl_requirements.json
+!game_data/datacron_sets.json
+!game_data/localization_en.json
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Leftover patch/fix temp dirs
+swgoh-fix*/
+swgoh-zetafix*/
+swgoh-p1p5/
+swgoh-progress/
+swgoh-players/
+swgoh-relicfix/
+swgoh-deploy/
+swgoh-probe*/
+docs/

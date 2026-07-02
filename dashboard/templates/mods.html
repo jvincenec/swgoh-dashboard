@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWGOH Dashboard — Mods</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 24px; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 15px; color: #58a6ff; margin-top: 24px; }
+    nav a { color: #58a6ff; margin-right: 16px; text-decoration: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; }
+    th, td { border: 1px solid #30363d; padding: 5px 10px; text-align: left; }
+    th { background: #161b22; }
+    tr:nth-child(even) { background: #11161c; }
+    .note { color: #6e7681; font-size: 12px; margin-top: 8px; }
+    .empty { color: #6e7681; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <h1>Mods</h1>
+  <p class="note">Equipped mods only — set/slot/rarity (decoded from definitionId digits, no raw stat rolls yet, that needs deeper game-data decoding). Comlink has no access to unequipped mod inventory at all, for any account.</p>
+
+  <h2>Set Distribution (alliance-wide, equipped only)</h2>
+  {% if not set_distribution %}
+  <p class="empty">No mod data yet — run fetch_player_rosters.py first (Phase 2).</p>
+  {% else %}
+  <table>
+    <tr><th>Mod Set</th><th>Count</th></tr>
+    {% for set_name, count in set_distribution %}
+    <tr><td>{{ set_name }}</td><td>{{ count }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <h2>Per-Player Mod Count</h2>
+  <a href="/export/mods.csv" style="color:#3fb950;">Export CSV</a>
+  {% if not players %}
+  <p class="empty">No player mod data yet.</p>
+  {% else %}
+  <table>
+    <tr><th>Player</th><th>Guild</th><th>Equipped Mods</th></tr>
+    {% for p in players %}
+    <tr>
+      <td><a href="/player/{{ p.ally_code }}" style="color:#58a6ff; text-decoration:none;">{{ p.name }}</a></td>
+      <td>{{ p.guild_name }}</td>
+      <td>{{ p.total_mods }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</body>
+</html>

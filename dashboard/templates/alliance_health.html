@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Alliance Health</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}h2{font-size:13px;color:#58a6ff;margin:20px 0 6px}
+nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:10px 16px;min-width:160px}
+.card-label{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px}
+.card-value{font-size:22px;font-weight:bold;margin-top:2px}
+.score-ring{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;border:4px solid;font-size:18px;font-weight:bold;margin-right:12px}
+.guild-row{display:flex;align-items:center;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;margin:8px 0;gap:16px}
+.guild-row h3{margin:0 0 4px;font-size:14px}
+.stat-grid{display:flex;gap:20px;flex-wrap:wrap;font-size:12px}
+.stat{color:#6e7681}.stat b{color:#c9d1d9}
+.note{color:#6e7681;font-size:11px;margin:6px 0}
+.chart-card{background:#fff;border-radius:6px;padding:12px;margin:8px 0}
+</style>
+</head>
+<body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/leaderboards">Leaderboards</a></nav>
+<h1>Alliance Health</h1>
+<p class="note">Health score 0-100: relic depth (25pts) + mod quality (20pts) + GL coverage (30pts) + R5+ breadth (25pts).<br>
+Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history.</p>
+
+{% for g in guilds %}
+{% set clr = '#3fb950' if g.health_score >= 70 else '#e3b341' if g.health_score >= 45 else '#f85149' %}
+<div class="guild-row">
+  <span class="score-ring" style="border-color:{{ clr }};color:{{ clr }}">{{ g.health_score }}</span>
+  <div style="flex:1">
+    <h3><a href="/guild/{{ g.name|lower|replace(' ','-')|replace("'","") }}" style="color:#58a6ff;text-decoration:none">{{ g.name }}</a></h3>
+    <div class="stat-grid">
+      <div class="stat">GP <b>{{ "%.1fm"|format(g.gp/1e6) if g.gp else "—" }}</b></div>
+      <div class="stat">Members <b>{{ g.members }}</b></div>
+      <div class="stat">Avg Relic <b>{{ g.avg_relic }}</b></div>
+      <div class="stat">Avg Mod Score <b>{{ "%.2f"|format(g.avg_mod_score) }}</b></div>
+      <div class="stat">GLs <b>{{ g.gl_count }}</b> ({{ g.gl_per_player }}/player)</div>
+      <div class="stat">R5+ <b>{{ g.r5_pct }}%</b> of 7★</div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% if health_history.dates|length >= 2 %}
+<h2>Health Score Over Time</h2>
+<div class="chart-card"><div id="health-chart"></div></div>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/static/graph.js"></script>
+<script>
+const data = {{ health_history|tojson }};
+const c = new Chart(data, null, "total");
+c.id = "health-chart"; c.height = 260; c.width = 780; c.tightScale = true; c._data = data;
+c.display = function() {
+  const d = this._data; const ctr = d3.select('#'+this.id); ctr.selectAll('*').remove();
+  const mg={top:20,right:120,bottom:30,left:50}; const W=this.width-mg.left-mg.right,H=this.height-mg.top-mg.bottom;
+  const svg = ctr.append('svg').attr('width',this.width).attr('height',this.height).append('g').attr('transform','translate('+mg.left+','+mg.top+')');
+  const dates = d.dates.map(dt=>{const p=dt.split('/');return new Date(p[2],p[0]-1,p[1]);});
+  const x = d3.scaleTime().domain(d3.extent(dates)).range([0,W]);
+  const allVals = d.series.flatMap(s=>s.values.total.filter(v=>v>=0));
+  const y = d3.scaleLinear().domain([0, Math.max(100, d3.max(allVals)||0)]).range([H,0]).nice();
+  svg.append('g').attr('transform','translate(0,'+H+')').call(d3.axisBottom(x).ticks(5));
+  svg.append('g').call(d3.axisLeft(y));
+  const colors=['#58a6ff','#3fb950','#e3b341','#f85149','#bc8cff'];
+  d.series.forEach((s,i)=>{
+    const vals=s.values.total;
+    const line=d3.line().defined((_,j)=>vals[j]>=0).x((_,j)=>x(dates[j])).y((_,j)=>y(vals[j])).curve(d3.curveMonotoneX);
+    svg.append('path').datum(vals).attr('fill','none').attr('stroke',colors[i%colors.length]).attr('stroke-width',2).attr('d',line);
+    svg.append('text').attr('x',W+4).attr('y',y(vals.filter(v=>v>=0).slice(-1)[0]||0)+4).attr('fill',colors[i%colors.length]).attr('font-size','11px').text(s.name);
+  });
+};
+c.display();
+</script>
+{% else %}
+<p class="note" style="margin-top:16px">Health trend chart needs 2+ snapshots. Run <code>snapshot.py</code> regularly.</p>
+{% endif %}
+</body></html>
