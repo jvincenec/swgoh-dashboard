@@ -25,6 +25,21 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "swgoh-static-builder/1.0"
 
 ERRORS = []
+BASE_PATH = "/swgoh-dashboard"
+
+
+def rewrite_links(html):
+    def fix(attr, m):
+        p = m.group(1)
+        if p.startswith(BASE_PATH) or p.startswith("http") or p.startswith("//"):
+            return m.group(0)
+        if p == "/":
+            return attr + '="' + BASE_PATH + '/"'
+        return attr + '="' + BASE_PATH + p + '"'
+    html = re.sub(r'href="(/[^"#]*)"', lambda m: fix("href", m), html)
+    html = re.sub(r'src="(/[^"#]*)"', lambda m: fix("src", m), html)
+    html = re.sub(r'"(/data/[^"]+)"', lambda m: '"' + BASE_PATH + m.group(1) + '"', html)
+    return html
 
 
 def fetch(route, outfile, binary=False):
@@ -58,8 +73,8 @@ def main():
 
     # --- Fixed pages ---
     FIXED = [
-        ("/",                  "index.html"),
-        ("/community",         "community.html"),
+        ("/community",         "index.html"),   # / redirects to community — export community as root
+        ("/community",         "community.html"),  # also keep as community.html
         ("/players",           "players.html"),
         ("/characters",        "characters.html"),
         ("/squads",            "squads.html"),

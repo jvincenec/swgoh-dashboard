@@ -82,6 +82,27 @@ def load_leaderboards():
         return {}
 
 
+def load_player_stats(ally_code):
+    """Load computed stats from fetch_stats.py output."""
+    p = BASE_DIR / "data" / "stats" / f"{ally_code}.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text())
+    except Exception:
+        return {}
+
+
+def load_tb_platoons():
+    p = BASE_DIR / "game_data" / "tb_platoons.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 GL_REQUIREMENTS = load_gl_requirements()
 DATACRON_SETS   = load_datacron_sets()
 
@@ -1038,6 +1059,9 @@ def player_detail(ally_code):
         "series": [{"name": name, "id": ally_code, "values": {"total": gp_values}}]
     }
 
+    # Load computed stats from fetch_stats.py if available
+    computed_stats = load_player_stats(ally_code)
+
     return render_template(
         "player_detail.html",
         ally_code=ally_code, name=name, history=history,
@@ -1050,6 +1074,7 @@ def player_detail(ally_code):
         datacron_sets=DATACRON_SETS,
         guild_role=rs.get("guild_role", ""),
         last_activity=rs.get("last_activity_time"),
+        computed_stats=computed_stats,
     )
 
 
@@ -1076,7 +1101,7 @@ def guild_mods(slug):
         top_chars = sorted(
             [{"base_id": bid, "speed_sec": u.get("speed_secondary_count", 0), "relic": u.get("relic", 0)}
              for bid, u in units.items() if u.get("speed_secondary_count", 0) > 0],
-            key=lambda x: -x["speed_secondary_count"]
+            key=lambda x: -x["speed_sec"]
         )[:5]
         rows.append({
             "name": m.get("name"), "ally_code": ac,
@@ -1437,6 +1462,109 @@ def trends_player_zetas(ally_code):
                           y_label="Zetas")
 
 
+@app.route("/guild/<slug>/tw-history")
+def guild_tw_history(slug):
+    import re as _re
+    slug_clean = _re.sub(r"[^a-z0-9-]", "", slug.lower())
+    gf = BASE_DIR / "data" / "guilds" / f"{slug_clean}.json"
+    if not gf.exists():
+        return f"Guild not found: {slug_clean}", 404
+    guild = json.loads(gf.read_text())
+    raw_tw = guild.get("recent_tw_results", [])
+    results = []
+    for tw in raw_tw:
+        our_score    = int(tw.get("score", 0) or tw.get("bannerScore", 0) or 0)
+        opp_score    = int(tw.get("opponentScore", 0) or tw.get("opponentBannerScore", 0) or 0)
+        opp_name     = tw.get("opponentGuildName") or tw.get("opponentName") or "Unknown"
+        opp_gp       = int(tw.get("opponentGuildGP", 0) or 0)
+        end_time     = tw.get("endTime") or tw.get("startTime") or ""
+        win          = our_score > opp_score
+        results.append({
+            "our_score":  our_score,
+            "opp_score":  opp_score,
+            "opp_name":   opp_name,
+            "opp_gp":     opp_gp,
+            "end_time":   end_time,
+            "win":        win,
+            "margin":     our_score - opp_score,
+        })
+    wins   = sum(1 for r in results if r["win"])
+    losses = len(results) - wins
+    return render_template("guild_tw_history.html", guild=guild, results=results, wins=wins, losses=losses)
+
+
+@app.route("/guild/<slug>/contributions")
+def guild_contributions(slug):
+    import re as _re
+    slug_clean = _re.sub(r"[^a-z0-9-]", "", slug.lower())
+    gf = BASE_DIR / "data" / "guilds" / f"{slug_clean}.json"
+    if not gf.exists():
+        return f"Guild not found: {slug_clean}", 404
+    guild = json.loads(gf.read_text())
+    members = sorted(guild.get("members", []),
+                     key=lambda m: -(m.get("contributions", {}).get("raid_tickets", {}).get("current", 0) or 0))
+    return render_template("guild_contributions.html", guild=guild, members=members)
+
+
+@app.route("/alliance/gac")
+def alliance_gac():
+    """Alliance-wide GAC league standings from guild member data."""
+    tracked = load_tracked_guilds()
+    rows = []
+    for g in tracked:
+        for m in g.get("members", []):
+            history = m.get("gac_history", [])
+            latest = history[0] if history else {}
+            rows.append({
+                "name":         m.get("name", "?"),
+                "ally_code":    m.get("ally_code", ""),
+                "guild":        g.get("name", "?"),
+                "league":       latest.get("league") or m.get("league_id") or "—",
+                "division":     latest.get("division") or "—",
+                "wins":         latest.get("wins", 0),
+                "losses":       latest.get("losses", 0),
+                "season_points":latest.get("season_points", 0),
+                "rank":         latest.get("rank"),
+                "lifetime_score": m.get("lifetime_season_score", 0),
+                "history":      history,
+            })
+    # Sort by league tier then points
+    LEAGUE_ORDER = {"KYBER": 0, "AURODIUM": 1, "CHROMIUM": 2, "BRONZIUM": 3, "CARBONITE": 4}
+    rows.sort(key=lambda r: (LEAGUE_ORDER.get((r["league"] or "").upper(), 99), -(r["season_points"] or 0)))
+    return render_template("alliance_gac.html", rows=rows)
+
+
+@app.route("/guild/<slug>/tb-platoons")
+def guild_tb_platoons(slug):
+    import re as _re
+    slug_clean = _re.sub(r"[^a-z0-9-]", "", slug.lower())
+    gf = BASE_DIR / "data" / "guilds" / f"{slug_clean}.json"
+    if not gf.exists():
+        return f"Guild not found: {slug_clean}", 404
+    guild = json.loads(gf.read_text())
+    tb_platoons = load_tb_platoons()
+    rs_all = load_roster_stats()
+    # Build per-unit ownership for this guild
+    member_acs = [m.get("ally_code") for m in guild.get("members", [])]
+    unit_owners = {}   # base_id -> list of player names who own it at 7*
+    for ac in member_acs:
+        rs = rs_all.get(ac, {})
+        name = rs.get("name") or ac
+        for bid, u in (rs.get("units") or {}).items():
+            if (u.get("rarity") or 0) >= 7:
+                unit_owners.setdefault(bid, []).append(name)
+    n = len(member_acs) or 1
+    return render_template("guild_tb_platoons.html", guild=guild, tb_platoons=tb_platoons,
+                           unit_owners=unit_owners, n=n)
+
+
+@app.route("/data/stats/<ally_code>.json")
+def player_stats_json(ally_code):
+    stats = load_player_stats(ally_code)
+    from flask import jsonify
+    return jsonify(stats)
+
+
 @app.route("/transfers")
 def transfers():
     log = sorted(load_transfers(), key=lambda t: t["timestamp"], reverse=True)
@@ -1445,66 +1573,11 @@ def transfers():
 
 @app.route("/")
 def index():
-    player = load_json("player.json", {})
-    arena = load_json("arena.json", {})
-    guild = load_json("guild.json", {})
-    recs = load_json("recommendations.json", {})
-    currencies_path = BASE_DIR / "currencies.json"
-    currencies = json.loads(currencies_path.read_text()) if currencies_path.exists() else {}
+    """Home page — redirect to community overview."""
+    from flask import redirect, url_for
+    return redirect(url_for("community"))
 
-    player_name = player.get("name", "Unknown")
-    player_level = player.get("level", "?")
-
-    roster = player.get("rosterUnit", [])
-    characters = []
-    for unit in roster:
-        def_id = unit.get("definitionId", "")
-        base_id = def_id.split(":")[0]
-        if unit.get("currentLevel") is None:
-            continue
-        characters.append({
-            "base_id": base_id,
-            "level": unit.get("currentLevel", 0),
-            "rarity": unit.get("currentRarity", 0),
-            "gear": unit.get("currentTier", 0),
-            "relic": relic_tier_to_level((unit.get("relic") or {}).get("currentTier", 0)),
-        })
-    characters.sort(key=lambda c: (-c["relic"], -c["gear"]))
-
-    squad_rank = arena.get("playerRankStatus", {}).get("squadStatus", {}).get("rank", "?")
-    fleet_rank = arena.get("playerRankStatus", {}).get("fleetStatus", {}).get("rank", "?")
-
-    guild_name = guild.get("profile", {}).get("name", "Unknown")
-    guild_members = guild.get("member", [])
-    member_list = [
-        {
-            "name": m.get("playerName", "?"),
-            "level": m.get("playerLevel", "?"),
-            "gp": int(m.get("galacticPower", 0) or 0),
-        }
-        for m in guild_members
-    ]
-    member_list.sort(key=lambda m: -(m["gp"] if isinstance(m["gp"], int) else 0))
-
-    return render_template(
-        "index.html",
-        player_name=player_name,
-        player_level=player_level,
-        characters=characters[:20],
-        squad_rank=squad_rank,
-        fleet_rank=fleet_rank,
-        guild_name=guild_name,
-        members=member_list,
-        recommendations=recs,
-        currencies=currencies,
-        guild_analyses=load_guild_analyses(),
-        raid_tb_report=load_raid_tb_report(),
-        member_activity_report=load_member_activity_report(),
-        player_pvp_report=load_player_pvp_report(),
-        mods_report=load_mods_report(),
-        relic_gap_report=load_relic_gap_report(),
-    )
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5050, debug=True)
+    app.run(debug=True, port=5050, host="127.0.0.1")

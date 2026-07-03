@@ -1,0 +1,42 @@
+﻿x-env-keys: &env_key_vars {}
+
+x-client-url: &env_client_url
+  CLIENT_URL: http://swgoh-comlink:3000
+
+services:
+  swgoh-comlink:
+    container_name: swgoh-comlink
+    image: ghcr.io/swgoh-utils/swgoh-comlink:latest
+    restart: always
+    environment:
+      <<: *env_key_vars
+      APP_NAME: carovnicek-dashboard
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - comlink
+    healthcheck:
+      test: ["CMD", "/swgoh-comlink", "--check"]
+      start_period: 10s
+      start_interval: 0.5s
+
+  swgoh-stats:
+    container_name: swgoh-stats
+    image: ghcr.io/swgoh-utils/swgoh-stats:latest
+    restart: always
+    depends_on:
+      swgoh-comlink:
+        condition: service_healthy
+    environment:
+      <<: [*env_key_vars, *env_client_url]
+      PORT: 3223
+    volumes:
+      - "./statCalcData:/app/statCalcData"
+    ports:
+      - "3223:3223"
+    networks:
+      - comlink
+
+networks:
+  comlink: {}

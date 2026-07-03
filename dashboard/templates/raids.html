@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>SWGOH — Raids</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:24px}
+h1{font-size:20px}nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse}
+table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:6px 10px;white-space:nowrap}
+table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap}
+table.dataTable tbody tr:nth-child(even){background:#0d1117}table.dataTable tbody tr:nth-child(odd){background:#11161c}
+.dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+.dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}
+.empty{color:#6e7681;font-style:italic}.note{color:#6e7681;font-size:11px;margin:6px 0}
+.ok{color:#3fb950}.fail{color:#f85149}
+</style></head><body>
+<nav><nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav></nav>
+<h1>Raid Results</h1>
+<p class="note">Per-member damage from completed raids. Only ended raids included (Comlink cannot track live raid progress). Outcome: 1=Completed, 2=Expired, 5=Simmed.</p>
+{% if not report %}
+<p class="empty">No raid data — run fetch_guilds.py first (requires includeRecentGuildActivityInfo=true which is already set).</p>
+{% else %}
+<table id="raidTable" class="dataTable display" style="width:100%">
+<thead><tr><th>Player</th><th>Guild</th><th>Raid</th><th>Damage</th><th>Rank</th><th>Outcome</th><th>End Time</th></tr></thead>
+<tbody>
+{% for r in report %}
+<tr>
+  <td><a href="/player/{{ r.ally_code }}" style="color:#58a6ff;text-decoration:none">{{ r.name }}</a></td>
+  <td>{{ r.guild }}</td>
+  <td>{{ r.raid_id }}</td>
+  <td data-order="{{ r.damage }}">{{ "{:,}".format(r.damage) }}</td>
+  <td>{{ r.rank if r.rank else "—" }}</td>
+  <td class="{{ 'ok' if r.outcome == 1 else 'fail' }}">{{ {0:"—",1:"✓ Done",2:"Expired",3:"In Progress",4:"Abandoned",5:"Simmed"}.get(r.outcome, r.outcome) }}</td>
+  <td>{{ r.end_time }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){$("#raidTable").DataTable({paging:false,info:false,order:[[3,"desc"]}});});</script>
+{% endif %}
+</body></html>

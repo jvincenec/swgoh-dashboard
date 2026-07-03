@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>{{ guild.name }} — TB Platoons</title>
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}h2{font-size:14px;color:#58a6ff;margin:20px 0 6px}h3{font-size:12px;color:#6e7681;margin:12px 0 4px}
+nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+.note{color:#6e7681;font-size:11px;margin:6px 0}.empty{color:#6e7681;font-style:italic}
+.tb-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;margin:12px 0}
+.phase{border-left:3px solid #30363d;padding:4px 12px;margin:8px 0}
+.platoon{background:#0d1117;border-radius:4px;padding:6px 10px;margin:4px 0;font-size:12px}
+.unit{display:inline-block;padding:2px 8px;border-radius:10px;margin:2px;font-size:11px}
+.owned{background:#1a3a1a;color:#3fb950}.missing{background:#3a1a1a;color:#f85149}
+a.pl{color:#58a6ff;text-decoration:none}
+</style></head><body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a>
+<a href="/guild/{{ guild.name|lower|replace(' ','-')|replace("'","") }}">{{ guild.name }}</a></nav>
+<h1>{{ guild.name }} — TB Platoon Requirements</h1>
+<p class="note">Shows which units are needed for platoons and who in the guild owns them at 7★.
+Requires: run analysis\build_tb_platoons.py and fetch_player_rosters.py.</p>
+{% if not tb_platoons %}
+<p class="empty">No platoon data yet. Run:<br>
+<code>.\venv\Scripts\python.exe analysis\build_tb_platoons.py</code></p>
+{% else %}
+{% for tb_id, tb in tb_platoons.items() %}
+<div class="tb-card">
+  <h2>{{ tb.name or tb_id }}</h2>
+  {% for phase in tb.phases %}
+  <div class="phase">
+    <h3>Phase {{ phase.id or loop.index }}</h3>
+    {% for pl in phase.platoons %}
+    <div class="platoon">
+      <strong style="font-size:11px;color:#6e7681">Platoon {{ pl.id or loop.index }}:</strong>
+      {% for uid in pl.units %}
+      {% set owners = unit_owners.get(uid, []) %}
+      {% set pct = (owners|length / n * 100)|int %}
+      <span class="unit {{ 'owned' if owners else 'missing' }}"
+            title="{{ owners|join(', ') if owners else 'Nobody owns this at 7★' }}">
+        {{ uid[:12] }} ({{ owners|length }}/{{ n }})
+      </span>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endif %}
+</body></html>

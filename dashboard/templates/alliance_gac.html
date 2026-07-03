@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Alliance GAC Standings</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse;width:100%}
+table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:5px 8px;white-space:nowrap}
+table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap;font-size:12px}
+table.dataTable tbody tr:nth-child(even){background:#0d1117}table.dataTable tbody tr:nth-child(odd){background:#11161c}
+table.dataTable tbody tr:hover{background:#1c2530}
+.dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+.dataTables_info,.dataTables_paginate{color:#6e7681;font-size:11px}.paginate_button{color:#58a6ff !important}
+.note{color:#6e7681;font-size:11px;margin:6px 0}a.pl{color:#58a6ff;text-decoration:none}
+.win{color:#3fb950}.loss{color:#f85149}
+.kyber{color:#bc8cff;font-weight:bold}.aurodium{color:#e3b341;font-weight:bold}
+.chromium{color:#58a6ff}.bronzium{color:#c9d1d9}.carbonite{color:#6e7681}
+</style></head><body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a></nav>
+<h1>Alliance GAC Standings</h1>
+<p class="note">Current/most recent GAC season per player from guild data. Sorted by league tier then season points. League data from member's last completed season.</p>
+<table id="tbl" class="display"><thead><tr>
+  <th>Player</th><th>Guild</th><th>League</th><th>Div</th>
+  <th>W</th><th>L</th><th>Win%</th><th>Season Pts</th><th>Rank</th><th>Lifetime Score</th>
+</tr></thead><tbody>
+{% for r in rows %}
+{% set total = (r.wins or 0) + (r.losses or 0) %}
+{% set league_cls = r.league|lower if r.league and r.league != '—' else 'carbonite' %}
+<tr>
+  <td><a class="pl" href="/player/{{ r.ally_code }}">{{ r.name }}</a></td>
+  <td>{{ r.guild }}</td>
+  <td><span class="{{ league_cls }}">{{ r.league or '—' }}</span></td>
+  <td>{{ r.division or '—' }}</td>
+  <td><span class="win">{{ r.wins or 0 }}</span></td>
+  <td><span class="loss">{{ r.losses or 0 }}</span></td>
+  <td data-order="{{ (r.wins/total*100)|int if total else 0 }}">{{ "%.0f%%"|format(r.wins/total*100) if total else '—' }}</td>
+  <td data-order="{{ r.season_points or 0 }}">{{ '{:,}'.format(r.season_points or 0) }}</td>
+  <td>{{ '#'~r.rank if r.rank else '—' }}</td>
+  <td data-order="{{ r.lifetime_score or 0 }}">{{ '{:,}'.format(r.lifetime_score or 0) }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){$('#tbl').DataTable({paging:true,pageLength:50,info:true,fixedHeader:true});});</script>
+</body></html>

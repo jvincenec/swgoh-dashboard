@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>{{ guild.name }} — Contributions</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse;width:100%}
+table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:5px 8px;white-space:nowrap}
+table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap;font-size:12px}
+table.dataTable tbody tr:nth-child(even){background:#0d1117}table.dataTable tbody tr:nth-child(odd){background:#11161c}
+table.dataTable tbody tr:hover{background:#1c2530}
+.dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+.note{color:#6e7681;font-size:11px;margin:6px 0}a.pl{color:#58a6ff;text-decoration:none}
+.hi{color:#3fb950}
+</style></head><body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a>
+<a href="/guild/{{ guild.name|lower|replace(' ','-')|replace("'","") }}">{{ guild.name }}</a></nav>
+<h1>{{ guild.name }} — Member Contributions</h1>
+<p class="note">Current values reset at Guild Reset. Lifetime = cumulative total. Last 60 days only per Comlink. Sorted by Raid Tickets (current).</p>
+<table id="tbl" class="display"><thead><tr>
+  <th>Player</th>
+  <th>Raid Tickets (cur)</th><th>Raid Tickets (life)</th>
+  <th>Gear Donations (cur)</th><th>Gear Donations (life)</th>
+  <th>Guild Tokens (cur)</th><th>Guild Tokens (life)</th>
+  <th>Last Active</th>
+</tr></thead><tbody>
+{% for m in members %}
+{% set c = m.contributions %}
+{% set rt = c.get('raid_tickets', {}) %}
+{% set gd = c.get('gear_donations', {}) %}
+{% set gt = c.get('guild_tokens', {}) %}
+<tr>
+  <td><a class="pl" href="/player/{{ m.ally_code }}">{{ m.name }}</a></td>
+  <td data-order="{{ rt.get('current', 0) }}">
+    <span class="{{ 'hi' if rt.get('current',0) >= 600 else '' }}">{{ '{:,}'.format(rt.get('current', 0)) }}</span>
+  </td>
+  <td data-order="{{ rt.get('lifetime', 0) }}">{{ '{:,}'.format(rt.get('lifetime', 0)) }}</td>
+  <td data-order="{{ gd.get('current', 0) }}">{{ '{:,}'.format(gd.get('current', 0)) }}</td>
+  <td data-order="{{ gd.get('lifetime', 0) }}">{{ '{:,}'.format(gd.get('lifetime', 0)) }}</td>
+  <td data-order="{{ gt.get('current', 0) }}">{{ '{:,}'.format(gt.get('current', 0)) }}</td>
+  <td data-order="{{ gt.get('lifetime', 0) }}">{{ '{:,}'.format(gt.get('lifetime', 0)) }}</td>
+  <td data-order="{{ m.last_activity or 0 }}">
+    {% if m.last_activity %}
+    <span class="la" data-ts="{{ m.last_activity }}">{{ m.last_activity }}</span>
+    {% else %}—{% endif %}
+  </td>
+</tr>
+{% endfor %}
+</tbody></table>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function(){$('#tbl').DataTable({paging:false,info:false,fixedHeader:true,order:[[1,'desc']]});});
+document.querySelectorAll('.la').forEach(el=>{
+  var ts=parseInt(el.dataset.ts,10),ms=ts>1e12?ts:ts*1000;
+  var d=new Date(ms),diff=Math.floor((Date.now()-ms)/86400000);
+  el.textContent=diff===0?'Today':diff===1?'Yesterday':diff+'d ago';el.title=d.toLocaleDateString();
+});
+</script></body></html>

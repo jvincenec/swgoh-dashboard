@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>{{ guild.name }} — TW History</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<style>
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:16px}
+h1{font-size:18px}nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
+table.dataTable{background:#0d1117;color:#c9d1d9;border-collapse:collapse;width:100%}
+table.dataTable thead th{background:#161b22;color:#58a6ff;border-bottom:1px solid #30363d;padding:5px 8px}
+table.dataTable tbody td{border:1px solid #21262d;padding:4px 8px;white-space:nowrap;font-size:12px}
+table.dataTable tbody tr:nth-child(even){background:#0d1117}table.dataTable tbody tr:nth-child(odd){background:#11161c}
+.dataTables_filter input,.dataTables_length select{background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:3px 6px}
+.note{color:#6e7681;font-size:11px;margin:6px 0}.win{color:#3fb950}.loss{color:#f85149}.empty{color:#6e7681}
+.stat-row{display:flex;gap:16px;margin:12px 0}
+.stat{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:8px 16px;text-align:center}
+.stat-val{font-size:22px;font-weight:bold}.stat-lbl{font-size:10px;color:#6e7681;text-transform:uppercase}
+</style></head><body>
+<nav><a href="/">Dashboard</a><a href="/community">Community</a>
+<a href="/guild/{{ guild.name|lower|replace(' ','-')|replace("'","") }}">{{ guild.name }}</a></nav>
+<h1>{{ guild.name }} — Territory War History</h1>
+<div class="stat-row">
+  <div class="stat"><div class="stat-val win">{{ wins }}</div><div class="stat-lbl">Wins</div></div>
+  <div class="stat"><div class="stat-val loss">{{ losses }}</div><div class="stat-lbl">Losses</div></div>
+  <div class="stat"><div class="stat-val">{{ results|length }}</div><div class="stat-lbl">Total</div></div>
+  {% if results|length %}
+  <div class="stat"><div class="stat-val">{{ "%.0f%%"|format(wins/results|length*100) }}</div><div class="stat-lbl">Win Rate</div></div>
+  {% endif %}
+</div>
+<p class="note">Last 8 Territory Wars. Comlink only returns completed TW results — live/in-progress not accessible.</p>
+{% if not results %}<p class="empty">No TW data — run fetch_guilds.py first.</p>
+{% else %}
+<table id="tbl" class="display"><thead><tr>
+  <th>Result</th><th>Our Score</th><th>Opp Score</th><th>Margin</th>
+  <th>Opponent Guild</th><th>Opp GP</th><th>End Time</th>
+</tr></thead><tbody>
+{% for r in results %}
+<tr>
+  <td class="{{ 'win' if r.win else 'loss' }}">{{ '✓ Win' if r.win else '✗ Loss' }}</td>
+  <td data-order="{{ r.our_score }}">{{ "{:,}".format(r.our_score) }}</td>
+  <td data-order="{{ r.opp_score }}">{{ "{:,}".format(r.opp_score) }}</td>
+  <td data-order="{{ r.margin }}">
+    <span class="{{ 'win' if r.margin > 0 else 'loss' }}">
+      {{ "+{:,}".format(r.margin) if r.margin > 0 else "{:,}".format(r.margin) }}
+    </span>
+  </td>
+  <td>{{ r.opp_name }}</td>
+  <td data-order="{{ r.opp_gp }}">{{ "%.1fm"|format(r.opp_gp/1e6) if r.opp_gp else "—" }}</td>
+  <td>{{ r.end_time }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready(function(){$('#tbl').DataTable({paging:false,info:false});});</script>
+{% endif %}</body></html>

@@ -102,7 +102,7 @@
   <table id="tbl-roster" class="display" style="width:100%">
     <thead><tr>
       <th>Character</th><th>Relic</th><th>Gear</th><th>★</th>
-      <th>Lvl</th><th>Spd≥15</th><th>Zetas</th><th>Omicrons</th>
+      <th>Lvl</th><th>Spd≥15</th><th>Speed</th><th>Health</th><th>Zetas</th><th>Omicrons</th>
     </tr></thead>
     <tbody>
     {% for u in all_units %}
@@ -118,6 +118,9 @@
       <td data-order="{{ u.speed_secondary_count or 0 }}">
         {% if u.speed_secondary_count %}<span style="color:#3fb950">{{ u.speed_secondary_count }}</span>{% else %}—{% endif %}
       </td>
+      {% set cs = computed_stats.get(u.base_id, {}) if computed_stats else {} %}
+      <td data-order="{{ cs.get('speed', 0) }}">{% if cs.get('speed') %}<span style="color:#58a6ff">{{ cs.speed|int }}</span>{% else %}—{% endif %}</td>
+      <td data-order="{{ cs.get('health', 0) }}">{% if cs.get('health') %}{{ (cs.health/1000)|round(1) }}k{% else %}—{% endif %}</td>
       <td data-order="{{ u.zeta_skills|length if u.zeta_skills else 0 }}">
         {% if u.zeta_skills %}{{ u.zeta_skills|length }}{% else %}—{% endif %}
       </td>
