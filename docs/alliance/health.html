@@ -20,7 +20,7 @@ nav a{color:#58a6ff;margin-right:14px;text-decoration:none;font-size:13px}
 </style>
 </head>
 <body>
-<nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/leaderboards">Leaderboards</a><a href="/alliance/gac">GAC Standings</a></nav>
+<nav><a href="/swgoh-dashboard/">Dashboard</a><a href="/swgoh-dashboard/community">Community</a><a href="/swgoh-dashboard/players">Players</a><a href="/swgoh-dashboard/leaderboards">Leaderboards</a><a href="/swgoh-dashboard/alliance/gac">GAC Standings</a></nav>
 <h1>Alliance Health</h1>
 <p class="note">Health score 0-100: relic depth (25pts) + mod quality (20pts) + GL coverage (30pts) + R5+ breadth (25pts).<br>
 Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history.</p>
@@ -30,7 +30,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <div class="guild-row">
   <span class="score-ring" style="border-color:#3fb950;color:#3fb950">96.6</span>
   <div style="flex:1">
-    <h3><a href="/guild/oddworld-abe-exodus" style="color:#58a6ff;text-decoration:none">Oddworld Abe Exodus</a></h3>
+    <h3><a href="/swgoh-dashboard/guild/oddworld-abe-exodus" style="color:#58a6ff;text-decoration:none">Oddworld Abe Exodus</a></h3>
     <div class="stat-grid">
       <div class="stat">GP <b>724.5m</b></div>
       <div class="stat">Members <b>50</b></div>
@@ -46,7 +46,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <div class="guild-row">
   <span class="score-ring" style="border-color:#3fb950;color:#3fb950">91.2</span>
   <div style="flex:1">
-    <h3><a href="/guild/banes-disciples" style="color:#58a6ff;text-decoration:none">Banes disciples</a></h3>
+    <h3><a href="/swgoh-dashboard/guild/banes-disciples" style="color:#58a6ff;text-decoration:none">Banes disciples</a></h3>
     <div class="stat-grid">
       <div class="stat">GP <b>455.4m</b></div>
       <div class="stat">Members <b>47</b></div>
@@ -62,7 +62,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <div class="guild-row">
   <span class="score-ring" style="border-color:#3fb950;color:#3fb950">90.7</span>
   <div style="flex:1">
-    <h3><a href="/guild/thick-as-thieves" style="color:#58a6ff;text-decoration:none">Thick as Thieves</a></h3>
+    <h3><a href="/swgoh-dashboard/guild/thick-as-thieves" style="color:#58a6ff;text-decoration:none">Thick as Thieves</a></h3>
     <div class="stat-grid">
       <div class="stat">GP <b>558.0m</b></div>
       <div class="stat">Members <b>50</b></div>
@@ -78,7 +78,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <div class="guild-row">
   <span class="score-ring" style="border-color:#3fb950;color:#3fb950">89.7</span>
   <div style="flex:1">
-    <h3><a href="/guild/return-of-the-oddballs" style="color:#58a6ff;text-decoration:none">Return of the Oddballs</a></h3>
+    <h3><a href="/swgoh-dashboard/guild/return-of-the-oddballs" style="color:#58a6ff;text-decoration:none">Return of the Oddballs</a></h3>
     <div class="stat-grid">
       <div class="stat">GP <b>151.1m</b></div>
       <div class="stat">Members <b>17</b></div>
@@ -94,7 +94,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <div class="guild-row">
   <span class="score-ring" style="border-color:#3fb950;color:#3fb950">75.7</span>
   <div style="flex:1">
-    <h3><a href="/guild/enders" style="color:#58a6ff;text-decoration:none">Ender&#39;s</a></h3>
+    <h3><a href="/swgoh-dashboard/guild/enders" style="color:#58a6ff;text-decoration:none">Ender&#39;s</a></h3>
     <div class="stat-grid">
       <div class="stat">GP <b>364.3m</b></div>
       <div class="stat">Members <b>50</b></div>
@@ -111,7 +111,7 @@ Run <code>snapshot.py</code> regularly (after each fetch cycle) to build history
 <h2>Health Score Over Time</h2>
 <div class="chart-card"><div id="health-chart"></div></div>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="/static/graph.js"></script>
+<script src="/swgoh-dashboard/static/graph.js"></script>
 <script>
 const data = {"dates": ["07/01/2026", "07/01/2026", "07/01/2026"], "series": [{"id": "Banes disciples", "name": "Banes disciples", "values": {"total": [68.5, 88.5, 88.5]}}, {"id": "Ender\u0027s", "name": "Ender\u0027s", "values": {"total": [53.8, 73.8, 73.8]}}, {"id": "Oddworld Abe Exodus", "name": "Oddworld Abe Exodus", "values": {"total": [72.8, 92.8, 92.8]}}, {"id": "Return of the Oddballs", "name": "Return of the Oddballs", "values": {"total": [66.4, 87.1, 87.1]}}, {"id": "Thick as Thieves", "name": "Thick as Thieves", "values": {"total": [68.0, 88.0, 88.0]}}], "y": "Health Score"};
 const c = new Chart(data, null, "total");

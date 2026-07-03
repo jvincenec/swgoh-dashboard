@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <nav><a href="/swgoh-dashboard/">Dashboard</a><a href="/swgoh-dashboard/community">Community</a><a href="/swgoh-dashboard/players">Players</a><a href="/swgoh-dashboard/characters">Characters</a><a href="/swgoh-dashboard/trends">Trends</a><a href="/swgoh-dashboard/squads">Squads</a><a href="/swgoh-dashboard/squad-templates">Squad Templates</a><a href="/swgoh-dashboard/farming">Farming</a><a href="/swgoh-dashboard/mods">Mods</a><a href="/swgoh-dashboard/raids">Raids</a><a href="/swgoh-dashboard/inactivity">Inactivity</a><a href="/swgoh-dashboard/events">Events</a><a href="/swgoh-dashboard/history">History</a><a href="/swgoh-dashboard/transfers">Transfers</a></nav>
   <h1>Trends</h1>
   <p class="note">Powered by compact stats snapshots written each time fetch_player_rosters.py runs. 3 snapshot(s) collected so far — charts need ≥2 to draw a line.</p>
 
@@ -481,30 +481,30 @@
   <div class="chart-card" style="display:none" id="playerChartCard"><div id="playerChart"></div></div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="/static/graph.js"></script>
+  <script src="/swgoh-dashboard/static/graph.js"></script>
   <script>
     function makeChart(id, url, height) {
       var c = new Chart(url, null, "total");
       c.id = id; c.height = height || 300; c.width = 900; c.tightScale = true;
       c.display();
     }
-    makeChart("allianceRelicChart",  "/data/trends/alliance-relic.json",    280);
-    makeChart("allianceR5Chart",     "/data/trends/alliance-r5plus.json",   280);
-    makeChart("allianceZetaChart",   "/data/trends/alliance-zetas.json",    260);
-    makeChart("allianceOmiChart",    "/data/trends/alliance-omicrons.json", 260);
-    makeChart("allianceModChart",    "/data/trends/alliance-mod-score.json",260);
-    makeChart("allianceGLChart",     "/data/trends/alliance-gl.json",       260);
-    makeChart("namedToonChart",      "/data/trends/named-toons.json",       320);
-    makeChart("guildRelicChart",     "/data/trends/guild-relic.json",       320);
-    makeChart("guildHealthChart",    "/data/trends/guild-health.json",      280);
-    makeChart("guildZetaChart",      "/data/trends/guild-zetas.json",       280);
+    makeChart("allianceRelicChart",  "/swgoh-dashboard/data/trends/alliance-relic.json",    280);
+    makeChart("allianceR5Chart",     "/swgoh-dashboard/data/trends/alliance-r5plus.json",   280);
+    makeChart("allianceZetaChart",   "/swgoh-dashboard/data/trends/alliance-zetas.json",    260);
+    makeChart("allianceOmiChart",    "/swgoh-dashboard/data/trends/alliance-omicrons.json", 260);
+    makeChart("allianceModChart",    "/swgoh-dashboard/data/trends/alliance-mod-score.json",260);
+    makeChart("allianceGLChart",     "/swgoh-dashboard/data/trends/alliance-gl.json",       260);
+    makeChart("namedToonChart",      "/swgoh-dashboard/data/trends/named-toons.json",       320);
+    makeChart("guildRelicChart",     "/swgoh-dashboard/data/trends/guild-relic.json",       320);
+    makeChart("guildHealthChart",    "/swgoh-dashboard/data/trends/guild-health.json",      280);
+    makeChart("guildZetaChart",      "/swgoh-dashboard/data/trends/guild-zetas.json",       280);
 
     function loadPlayerChart() {
       var ac = document.getElementById("playerSelect").value;
       if (!ac) { document.getElementById("playerChartCard").style.display = "none"; return; }
       document.getElementById("playerChartCard").style.display = "block";
       document.getElementById("playerChart").innerHTML = "";
-      makeChart("playerChart", "/data/trends/player/" + ac + "/relic.json", 260);
+      makeChart("playerChart", "/swgoh-dashboard/data/trends/player/" + ac + "/relic.json", 260);
     }
   </script>
   

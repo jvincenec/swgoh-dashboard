@@ -22,12 +22,12 @@
   </style>
 </head>
 <body>
-  <nav><a href="/">Dashboard</a><a href="/community">Community</a><a href="/players">Players</a><a href="/characters">Characters</a><a href="/trends">Trends</a><a href="/squads">Squads</a><a href="/squad-templates">Squad Templates</a><a href="/farming">Farming</a><a href="/gl-readiness">GL Readiness</a><a href="/leaderboards">Leaderboards</a><a href="/alliance/gac">GAC Standings</a><a href="/mods">Mods</a><a href="/raids">Raids</a><a href="/inactivity">Inactivity</a><a href="/events">Events</a><a href="/history">History</a><a href="/transfers">Transfers</a></nav>
+  <nav><a href="/swgoh-dashboard/">Dashboard</a><a href="/swgoh-dashboard/community">Community</a><a href="/swgoh-dashboard/players">Players</a><a href="/swgoh-dashboard/characters">Characters</a><a href="/swgoh-dashboard/trends">Trends</a><a href="/swgoh-dashboard/squads">Squads</a><a href="/swgoh-dashboard/squad-templates">Squad Templates</a><a href="/swgoh-dashboard/farming">Farming</a><a href="/swgoh-dashboard/gl-readiness">GL Readiness</a><a href="/swgoh-dashboard/leaderboards">Leaderboards</a><a href="/swgoh-dashboard/alliance/gac">GAC Standings</a><a href="/swgoh-dashboard/mods">Mods</a><a href="/swgoh-dashboard/raids">Raids</a><a href="/swgoh-dashboard/inactivity">Inactivity</a><a href="/swgoh-dashboard/events">Events</a><a href="/swgoh-dashboard/history">History</a><a href="/swgoh-dashboard/transfers">Transfers</a></nav>
   <h1>Community</h1>
   <p style="font-size:12px;margin:4px 0 12px">
-    <a href="/alliance/mods" style="color:#58a6ff;">📊 Alliance Mod Report</a>
+    <a href="/swgoh-dashboard/alliance/mods" style="color:#58a6ff;">📊 Alliance Mod Report</a>
   </p>
-  <a href="/export/community.csv" style="color:#3fb950;">Export CSV</a>
+  <a href="/swgoh-dashboard/export/community.csv" style="color:#3fb950;">Export CSV</a>
 
   
   <table id="communityTable">
@@ -41,7 +41,7 @@
     
     
     <tr>
-      <td><a class="guild-link" href="/guild/oddworld-abe-exodus">Oddworld Abe Exodus</a></td>
+      <td><a class="guild-link" href="/swgoh-dashboard/guild/oddworld-abe-exodus">Oddworld Abe Exodus</a></td>
       <td>50</td>
       <td>724,516,662</td>
       <td>
@@ -58,7 +58,7 @@
     
     
     <tr>
-      <td><a class="guild-link" href="/guild/thick-as-thieves">Thick as Thieves</a></td>
+      <td><a class="guild-link" href="/swgoh-dashboard/guild/thick-as-thieves">Thick as Thieves</a></td>
       <td>50</td>
       <td>558,033,652</td>
       <td>
@@ -75,7 +75,7 @@
     
     
     <tr>
-      <td><a class="guild-link" href="/guild/banes-disciples">Banes disciples</a></td>
+      <td><a class="guild-link" href="/swgoh-dashboard/guild/banes-disciples">Banes disciples</a></td>
       <td>47</td>
       <td>455,386,100</td>
       <td>
@@ -92,7 +92,7 @@
     
     
     <tr>
-      <td><a class="guild-link" href="/guild/enders">Ender&#39;s</a></td>
+      <td><a class="guild-link" href="/swgoh-dashboard/guild/enders">Ender&#39;s</a></td>
       <td>50</td>
       <td>364,266,572</td>
       <td>
@@ -109,7 +109,7 @@
     
     
     <tr>
-      <td><a class="guild-link" href="/guild/return-of-the-oddballs">Return of the Oddballs</a></td>
+      <td><a class="guild-link" href="/swgoh-dashboard/guild/return-of-the-oddballs">Return of the Oddballs</a></td>
       <td>17</td>
       <td>151,140,433</td>
       <td>
@@ -138,15 +138,15 @@
   <div class="chart-card"><div id="guild-gp-chart"></div></div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="/static/graph.js"></script>
+  <script src="/swgoh-dashboard/static/graph.js"></script>
   <script>
-    var c1 = new Chart("/data/community-gp-stats.json", null, "total");
+    var c1 = new Chart("/swgoh-dashboard/data/community-gp-stats.json", null, "total");
     c1.id = "community-gp-chart"; c1.height = 350; c1.width = 900; c1.tightScale = true;
     c1.display();
-    var c2 = new Chart("/data/community-player-stats.json", null, "total");
+    var c2 = new Chart("/swgoh-dashboard/data/community-player-stats.json", null, "total");
     c2.id = "community-player-chart"; c2.height = 300; c2.width = 900; c2.tightScale = true;
     c2.display();
-    var c3 = new Chart("/data/guilds-gp-stats.json", null, "total");
+    var c3 = new Chart("/swgoh-dashboard/data/guilds-gp-stats.json", null, "total");
     c3.id = "guild-gp-chart"; c3.height = 350; c3.width = 900; c3.tightScale = true;
     c3.display();
 

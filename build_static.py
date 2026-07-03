@@ -1,3 +1,4 @@
+import re
 """
 build_static.py — exports the Flask dashboard to static HTML in docs/
 Run AFTER fetch cycle with server running on port 5050.
@@ -51,7 +52,8 @@ def fetch(route, outfile, binary=False):
         if binary:
             dest.write_bytes(r.content)
         else:
-            dest.write_text(r.text, encoding="utf-8")
+            body = rewrite_links(r.text) if outfile.endswith(".html") else r.text
+            dest.write_text(body, encoding="utf-8")
         print(f"  OK  {outfile}")
     except Exception as e:
         print(f"  ERR {outfile}: {e}")
